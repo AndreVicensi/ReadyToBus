@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
 <?import javafx.scene.layout.BorderPane?>
-	
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
-	<!-- TODO Add Nodes -->
-</BorderPane>
+
+
+<BorderPane fx:id="tela" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="tela" stylesheets="@TelaInicialStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaInicialController" />
