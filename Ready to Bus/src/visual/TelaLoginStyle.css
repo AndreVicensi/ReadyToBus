@@ -1,0 +1,20 @@
+.tela{
+	-fx-min-width: 800.0;
+	-fx-min-height: 600.0;
+	-fx-pref-width: 800.0;
+	-fx-pref-height: 600.0;
+}
+
+.botaoGrande, .botaoPequeno{
+	-fx-background-radius: 100.0%;
+}
+
+.botaoGrande{
+	-fx-pref-height: 80.0;
+	-fx-pref-width: 80.0;
+}
+
+.botaoPequeno{
+	-fx-pref-height: 50;
+	-fx-pref-width: 50;
+}
