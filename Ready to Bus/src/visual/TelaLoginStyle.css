@@ -7,11 +7,12 @@
 
 .botaoGrande, .botaoPequeno{
 	-fx-background-radius: 100.0%;
+	-fx-font-size: 12;
 }
 
 .botaoGrande{
-	-fx-pref-height: 80.0;
-	-fx-pref-width: 80.0;
+	-fx-pref-height: 70.0;
+	-fx-pref-width: 70.0;
 }
 
 .botaoPequeno{
