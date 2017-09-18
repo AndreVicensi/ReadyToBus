@@ -6,6 +6,7 @@
 }
 
 .botaoGrande, .botaoPequeno{
+	-fx-background-color: #FFFF4C;
 	-fx-background-radius: 100.0%;
 	-fx-font-size: 12;
 }
