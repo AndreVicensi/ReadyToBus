@@ -40,6 +40,27 @@ public class TelaLoginController {
 
 	@FXML
 	void onSobre(ActionEvent event) {
+		mostrarSobre();
+	}
+	
+	@FXML
+	void onCadastrar(ActionEvent event) {
+		carregarTelaCadastroEmpresa("/visual/TelaCadastroEmpresa.fxml");
+	}
+	
+	public void carregarTelaCadastroEmpresa(String nome) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(nome));
+		
+		try {
+			AnchorPane loginView = (AnchorPane) loader.load();
+			Main.root.setCenter(loginView);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
+	public void mostrarSobre() {
 		Stage stage = new Stage();
 
 		Text texto = new Text();
@@ -52,20 +73,6 @@ public class TelaLoginController {
 		stage.setWidth(390);
 		stage.setHeight(300);
 		stage.show();
-		
 	}
 	
-	@FXML
-	void onCadastrar(ActionEvent event) {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("TelaCadastroEmpresa.fxml"));
-		
-		try {
-			AnchorPane loginView = (AnchorPane) loader.load();
-			Main.root.setCenter(loginView);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-
-	}
 }
