@@ -8,32 +8,36 @@ import javafx.scene.control.TextField;
 
 public class CadastroEmpresaController {
 
-    @FXML
-    private TextField tfLogin;
+	@FXML
+	private TextField tfLogin;
 
-    @FXML
-    private Button btnCadastrar;
+	@FXML
+	private Button btnCadastrar;
 
-    @FXML
-    private Button btnEntrar;
+	@FXML
+	private Button btnEntrar;
 
-    @FXML
-    private PasswordField pfSenha;
+	@FXML
+	private PasswordField pfSenha;
 
-    @FXML
-    private TextField tfNomeEmpresa;
+	@FXML
+	private TextField tfNomeEmpresa;
 
-    @FXML
-    private TextField tfCnpj;
+	@FXML
+	private TextField tfCnpj;
+	
+	MetodosTelas tela = new MetodosTelas();
 
-    @FXML
-    void onSalvar(ActionEvent event) {
+	@FXML
+	void onSalvar(ActionEvent event) {
 
-    }
+	}
 
-    @FXML
-    void onVoltar(ActionEvent event) {
+	@FXML
+	void onVoltar(ActionEvent event) {
+		tela.carregarTela("/visual/TelaLogin.fxml");
 
-    }
+	}
+
 
 }

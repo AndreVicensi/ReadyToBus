@@ -1,19 +1,14 @@
 package application;
 
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import visual.Main;
 
 public class TelaLoginController {
 
@@ -35,6 +30,7 @@ public class TelaLoginController {
 	@FXML
 	private PasswordField pfSenha;
 
+	MetodosTelas tela = new MetodosTelas();
 	@FXML
 	void onSobre(ActionEvent event) {
 		mostrarSobre();
@@ -42,20 +38,10 @@ public class TelaLoginController {
 
 	@FXML
 	void onCadastrar(ActionEvent event) {
-		carregarTela("/visual/TelaCadastroEmpresa.fxml");
+		tela.carregarTela("/visual/TelaCadastroEmpresa.fxml");
 	}
 
-	public void carregarTela(String nome) {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(nome));
 
-		try {
-			AnchorPane loginView = (AnchorPane) loader.load();
-			Main.root.setCenter(loginView);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-	}
 
 	public void mostrarSobre() {
 		Stage stage = new Stage();
