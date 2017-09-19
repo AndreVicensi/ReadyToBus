@@ -1,6 +1,5 @@
 package application;
 
-
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -18,7 +17,6 @@ import visual.Main;
 
 public class TelaLoginController {
 
-	
 	@FXML
 	private TextField tfLogin;
 
@@ -37,21 +35,20 @@ public class TelaLoginController {
 	@FXML
 	private PasswordField pfSenha;
 
-
 	@FXML
 	void onSobre(ActionEvent event) {
 		mostrarSobre();
 	}
-	
+
 	@FXML
 	void onCadastrar(ActionEvent event) {
-		carregarTelaCadastroEmpresa("/visual/TelaCadastroEmpresa.fxml");
+		carregarTela("/visual/TelaCadastroEmpresa.fxml");
 	}
-	
-	public void carregarTelaCadastroEmpresa(String nome) {
+
+	public void carregarTela(String nome) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(nome));
-		
+
 		try {
 			AnchorPane loginView = (AnchorPane) loader.load();
 			Main.root.setCenter(loginView);
@@ -59,7 +56,7 @@ public class TelaLoginController {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	public void mostrarSobre() {
 		Stage stage = new Stage();
 
@@ -74,5 +71,5 @@ public class TelaLoginController {
 		stage.setHeight(300);
 		stage.show();
 	}
-	
+
 }
