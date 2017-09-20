@@ -1,22 +1,23 @@
 .tela{
-	-fx-min-width: 800.0;
-	-fx-min-height: 600.0;
-	-fx-pref-width: 800.0;
-	-fx-pref-height: 600.0;
+	-fx-min-width: 1280;
+	-fx-min-height: 800;
+	-fx-pref-width: 1280;
+	-fx-pref-height: 800;
 }
 
 .botaoGrande, .botaoPequeno{
-	-fx-background-color: #FFFF4C;
+	-fx-background-color: white;
 	-fx-background-radius: 100.0%;
 	-fx-font-size: 12;
 }
 
 .botaoGrande{
-	-fx-pref-height: 70.0;
-	-fx-pref-width: 70.0;
+	-fx-pref-height: 80.0;
+	-fx-pref-width: 80.0;
+	-fx-background-color: #87CEEB;
 }
 
 .botaoPequeno{
-	-fx-pref-height: 50;
-	-fx-pref-width: 50;
+	-fx-pref-height: 48;
+	-fx-pref-width: 48;
 }
