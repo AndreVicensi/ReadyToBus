@@ -48,10 +48,11 @@ public class TelaLoginController {
 		carregarTelaCadastroEmpresa("/visual/TelaCadastroEmpresa.fxml");
 	}
 	
+	
+	
 	public void carregarTelaCadastroEmpresa(String nome) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(nome));
-		
 		try {
 			AnchorPane loginView = (AnchorPane) loader.load();
 			Main.root.setCenter(loginView);
@@ -62,7 +63,6 @@ public class TelaLoginController {
 	
 	public void mostrarSobre() {
 		Stage stage = new Stage();
-
 		Text texto = new Text();
 		stage.setScene(new Scene(new StackPane(texto)));
 		stage.setTitle("Importante");
