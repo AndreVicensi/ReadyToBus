@@ -13,19 +13,19 @@
    <children>
       <Pane layoutX="-14.0" prefHeight="400.0" prefWidth="600.0" styleClass="tela" stylesheets="@TelaLoginStyle.css">
          <children>
-            <ImageView fitHeight="700.0" fitWidth="900.0" layoutX="188.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="800.0" fitWidth="900.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../arquivos/onibuscerto.png" />
                </image>
             </ImageView>
-            <Label layoutX="527.0" layoutY="312.0" text="Login " />
-            <Label layoutX="527.0" layoutY="353.0" text="Senha" />
-            <TextField fx:id="tfLogin" layoutX="570.0" layoutY="307.0" />
-            <Button fx:id="btnCadastrar" layoutX="446.0" layoutY="439.0" mnemonicParsing="false" onAction="#onCadastrar" styleClass="botaoGrande" stylesheets="@TelaLoginStyle.css" text="Cadastrar" />
-            <Button fx:id="btnEntrar" layoutX="756.0" layoutY="439.0" mnemonicParsing="false" styleClass="botaoGrande" stylesheets="@TelaLoginStyle.css" text="Entrar" />
-            <Button fx:id="btnSobre" layoutX="763.0" layoutY="233.0" mnemonicParsing="false" onAction="#onSobre" styleClass="botaoPequeno" stylesheets="@TelaLoginStyle.css" text="Sobre" />
-            <Button fx:id="btnWeb" layoutX="461.0" layoutY="233.0" mnemonicParsing="false" styleClass="botaoPequeno" stylesheets="@TelaLoginStyle.css" text="Web" />
-            <PasswordField fx:id="pfSenha" layoutX="570.0" layoutY="348.0" />
+            <Label layoutX="359.0" layoutY="316.0" text="Login " />
+            <Label layoutX="359.0" layoutY="357.0" text="Senha" />
+            <TextField fx:id="tfLogin" layoutX="402.0" layoutY="311.0" />
+            <Button fx:id="btnCadastrar" layoutX="273.0" layoutY="446.0" mnemonicParsing="false" onAction="#onCadastrar" styleClass="botaoGrande" stylesheets="@TelaLoginStyle.css" text="Cadastrar" />
+            <Button fx:id="btnEntrar" layoutX="584.0" layoutY="449.0" mnemonicParsing="false" styleClass="botaoGrande" stylesheets="@TelaLoginStyle.css" text="Entrar" />
+            <Button fx:id="btnSobre" layoutX="592.0" layoutY="201.0" mnemonicParsing="false" onAction="#onSobre" styleClass="botaoPequeno" stylesheets="@TelaLoginStyle.css" text="Sobre" />
+            <Button fx:id="btnWeb" layoutX="292.0" layoutY="207.0" mnemonicParsing="false" styleClass="botaoPequeno" stylesheets="@TelaLoginStyle.css" text="Site" />
+            <PasswordField fx:id="pfSenha" layoutX="402.0" layoutY="352.0" />
          </children>
       </Pane>
    </children>
