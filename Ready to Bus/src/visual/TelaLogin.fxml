@@ -15,7 +15,7 @@
          <children>
             <ImageView fitHeight="800.0" fitWidth="900.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/onibuscerto.png" />
+                  <Image url="@../arquivos/onibus.png" />
                </image>
             </ImageView>
             <Label layoutX="359.0" layoutY="316.0" text="Login " />
