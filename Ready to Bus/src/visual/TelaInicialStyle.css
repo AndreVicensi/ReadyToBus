@@ -1,7 +1,5 @@
 .tela{
-	-fx-min-width: 800;
-	-fx-min-height: 600;
-	-fx-pref-width: 800;
-	-fx-pref-height: 600;
+	-fx-pref-width: 1280;
+	-fx-pref-height: 768;
 
 }
