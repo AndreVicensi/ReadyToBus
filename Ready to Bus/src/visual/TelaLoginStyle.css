@@ -5,11 +5,11 @@
 }
 
 .botaoGrande{
-	-fx-pref-height: 80.0;
-	-fx-pref-width: 80.0;
+	-fx-pref-height: 72.0;
+	-fx-pref-width: 72.0;
 	-fx-background-radius: 100.0%;
 	-fx-background-color: #FFFF00;
-	-fx-font-size: 14;
+	-fx-font-size: 12;
 }
 
 .botaoPequeno{
