@@ -39,12 +39,4 @@ public class Empresa {
 		this.senha = senha;
 	}
 	
-	/*
-	 * BufferedReader br = new BufferedReader(new FileReader("c:/arquivo.html"));
-while(br.ready()){
-   String linha = br.readLine();
-   System.out.println(linha);
-}
-br.close();
-	 */
 }
