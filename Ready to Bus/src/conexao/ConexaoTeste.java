@@ -13,7 +13,7 @@ public class ConexaoTeste implements Conexao {
 	}
 	
 	public static void open() {
-		String url = "jdbc:mysql://localhost:3306/transporte_test";
+		String url = "jdbc:mysql://localhost:3306/transporte";
 		String username = "root";
 		String password = "kr666";
 		try {

@@ -32,7 +32,7 @@ public class CadastroEmpresaController {
 
     private MetodosTelas tela = new MetodosTelas();
     private Empresa empresa;
-    private static EmpresaDao empresaDao = new DaoFactory().get().EmpresaDao();
+    private static EmpresaDao empresaDao = DaoFactory.get().EmpresaDao();
     
     @FXML
     void onSalvar(ActionEvent event) {
