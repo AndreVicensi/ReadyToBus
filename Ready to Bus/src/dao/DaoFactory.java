@@ -2,7 +2,6 @@ package dao;
 
 import conexao.Conexao;
 import conexao.ConexaoProducao;
-import conexao.ConexaoTeste;
 
 public class DaoFactory {
 	
@@ -13,10 +12,6 @@ public class DaoFactory {
 	public static DaoFactory get() {
 		if(daoFactory == null) {
 			daoFactory = new DaoFactory();
-			String ambiente = System.getProperty("ambiente");
-			if(ambiente.equals("test")) {
-				daoFactory.conexao = new ConexaoTeste();
-			}
 		}
 		return daoFactory;
 	}

@@ -1,6 +1,6 @@
 package model;
 
-public class Passageiro {
+public class Passageiro implements Usuario {
 	
 	private int idPassageiro;
 	private String nome;

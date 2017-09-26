@@ -1,6 +1,6 @@
 package model;
 
-public class Empresa {
+public class Empresa implements Usuario {
 	
 	private int idEmpresa;
 	private String nome;

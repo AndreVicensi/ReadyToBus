@@ -29,7 +29,7 @@ public class EmpresaJdbc implements EmpresaDao {
 			insertStmt.setString(1, entidade.getNome());
 			insertStmt.setString(2, entidade.getCnpj());
 			insertStmt.setString(3, entidade.getLogin());
-			insertStmt.setString(3, entidade.getSenha());
+			insertStmt.setString(4, entidade.getSenha());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -78,7 +78,7 @@ public class EmpresaJdbc implements EmpresaDao {
 		List<Empresa> empresas = new ArrayList<Empresa>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from uf";
+			String sql = "select * from empresa";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 			     Empresa empresa = new Empresa();
