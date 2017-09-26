@@ -30,6 +30,9 @@ public class CadastroEmpresaController {
     @FXML
     private TextField tfCnpj;
 
+    @FXML
+    private PasswordField pfConfirmarSenha;
+
     private MetodosTelas tela = new MetodosTelas();
     private Empresa empresa;
     private static EmpresaDao empresaDao = new DaoFactory().get().EmpresaDao();
