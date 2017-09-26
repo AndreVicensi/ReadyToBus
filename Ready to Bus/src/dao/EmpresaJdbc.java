@@ -78,7 +78,7 @@ public class EmpresaJdbc implements EmpresaDao {
 		List<Empresa> empresas = new ArrayList<Empresa>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from uf";
+			String sql = "select * from empresa";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 			     Empresa empresa = new Empresa();
