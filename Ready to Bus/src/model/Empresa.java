@@ -8,6 +8,18 @@ public class Empresa {
 	private String login;
 	private String senha;
 	
+	public Empresa() {
+		super();
+	}
+
+	public Empresa(String nome, String cnpj, String login, String senha) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.login = login;
+		this.senha = senha;
+	}
+	
 	public int getIdEmpresa() {
 		return idEmpresa;
 	}

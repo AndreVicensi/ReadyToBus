@@ -1,11 +1,14 @@
 package application;
 
+import dao.DaoFactory;
+import dao.EmpresaDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import metodos.MetodosTelas;
+import model.Empresa;
 
 public class CadastroEmpresaController {
 
@@ -27,11 +30,15 @@ public class CadastroEmpresaController {
     @FXML
     private TextField tfCnpj;
 
-    MetodosTelas tela = new MetodosTelas();
+    private MetodosTelas tela = new MetodosTelas();
+    private Empresa empresa;
+    private static EmpresaDao empresaDao = new DaoFactory().get().EmpresaDao();
     
     @FXML
     void onSalvar(ActionEvent event) {
-
+    	empresa = new Empresa(tfNomeEmpresa.getText(),tfCnpj.getText(),tfLogin.getText(),pfSenha.getText());
+    	empresaDao.inserir(empresa);
+    	novo();
     }
 
     @FXML
@@ -39,5 +46,17 @@ public class CadastroEmpresaController {
 
     	tela.carregarTela("/visual/TelaLogin.fxml");
     }
+    
+	private void novo() {
+		empresa = new Empresa();
+		limparCampos();
+	}
+
+	private void limparCampos() {
+		tfNomeEmpresa.setText("");
+		tfCnpj.setText("");
+		tfLogin.setText("");
+		pfSenha.setText("");
+	}
 
 }
