@@ -15,7 +15,7 @@ public class ConexaoTeste implements Conexao {
 	public static void open() {
 		String url = "jdbc:mysql://localhost:3306/transporte_test";
 		String username = "root";
-		String password = "kr666";
+		String password = "ctg4662011";
 		try {
 			con = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
