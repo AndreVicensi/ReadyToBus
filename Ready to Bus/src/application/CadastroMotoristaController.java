@@ -41,7 +41,7 @@ public class CadastroMotoristaController {
     @FXML
     void onVoltar(ActionEvent event) {
 
-    	tela.carregarTela("/visual/TelaLogin.fxml");
+    	tela.carregarTela("/visual/TelaEmpresa.fxml");
     }
 
 }
