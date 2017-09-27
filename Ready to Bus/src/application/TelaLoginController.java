@@ -35,7 +35,7 @@ public class TelaLoginController {
 	private MetodosTelas tela = new MetodosTelas();
 	private MetodosLogin login = new MetodosLogin();
 	private MetodoConfereSenha confereSenha;
-	private Empresa usuario;
+	private Usuario usuario;
 
 	@FXML
 	void onSobre(ActionEvent event) {
@@ -59,9 +59,7 @@ public class TelaLoginController {
 		// coloca valores no confere senha
 		confereSenha = new MetodoConfereSenha(usuario.getSenha(),pfSenha.getText());
 		// confere a senha
-		System.out.println(pfSenha.getText());
-		System.out.println(usuario.getSenha());
-		if(!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual()) {
+		if(!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario!=null) {
 			mensagens.erroSexo();
 		} else {
 			mensagens.erroSenha();

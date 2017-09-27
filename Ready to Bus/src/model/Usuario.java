@@ -6,4 +6,7 @@ public interface Usuario {
 	
 	public String getSenha();
 	
+	public void setLogin(String login);
+	
+	public void setSenha(String senha);
 }

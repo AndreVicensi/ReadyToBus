@@ -86,7 +86,7 @@ public class EmpresaJdbc implements EmpresaDao {
 				empresa.setNome(rs.getString("nome"));
 				empresa.setCnpj(rs.getString("cnpj"));
 				empresa.setLogin(rs.getString("login"));
-				empresa.setSenha(rs.getString("nome"));
+				empresa.setSenha(rs.getString("senha"));
 				empresas.add(empresa);
 			}
 		} catch (SQLException e1) {
@@ -107,6 +107,9 @@ public class EmpresaJdbc implements EmpresaDao {
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
 				empresa.setNome(rs.getString("nome"));
+				empresa.setCnpj(rs.getString("cnpj"));
+				empresa.setLogin(rs.getString("login"));
+				empresa.setSenha(rs.getString("senha"));
 				return empresa;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
