@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import metodos.MetodosTelas;
 
 public class EmpresaController {
 
@@ -24,10 +25,13 @@ public class EmpresaController {
 
     @FXML
     private Button btnCadsatroMotorista1;
+    
+    private MetodosTelas tela = new MetodosTelas();
 
     @FXML
     void cadastrarMotorista(ActionEvent event) {
 
+    	tela.carregarTela("/visual/TelaCadastroMotorista.fxml");
     }
 
     @FXML

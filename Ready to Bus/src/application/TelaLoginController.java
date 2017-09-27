@@ -65,5 +65,7 @@ public class TelaLoginController {
 			mensagens.erroSenha();
 		}
 		
+		tela.carregarTela("/visual/TelaEmpresa.fxml");
+		
 	}
 }
