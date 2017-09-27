@@ -13,26 +13,30 @@ public class CadastroMotoristaController {
     private TextField tfLogin;
 
     @FXML
-    private Button btnCadastrar;
+    private Button btnVoltar;
 
     @FXML
-    private Button btnEntrar;
+    private Button btnSalvar;
 
     @FXML
     private PasswordField pfSenha;
 
     @FXML
-    private TextField tfNomeEmpresa;
+    private TextField tfNomeMotorista;
 
     @FXML
-    private TextField tfCnpj;
+    private TextField tfApelido;
 
-    MetodosTelas tela = new MetodosTelas();
+    @FXML
+    private PasswordField pfConfirmarSenha;
+
+    private MetodosTelas tela = new MetodosTelas();
     
     @FXML
     void onSalvar(ActionEvent event) {
 
     }
+
 
     @FXML
     void onVoltar(ActionEvent event) {
