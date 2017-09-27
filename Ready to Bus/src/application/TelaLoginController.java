@@ -30,7 +30,7 @@ public class TelaLoginController {
 
 	@FXML
 	private PasswordField pfSenha;
-	
+
 	private Mensagens mensagens = new Mensagens();
 	private MetodosTelas tela = new MetodosTelas();
 	private MetodosLogin login = new MetodosLogin();
@@ -57,15 +57,13 @@ public class TelaLoginController {
 		// pega o login do usuario
 		usuario = login.getLoginEmpresa(tfLogin.getText());
 		// coloca valores no confere senha
-		confereSenha = new MetodoConfereSenha(usuario.getSenha(),pfSenha.getText());
+		confereSenha = new MetodoConfereSenha(usuario.getSenha(), pfSenha.getText());
 		// confere a senha
-		if(!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario!=null) {
-			mensagens.erroSexo();
+		if (!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario != null) {
+			tela.carregarTela("/visual/TelaEmpresa.fxml");
 		} else {
 			mensagens.erroSenha();
 		}
-		
-		tela.carregarTela("/visual/TelaEmpresa.fxml");
-		
+
 	}
 }
