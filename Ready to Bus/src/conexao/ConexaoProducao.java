@@ -15,10 +15,8 @@ public class ConexaoProducao  implements Conexao{
 		String url = "jdbc:mysql://localhost:3306/transporte";
 		String username = "root";
 		String password = "kr666";
-
-		String password1 = "12345678";
 		try {
-			con = DriverManager.getConnection(url, username, password1);
+			con = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
