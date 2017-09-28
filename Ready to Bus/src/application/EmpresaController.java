@@ -43,5 +43,10 @@ public class EmpresaController {
     void cadastrarRota(ActionEvent event) {
 
     }
+    
+    @FXML
+    void verLista1(ActionEvent event) {
+
+    }
 
 }
