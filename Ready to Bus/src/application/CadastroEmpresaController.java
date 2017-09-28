@@ -16,10 +16,10 @@ public class CadastroEmpresaController {
     private TextField tfLogin;
 
     @FXML
-    private Button btnCadastrar;
+    private Button btnVoltar;
 
     @FXML
-    private Button btnEntrar;
+    private Button btnSalvar;
 
     @FXML
     private PasswordField pfSenha;
