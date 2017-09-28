@@ -10,6 +10,19 @@ public class Motorista implements Usuario {
 	private Empresa empresa;
 	private boolean dirigindo;
 	
+	public Motorista() {
+		super();
+	}
+	
+	public Motorista(String nome, String apelido, String login, String senha, Empresa empresa) {
+		super();
+		this.nome = nome;
+		this.apelido = apelido;
+		this.login = login;
+		this.senha = senha;
+		this.empresa = empresa;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

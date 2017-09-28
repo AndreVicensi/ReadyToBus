@@ -1,0 +1,14 @@
+.tela{
+	-fx-pref-width: 1280;
+	-fx-pref-height: 768;
+}
+
+.botao{
+	-fx-pref-width: 150;
+	-fx-pref-height: 70;
+	-fx-background-color: FF7801;
+}
+
+.cxtxt{
+	-fx-background-color: FFD20F;
+}

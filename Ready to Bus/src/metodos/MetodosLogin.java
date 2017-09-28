@@ -17,4 +17,12 @@ public class MetodosLogin {
 			}
 			return null;
 	}
+	
+	/*
+	 * Duvidas:
+	 * Como fazer o cadastro usando a interface usuario;
+	 * Como setar o boolean no mySQL;
+	 * como pegar a empresa no mySQL;
+	 * como pegar a empresa no cadastro;
+	 */
 }

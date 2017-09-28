@@ -21,4 +21,8 @@ public class DaoFactory {
 		return new EmpresaJdbc(conexao);
 	}
 	
+	public MotoristaDao motoristaDao() {
+		return new MotoristaJdbc(conexao);
+	}
+	
 }

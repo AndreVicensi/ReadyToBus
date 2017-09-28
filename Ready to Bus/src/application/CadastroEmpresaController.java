@@ -41,20 +41,14 @@ public class CadastroEmpresaController {
     void onSalvar(ActionEvent event) {
     	empresa = new Empresa(tfNomeEmpresa.getText(),tfCnpj.getText(),tfLogin.getText(),pfSenha.getText());
     	empresaDao.inserir(empresa);
-    	novo();
+    	limparCampos();
     }
 
     @FXML
     void onVoltar(ActionEvent event) {
-
     	tela.carregarTela("/visual/TelaLogin.fxml");
     }
     
-	private void novo() {
-		empresa = new Empresa();
-		limparCampos();
-	}
-
 	private void limparCampos() {
 		tfNomeEmpresa.setText("");
 		tfCnpj.setText("");
