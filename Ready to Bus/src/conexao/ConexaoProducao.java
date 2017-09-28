@@ -12,9 +12,9 @@ public class ConexaoProducao  implements Conexao{
 	}
 	
 	public static void open() {
-		String url = "jdbc:mysql://localhost:3306/transporte";
-		String username = "root";
-		String password = "kr666";
+		String url = System.getProperty("url");
+		String username = System.getProperty("username");
+		String password = System.getProperty("password");
 		try {
 			con = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
