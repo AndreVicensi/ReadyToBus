@@ -28,12 +28,12 @@
                </font>
             </Label>
             <Button fx:id="btnCadsatroMotorista" layoutX="178.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarMotorista" text="Cadastrar motorista" />
-            <Button fx:id="btnCadastroRota" layoutX="301.0" layoutY="115.0" mnemonicParsing="false" onAction="#cadastrarRota" text="Cadastrar rota" />
-            <Button fx:id="btnCadastroPassageiro" layoutX="420.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarPassageiro" text="Cadastrar passageiro" />
+            <Button fx:id="btnCadastroRota" layoutX="356.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarRota" text="Cadastrar rota" />
+            <Button fx:id="btnCadastroPassageiro" layoutX="503.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarPassageiro" text="Cadastrar passageiro" />
             <Label fx:id="lApelidoMotorista" layoutX="286.0" layoutY="364.0" text="Apelido Motorista" />
             <Label layoutX="266.0" layoutY="420.0" text="Dirigindo" />
-            <Button fx:id="btnCadsatroMotorista1" layoutX="272.0" layoutY="474.0" mnemonicParsing="false" text="Ver lista" />
-            <ImageView fitHeight="30.0" fitWidth="37.0" layoutX="349.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnVerLista1" layoutX="272.0" layoutY="474.0" mnemonicParsing="false" onAction="#verLista1" text="Ver lista" />
+            <ImageView fx:id="imgDirigindo" fitHeight="30.0" fitWidth="37.0" layoutX="349.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>
