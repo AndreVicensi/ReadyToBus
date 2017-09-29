@@ -9,6 +9,7 @@ public class MetodosLogin {
 	private static EmpresaDao empresaDao = DaoFactory.get().EmpresaDao();
 	
 	//metodo para pegar o login da empresa
+	//lista colocando todos 
 	public Empresa getLoginEmpresa(String login) {
 			for (Empresa empresa : empresaDao.listar()) {
 				if (login.equals(empresa.getLogin())) {
@@ -17,12 +18,4 @@ public class MetodosLogin {
 			}
 			return null;
 	}
-	
-	/*
-	 * Duvidas:
-	 * Como fazer o cadastro usando a interface usuario;
-	 * Como setar o boolean no mySQL;
-	 * como pegar a empresa no mySQL;
-	 * como pegar a empresa no cadastro;
-	 */
 }

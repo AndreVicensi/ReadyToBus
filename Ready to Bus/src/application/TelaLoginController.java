@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import metodos.AplicacaoSessao;
 import metodos.MetodoConfereSenha;
 import metodos.MetodosLogin;
 import metodos.MetodosTelas;
@@ -61,6 +62,9 @@ public class TelaLoginController {
 		// confere a senha
 		if (!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario != null) {
 			tela.carregarTela("/visual/TelaEmpresa.fxml");
+			if(usuario instanceof Empresa) {
+				AplicacaoSessao.empresa = (Empresa) usuario;
+			}
 		} else {
 			mensagens.erroSenha();
 		}

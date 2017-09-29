@@ -31,7 +31,7 @@ private Conexao conexao;
 			insertStmt.setString(3, entidade.getLogin());
 			insertStmt.setString(4, entidade.getSenha());
 			insertStmt.setInt(5, entidade.getEmpresa().getIdEmpresa());
-			//insertStmt.setNString(6, entidade.isDirigindo());
+			insertStmt.setBoolean(6, entidade.isDirigindo());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -65,7 +65,7 @@ private Conexao conexao;
 			updateStmt.setString(2, entidade.getApelido());
 			updateStmt.setString(3, entidade.getLogin());
 			updateStmt.setString(4, entidade.getSenha());
-			//updateStmt.setInt(5, entidade.isDirigindo());
+			updateStmt.setBoolean(5, entidade.isDirigindo());
 			updateStmt.setInt(6, entidade.getIdMotorista());
 			updateStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -89,7 +89,7 @@ private Conexao conexao;
 				motorista.setLogin(rs.getString("login"));
 				motorista.setSenha(rs.getString("senha"));
 				motorista.setEmpresa(empresaJdbc.get(rs.getInt("idEmpresa")));
-				//motorista.setDirigindo();
+				motorista.setDirigindo(rs.getBoolean("dirigindo"));
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();

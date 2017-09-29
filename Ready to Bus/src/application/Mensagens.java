@@ -53,4 +53,11 @@ public class Mensagens {
 		alert.setContentText("Digite a senha corretamente");
 		alert.showAndWait();
 	}
+	
+	public void salvo() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Salvo");
+		alert.setHeaderText("salvo com sucesso");
+		alert.showAndWait();
+	}
 }

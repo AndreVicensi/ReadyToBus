@@ -7,8 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
-import model.Empresa;
 import model.Motorista;
 
 public class CadastroMotoristaController {
@@ -36,14 +36,15 @@ public class CadastroMotoristaController {
 
 	private MetodosTelas tela = new MetodosTelas();
 	private Motorista motorista;
-	private Empresa empresa;
+	private Mensagens msg = new Mensagens();
 	private static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
 
 	@FXML
 	void onSalvar(ActionEvent event) {
 		motorista = new Motorista(tfNomeMotorista.getText(), tfApelido.getText(), tfLogin.getText(), pfSenha.getText(),
-				empresa);
+				AplicacaoSessao.empresa);
 		motoristaDao.inserir(motorista);
+		msg.salvo();
 		limparCampos();
 	}
 
