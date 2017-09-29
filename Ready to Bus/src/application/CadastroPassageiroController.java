@@ -31,6 +31,9 @@ public class CadastroPassageiroController {
 	@FXML
 	private ComboBox<?> cbxRota;
 
+	// @FXML
+	// private ComboBox<Rota> cbxRota;
+
 	@FXML
 	private TextField tfCpfPassageiro;
 
@@ -38,6 +41,12 @@ public class CadastroPassageiroController {
 	private TextField tfTelefonePassageiro;
 
 	MetodosTelas tela = new MetodosTelas();
+
+	// private static RotaDao rotaDao = DaoFactory.get().rotaDao();
+
+	void initialize() {
+		// cbxRota.setItems(FXCollections.observableArrayList(rotaDao.listar()));
+	}
 
 	@FXML
 	void onSalvar(ActionEvent event) {

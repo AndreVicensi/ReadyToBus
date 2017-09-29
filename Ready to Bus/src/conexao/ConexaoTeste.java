@@ -5,28 +5,28 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoTeste implements Conexao {
-	
+
 	private static Connection con;
 
 	static {
 		open();
 	}
-	
+
 	public static void open() {
-		String url = "jdbc:mysql://localhost:3306/transporte";
-		String username = "root";
-		String password = "12345678";
+		String url = System.getProperty("url_teste");
+		String username = System.getProperty("username_teste");
+		String password = System.getProperty("password_teste");
 		try {
 			con = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public Connection get() {
 		try {
-			if(con.isClosed()) {
+			if (con.isClosed()) {
 				open();
 			}
 		} catch (SQLException e) {
@@ -34,7 +34,7 @@ public class ConexaoTeste implements Conexao {
 		}
 		return con;
 	}
-	
+
 	@Override
 	public void close() {
 		try {
