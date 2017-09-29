@@ -13,7 +13,8 @@ import model.Motorista;
 
 public class MotoristaJdbc implements MotoristaDao {
 
-private Conexao conexao;
+	private Conexao conexao;
+
 	public MotoristaJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
@@ -57,7 +58,7 @@ private Conexao conexao;
 	@Override
 	public void alterar(Motorista entidade) {
 		String update = "update motorista set nome = ?, apelido = ?, login = ?, senha = ?,"
-				+ "dirigindo = ?  where codigo = ?";
+				+ "dirigindo = ?  where idMotorista = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);	
@@ -111,7 +112,7 @@ private Conexao conexao;
 			motorista.setLogin(rs.getString("login"));
 			motorista.setSenha(rs.getString("senha"));
 			motorista.setEmpresa(empresaJdbc.get(rs.getInt("idEmpresa")));
-			//motorista.setDirigindo();
+			motorista.setDirigindo(rs.getBoolean("dirigindo"));
 				return motorista;
 		} catch (SQLException e1) {
 			e1.printStackTrace();

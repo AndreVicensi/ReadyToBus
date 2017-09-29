@@ -42,7 +42,7 @@ public class CadastroPassageiroController {
 
 	MetodosTelas tela = new MetodosTelas();
 
-	// private static RotaDao rotaDao = DaoFactory.get().rotaDao();
+	// private static ViagemDao viagemDao = DaoFactory.get().ViagemDao();
 
 	void initialize() {
 		// cbxRota.setItems(FXCollections.observableArrayList(rotaDao.listar()));
