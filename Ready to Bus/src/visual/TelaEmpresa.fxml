@@ -19,9 +19,9 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="70.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="230.0" layoutY="316.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-            <Label fx:id="lRota" layoutX="272.0" layoutY="329.0" text="Rota" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="202.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+            <Label fx:id="lRota1" layoutX="321.0" layoutY="253.0" text="Rota" />
             <Label layoutX="11.0" layoutY="-3.0" text="Controle da empresa">
                <font>
                   <Font size="36.0" />
@@ -30,10 +30,22 @@
             <Button fx:id="btnCadsatroMotorista" layoutX="178.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarMotorista" text="Cadastrar motorista" />
             <Button fx:id="btnCadastroRota" layoutX="356.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarRota" text="Cadastrar rota" />
             <Button fx:id="btnCadastroPassageiro" layoutX="503.0" layoutY="113.0" mnemonicParsing="false" onAction="#cadastrarPassageiro" text="Cadastrar passageiro" />
-            <Label fx:id="lApelidoMotorista" layoutX="286.0" layoutY="364.0" text="Apelido Motorista" />
-            <Label layoutX="266.0" layoutY="420.0" text="Dirigindo" />
-            <Button fx:id="btnVerLista1" layoutX="272.0" layoutY="474.0" mnemonicParsing="false" onAction="#verLista1" text="Ver lista" />
-            <ImageView fx:id="imgDirigindo" fitHeight="30.0" fitWidth="37.0" layoutX="349.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lApelidoMotorista1" layoutX="293.0" layoutY="304.0" text="Apelido Motorista" />
+            <Label layoutX="246.0" layoutY="392.0" text="Dirigindo" />
+            <Button fx:id="btnVerLista1" layoutX="302.0" layoutY="512.0" mnemonicParsing="false" onAction="#verLista1" text="Ver lista" />
+            <ImageView fx:id="imgDirigindo1" fitHeight="66.0" fitWidth="68.0" layoutX="355.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="544.0" layoutY="218.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
+            <Label fx:id="lRota2" layoutX="663.0" layoutY="252.0" text="Rota" />
+            <Label fx:id="lApelidoMotorista2" layoutX="635.0" layoutY="303.0" text="Apelido Motorista" />
+            <Label layoutX="588.0" layoutY="391.0" text="Dirigindo" />
+            <Button fx:id="btnVerLista2" layoutX="644.0" layoutY="511.0" mnemonicParsing="false" onAction="#verLista2" text="Ver lista" />
+            <ImageView fx:id="imgDirigindo2" fitHeight="66.0" fitWidth="68.0" layoutX="697.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="883.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
+            <Label fx:id="lRota3" layoutX="1002.0" layoutY="251.0" text="Rota" />
+            <Label fx:id="lApelidoMotorista3" layoutX="974.0" layoutY="302.0" text="Apelido Motorista" />
+            <Label layoutX="927.0" layoutY="390.0" text="Dirigindo" />
+            <Button fx:id="btnVerLista3" layoutX="983.0" layoutY="510.0" mnemonicParsing="false" onAction="#verLista3" text="Ver lista" />
+            <ImageView fx:id="imgDirigindo3" fitHeight="66.0" fitWidth="68.0" layoutX="1036.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>
