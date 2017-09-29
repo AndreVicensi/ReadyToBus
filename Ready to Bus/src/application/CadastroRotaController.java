@@ -3,41 +3,35 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import metodos.MetodosTelas;
 
 public class CadastroRotaController {
 
-    @FXML
-    private TextField tfLogin;
+	@FXML
+	private Button btnVoltar;
 
-    @FXML
-    private Button btnCadastrar;
+	@FXML
+	private Button btnSalvar;
 
-    @FXML
-    private Button btnEntrar;
+	@FXML
+	private TextField tfNomeRota;
 
-    @FXML
-    private PasswordField pfSenha;
+	@FXML
+	private ComboBox<?> cbxMotorista;
 
-    @FXML
-    private TextField tfNomeEmpresa;
+	MetodosTelas tela = new MetodosTelas();
 
-    @FXML
-    private TextField tfCnpj;
+	@FXML
+	void onSalvar(ActionEvent event) {
 
-    MetodosTelas tela = new MetodosTelas();
-    
-    @FXML
-    void onSalvar(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void onVoltar(ActionEvent event) {
 
-    @FXML
-    void onVoltar(ActionEvent event) {
-
-    	tela.carregarTela("/visual/TelaLogin.fxml");
-    }
+		tela.carregarTela("/visual/TelaEmpresa.fxml");
+	}
 
 }

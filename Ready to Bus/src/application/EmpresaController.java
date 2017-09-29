@@ -8,45 +8,47 @@ import metodos.MetodosTelas;
 
 public class EmpresaController {
 
-    @FXML
-    private Label lRota;
+	@FXML
+	private Label lRota;
 
-    @FXML
-    private Button btnCadsatroMotorista;
+	@FXML
+	private Button btnCadsatroMotorista;
 
-    @FXML
-    private Button btnCadastroRota;
+	@FXML
+	private Button btnCadastroRota;
 
-    @FXML
-    private Button btnCadastroPassageiro;
+	@FXML
+	private Button btnCadastroPassageiro;
 
-    @FXML
-    private Label lApelidoMotorista;
+	@FXML
+	private Label lApelidoMotorista;
 
-    @FXML
-    private Button btnCadsatroMotorista1;
-    
-    private MetodosTelas tela = new MetodosTelas();
+	@FXML
+	private Button btnCadsatroMotorista1;
 
-    @FXML
-    void cadastrarMotorista(ActionEvent event) {
+	private MetodosTelas tela = new MetodosTelas();
 
-    	tela.carregarTela("/visual/TelaCadastroMotorista.fxml");
-    }
+	@FXML
+	void cadastrarMotorista(ActionEvent event) {
 
-    @FXML
-    void cadastrarPassageiro(ActionEvent event) {
+		tela.carregarTela("/visual/TelaCadastroMotorista.fxml");
+	}
 
-    }
+	@FXML
+	void cadastrarPassageiro(ActionEvent event) {
 
-    @FXML
-    void cadastrarRota(ActionEvent event) {
+		tela.carregarTela("/visual/TelaCadastroPassageiro.fxml");
+	}
 
-    }
-    
-    @FXML
-    void verLista1(ActionEvent event) {
+	@FXML
+	void cadastrarRota(ActionEvent event) {
 
-    }
+		tela.carregarTela("/visual/TelaCadastroRota.fxml");
+	}
+
+	@FXML
+	void verLista1(ActionEvent event) {
+
+	}
 
 }

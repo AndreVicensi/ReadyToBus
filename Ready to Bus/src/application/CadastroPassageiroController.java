@@ -3,41 +3,51 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import metodos.MetodosTelas;
 
 public class CadastroPassageiroController {
 
-    @FXML
-    private TextField tfLogin;
+	@FXML
+	private TextField tfLogin;
 
-    @FXML
-    private Button btnCadastrar;
+	@FXML
+	private Button btnVoltar;
 
-    @FXML
-    private Button btnEntrar;
+	@FXML
+	private Button btnSalvar;
 
-    @FXML
-    private PasswordField pfSenha;
+	@FXML
+	private PasswordField pfSenha;
 
-    @FXML
-    private TextField tfNomeEmpresa;
+	@FXML
+	private TextField tfNomePassageiro;
 
-    @FXML
-    private TextField tfCnpj;
+	@FXML
+	private PasswordField pfConfirmarSenha;
 
-    MetodosTelas tela = new MetodosTelas();
-    
-    @FXML
-    void onSalvar(ActionEvent event) {
+	@FXML
+	private ComboBox<?> cbxRota;
 
-    }
+	@FXML
+	private TextField tfCpfPassageiro;
 
-    @FXML
-    void onVoltar(ActionEvent event) {
+	@FXML
+	private TextField tfTelefonePassageiro;
 
-    	tela.carregarTela("/visual/TelaLogin.fxml");
-    }
+	MetodosTelas tela = new MetodosTelas();
+
+	@FXML
+	void onSalvar(ActionEvent event) {
+
+	}
+
+	@FXML
+	void onVoltar(ActionEvent event) {
+
+		tela.carregarTela("/visual/TelaEmpresa.fxml");
+	}
 
 }
