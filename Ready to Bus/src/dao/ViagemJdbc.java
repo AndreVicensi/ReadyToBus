@@ -31,10 +31,10 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 			insertStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			insertStmt.setDate(2, (Date) entidade.getData());
+			insertStmt.setDate(2, Date.valueOf(entidade.getData()));
 			insertStmt.setString(3, entidade.getNome());
-			insertStmt.setTime(4, (Time) entidade.getSaida());
-			insertStmt.setTime(5, entidade.getChegada());
+			insertStmt.setTime(4, Time.valueOf(entidade.getSaida()));
+			insertStmt.setTime(5, Time.valueOf(entidade.getChegada()));
 			insertStmt.setBoolean(6, entidade.getIndo());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
@@ -90,7 +90,8 @@ public class ViagemJdbc implements ViagemDao {
 				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
 				viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
-				viagem.setData(rs.getDate("data"));
+				// separar em uma variavel, pois se vier null do banco dá null pointer exception
+				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setNome(rs.getString("nome"));
 				viagem.setSaida(rs.getTime("saida"));
 				viagem.setChegada(rs.getTime("chegada"));
