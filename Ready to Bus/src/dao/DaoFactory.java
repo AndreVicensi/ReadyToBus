@@ -28,4 +28,8 @@ public class DaoFactory {
 	public PassageiroDao passageiroDao() {
 		return new PassageiroJdbc(conexao);
 	}
+	
+	public ViagemDao viagemDao() {
+		return new ViagemJdbc(conexao);
+	}
 }

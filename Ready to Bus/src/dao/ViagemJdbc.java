@@ -66,13 +66,13 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			updateStmt = conexao.get().prepareStatement(update);	
 			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			updateStmt.setDate(2, (Date) entidade.getData());
+			updateStmt.setDate(2, Date.valueOf(entidade.getData()));
 			updateStmt.setString(3, entidade.getNome());
-			updateStmt.setTime(4, entidade.getSaida());
-			updateStmt.setTime(5, entidade.getChegada());
+			updateStmt.setTime(4, Time.valueOf(entidade.getSaida()));
+			updateStmt.setTime(5, Time.valueOf(entidade.getChegada()));
 			updateStmt.setBoolean(6, entidade.getIndo());
 			updateStmt.executeUpdate();
-			updateStmt.setInt(7, entidade.getIdViagem();
+			updateStmt.setInt(7, entidade.getIdViagem());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -89,12 +89,13 @@ public class ViagemJdbc implements ViagemDao {
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
-				viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
+				Motorista motorista = motoristaJdbc.get(rs.getInt("idMotorista"));
+				viagem.setMotorista(motorista);
 				// separar em uma variavel, pois se vier null do banco dá null pointer exception
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setNome(rs.getString("nome"));
-				viagem.setSaida(rs.getTime("saida"));
-				viagem.setChegada(rs.getTime("chegada"));
+				viagem.setSaida(rs.getTime("saida").toLocalTime());
+				viagem.setChegada(rs.getTime("chegada").toLocalTime());
 				viagem.setIndo(rs.getBoolean("indo"));
 			}
 		} catch (SQLException e1) {
@@ -113,10 +114,10 @@ public class ViagemJdbc implements ViagemDao {
 			Viagem viagem = new Viagem();
 			viagem.setIdViagem(rs.getInt("idViagem"));
 			viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
-			viagem.setData(rs.getDate("data"));
+			viagem.setData(rs.getDate("data").toLocalDate());
 			viagem.setNome(rs.getString("nome"));
-			viagem.setSaida(rs.getTime("saida"));
-			viagem.setChegada(rs.getTime("chegada"));
+			viagem.setSaida(rs.getTime("saida").toLocalTime());
+			viagem.setChegada(rs.getTime("chegada").toLocalTime());
 			viagem.setIndo(rs.getBoolean("indo"));
 			return viagem;
 		} catch (SQLException e1) {

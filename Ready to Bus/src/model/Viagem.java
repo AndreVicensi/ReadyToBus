@@ -13,6 +13,16 @@ public class Viagem {
 	private LocalTime saida;
 	private Boolean indo;
 
+	public Viagem() {
+		super();
+	}
+	
+	public Viagem(Motorista motorista,String nome) {
+		super();
+		this.motorista = motorista;
+		this.nome = nome;
+	}
+
 	public LocalTime getChegada() {
 		return chegada;
 	}
