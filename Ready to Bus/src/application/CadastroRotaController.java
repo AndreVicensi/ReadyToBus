@@ -2,6 +2,7 @@ package application;
 
 import dao.DaoFactory;
 import dao.MotoristaDao;
+import dao.ViagemDao;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import metodos.MetodosTelas;
 import model.Motorista;
+import model.Viagem;
 
 public class CadastroRotaController {
 
@@ -27,6 +29,8 @@ public class CadastroRotaController {
 
 	MetodosTelas tela = new MetodosTelas();
 	private static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
+	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
+	private Viagem viagem;
 
 	@FXML
 	public void initialize() {
@@ -35,7 +39,8 @@ public class CadastroRotaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-
+		viagem = new Viagem(cbxMotorista.getValue(),tfNomeRota.getText());
+		viagemDao.inserir(viagem);
 	}
 
 	@FXML

@@ -9,6 +9,19 @@ public class Passageiro implements Usuario {
 	private String cpf;
 	private String telefone;
 	
+	public Passageiro() {
+		
+	}
+	
+	public Passageiro(String nome, String login, String senha, String cpf, String telefone) {
+		super();
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+		this.cpf = cpf;
+		this.telefone = telefone;
+	}
+	
 	public int getIdPassageiro() {
 		return idPassageiro;
 	}

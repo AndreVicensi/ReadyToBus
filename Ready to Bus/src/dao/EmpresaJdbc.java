@@ -56,7 +56,7 @@ public class EmpresaJdbc implements EmpresaDao {
 	// altera os dados da empresa
 	@Override
 	public void alterar(Empresa entidade) {
-		String update = "update empresa set nome = ?, cnpj = ?, login = ?, senha = ? where codigo = ?";
+		String update = "update empresa set nome = ?, cnpj = ?, login = ?, senha = ? where idEmpresa = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);	
@@ -102,7 +102,7 @@ public class EmpresaJdbc implements EmpresaDao {
 		Statement stmt = null;
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from empresa where codigo = "+codigo;
+			String sql = "select * from empresa where idEmpresa = "+codigo;
 			ResultSet rs = stmt.executeQuery(sql);
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));

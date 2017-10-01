@@ -9,6 +9,7 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
+import model.Empresa;
 import model.Motorista;
 
 public class MotoristaJdbc implements MotoristaDao {
@@ -89,7 +90,8 @@ public class MotoristaJdbc implements MotoristaDao {
 				motorista.setApelido(rs.getString("apelido"));
 				motorista.setLogin(rs.getString("login"));
 				motorista.setSenha(rs.getString("senha"));
-				motorista.setEmpresa(empresaJdbc.get(rs.getInt("idEmpresa")));
+				Empresa empresa = empresaJdbc.get(rs.getInt("idEmpresa"));
+				motorista.setEmpresa(empresa);
 				motorista.setDirigindo(rs.getBoolean("dirigindo"));
 			}
 		} catch (SQLException e1) {
