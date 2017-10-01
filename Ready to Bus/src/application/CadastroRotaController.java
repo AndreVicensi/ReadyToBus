@@ -28,7 +28,7 @@ public class CadastroRotaController {
 	private ComboBox<Motorista> cbxMotorista;
 
 	MetodosTelas tela = new MetodosTelas();
-	private static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
+	private MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	private Viagem viagem;
 
@@ -39,7 +39,7 @@ public class CadastroRotaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		viagem = new Viagem(cbxMotorista.getValue(),tfNomeRota.getText());
+		viagem = new Viagem(cbxMotorista.getValue(), tfNomeRota.getText());
 		viagemDao.inserir(viagem);
 	}
 

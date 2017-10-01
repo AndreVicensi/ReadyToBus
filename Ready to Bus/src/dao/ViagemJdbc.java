@@ -64,7 +64,7 @@ public class ViagemJdbc implements ViagemDao {
 				+ "indo = ? where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
-			updateStmt = conexao.get().prepareStatement(update);	
+			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
 			updateStmt.setDate(2, Date.valueOf(entidade.getData()));
 			updateStmt.setString(3, entidade.getNome());
@@ -91,7 +91,8 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setIdViagem(rs.getInt("idViagem"));
 				Motorista motorista = motoristaJdbc.get(rs.getInt("idMotorista"));
 				viagem.setMotorista(motorista);
-				// separar em uma variavel, pois se vier null do banco dá null pointer exception
+				// separar em uma variavel, pois se vier null do banco dá null
+				// pointer exception
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setNome(rs.getString("nome"));
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
@@ -125,5 +126,7 @@ public class ViagemJdbc implements ViagemDao {
 		}
 		return null;
 	}
+
+
 
 }

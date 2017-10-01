@@ -19,9 +19,10 @@ public class MotoristaJdbc implements MotoristaDao {
 	public MotoristaJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
-	
+
 	private EmpresaJdbc empresaJdbc = new EmpresaJdbc(conexao);
-	//insere motorista no banco de dados
+
+	// insere motorista no banco de dados
 	@Override
 	public void inserir(Motorista entidade) {
 		String insert = "insert into motorista values (idMotorista,?,?,?,?,?,?)";
@@ -62,7 +63,7 @@ public class MotoristaJdbc implements MotoristaDao {
 				+ "dirigindo = ?  where idMotorista = ?";
 		PreparedStatement updateStmt;
 		try {
-			updateStmt = conexao.get().prepareStatement(update);	
+			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setString(1, entidade.getNome());
 			updateStmt.setString(2, entidade.getApelido());
 			updateStmt.setString(3, entidade.getLogin());
@@ -84,7 +85,7 @@ public class MotoristaJdbc implements MotoristaDao {
 			String sql = "select * from motorista";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-			     Motorista motorista = new Motorista();
+				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
 				motorista.setNome(rs.getString("nome"));
 				motorista.setApelido(rs.getString("apelido"));
@@ -105,7 +106,7 @@ public class MotoristaJdbc implements MotoristaDao {
 		Statement stmt = null;
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from motorista where idMotorista = "+codigo;
+			String sql = "select * from motorista where idMotorista = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
 			Motorista motorista = new Motorista();
 			motorista.setIdMotorista(rs.getInt("idMotorista"));
@@ -115,11 +116,13 @@ public class MotoristaJdbc implements MotoristaDao {
 			motorista.setSenha(rs.getString("senha"));
 			motorista.setEmpresa(empresaJdbc.get(rs.getInt("idEmpresa")));
 			motorista.setDirigindo(rs.getBoolean("dirigindo"));
-				return motorista;
+			return motorista;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		return null;
 	}
+
+
 
 }

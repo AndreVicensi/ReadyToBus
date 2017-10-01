@@ -2,6 +2,8 @@ package application;
 
 import dao.DaoFactory;
 import dao.PassageiroDao;
+import dao.ViagemDao;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import metodos.MetodosTelas;
 import model.Passageiro;
+import model.Viagem;
 
 public class CadastroPassageiroController {
 
@@ -32,10 +35,7 @@ public class CadastroPassageiroController {
 	private PasswordField pfConfirmarSenha;
 
 	@FXML
-	private ComboBox<?> cbxRota;
-
-	// @FXML
-	// private ComboBox<Rota> cbxRota;
+	private ComboBox<Viagem> cbxRota;
 
 	@FXML
 	private TextField tfCpfPassageiro;
@@ -46,11 +46,10 @@ public class CadastroPassageiroController {
 	MetodosTelas tela = new MetodosTelas();
 	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 	private Passageiro passageiro;
-
-	// private static ViagemDao viagemDao = DaoFactory.get().ViagemDao();
+	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
 	void initialize() {
-		// cbxRota.setItems(FXCollections.observableArrayList(rotaDao.listar()));
+		cbxRota.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 	}
 
 	@FXML
