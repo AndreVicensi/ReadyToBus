@@ -29,6 +29,7 @@ public class ViagemJdbc implements ViagemDao {
 		String insert = "insert into viagem values (idViagem,?,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
+			// tira tudo essas coisas e deixa so o motorista na rota
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 			insertStmt.setInt(1, entidade.getMotorista().getIdMotorista());
 			insertStmt.setDate(2, Date.valueOf(entidade.getData()));
@@ -89,8 +90,7 @@ public class ViagemJdbc implements ViagemDao {
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
-				Motorista motorista = motoristaJdbc.get(rs.getInt("idMotorista"));
-				viagem.setMotorista(motorista);
+
 				// separar em uma variavel, pois se vier null do banco dá null
 				// pointer exception
 				viagem.setData(rs.getDate("data").toLocalDate());
@@ -98,6 +98,13 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
 				viagem.setIndo(rs.getBoolean("indo"));
+
+				// aqui já vai puxar o cbx na hora de cadastrar passageiro
+				Motorista motorista = new Motorista();
+				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				viagem.setMotorista(motorista);
+				rotas.add(viagem);
+
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -126,7 +133,5 @@ public class ViagemJdbc implements ViagemDao {
 		}
 		return null;
 	}
-
-
 
 }

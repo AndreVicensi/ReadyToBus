@@ -87,6 +87,7 @@ public class PassageiroJdbc implements PassageiroDao {
 				passageiro.setSenha(rs.getString("senha"));
 				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
+
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -114,6 +115,5 @@ public class PassageiroJdbc implements PassageiroDao {
 		}
 		return null;
 	}
-
 
 }
