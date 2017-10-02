@@ -16,6 +16,9 @@ public class ViagemJdbc implements ViagemDao {
 
 	private Conexao conexao;
 
+	//alter table passageiro add idViagem int;
+	//ALTER TABLE passageiro ADD CONSTRAINT idViagem FOREIGN KEY(idViagem) REFERENCES viagem (idViagem);
+	
 	public ViagemJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}

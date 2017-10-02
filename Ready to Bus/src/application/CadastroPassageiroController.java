@@ -46,7 +46,7 @@ public class CadastroPassageiroController {
 	MetodosTelas tela = new MetodosTelas();
 	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 	private Passageiro passageiro;
-	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
+	private ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	private Mensagens msg = new Mensagens();
 
 	void initialize() {

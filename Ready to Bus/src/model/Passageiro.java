@@ -8,7 +8,12 @@ public class Passageiro implements Usuario {
 	private String senha;
 	private String cpf;
 	private String telefone;
+	private Viagem viagem;
 	
+	public Viagem getViagem() {
+		return viagem;
+	}
+
 	public Passageiro() {
 		
 	}
@@ -60,9 +65,9 @@ public class Passageiro implements Usuario {
 	}
 
 	public void setViagem(Viagem viagem) {
-		// TODO Auto-generated method stub
-		
+		this.viagem = viagem;
 	}
+
 	
 	
 }

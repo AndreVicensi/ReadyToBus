@@ -23,7 +23,7 @@ public class PassageiroJdbc implements PassageiroDao {
 
 	@Override
 	public void inserir(Passageiro entidade) {
-		String insert = "insert into motorista values (idPassageiro,?,?,?,?,?)";
+		String insert = "insert into motorista values (idPassageiro,?,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -32,6 +32,7 @@ public class PassageiroJdbc implements PassageiroDao {
 			insertStmt.setString(3, entidade.getSenha());
 			insertStmt.setString(4, entidade.getCpf());
 			insertStmt.setString(5, entidade.getTelefone());
+			insertStmt.setInt(6, entidade.getViagem().getIdViagem());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -91,7 +92,7 @@ public class PassageiroJdbc implements PassageiroDao {
 				passageiro.setTelefone(rs.getString("telefone"));
 
 				Viagem viagem = new Viagem();
-				viagem.setIdViagem(rs.getInt("idMotorista"));
+				viagem.setIdViagem(rs.getInt("idViagem"));
 				passageiro.setViagem(viagem);
 				passageiros.add(passageiro);
 
