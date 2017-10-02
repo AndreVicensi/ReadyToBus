@@ -27,9 +27,6 @@ public class ViagemJdbc implements ViagemDao {
 		String insert = "insert into viagem values (idViagem,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
-			// tira tudo essas coisas e deixa so o motorista na rota
-			// aqui so tem que ter o que é setado na tela no salvar
-			// muda o banco
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 			insertStmt.setInt(1, entidade.getMotorista().getIdMotorista());
 			insertStmt.setString(2, entidade.getNome());
@@ -62,9 +59,7 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			// updateStmt.setDate(2, Date.valueOf(entidade.getData()));
 			updateStmt.setString(2, entidade.getNome());
-			// updateStmt.setTime(4, Time.valueOf(entidade.getSaida()));
 			updateStmt.executeUpdate();
 			updateStmt.setInt(3, entidade.getIdViagem());
 		} catch (SQLException e) {
