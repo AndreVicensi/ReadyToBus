@@ -1,50 +1,19 @@
 package model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class Viagem {
 
 	private int idViagem;
 	private Motorista motorista;
-	private LocalDate data;
 	private String nome;
-	private LocalTime chegada;
-	private LocalTime saida;
-	private Boolean indo;
 
 	public Viagem() {
 		super();
 	}
-	
-	public Viagem(Motorista motorista,String nome) {
+
+	public Viagem(Motorista motorista, String nome) {
 		super();
 		this.motorista = motorista;
 		this.nome = nome;
-	}
-
-	public LocalTime getChegada() {
-		return chegada;
-	}
-
-	public void setChegada(LocalTime chegada) {
-		this.chegada = chegada;
-	}
-
-	public LocalTime getSaida() {
-		return saida;
-	}
-
-	public void setSaida(LocalTime saida) {
-		this.saida = saida;
-	}
-
-	public Boolean getIndo() {
-		return indo;
-	}
-
-	public void setIndo(Boolean indo) {
-		this.indo = indo;
 	}
 
 	public int getIdViagem() {
@@ -63,19 +32,16 @@ public class Viagem {
 		this.motorista = motorista;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	@Override
+	public String toString() {
+		return nome;
 	}
 }

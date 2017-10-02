@@ -1,10 +1,8 @@
 package dao;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void inserir(Viagem entidade) {
-		String insert = "insert into viagem values (idViagem,?,?,?,?,?,?)";
+		String insert = "insert into viagem values (idViagem,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			// tira tudo essas coisas e deixa so o motorista na rota
@@ -34,11 +32,7 @@ public class ViagemJdbc implements ViagemDao {
 			// muda o banco
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 			insertStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			insertStmt.setDate(2, Date.valueOf(entidade.getData()));
-			insertStmt.setString(3, entidade.getNome());
-			insertStmt.setTime(4, Time.valueOf(entidade.getSaida()));
-			insertStmt.setTime(5, Time.valueOf(entidade.getChegada()));
-			insertStmt.setBoolean(6, entidade.getIndo());
+			insertStmt.setString(2, entidade.getNome());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -63,19 +57,16 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void alterar(Viagem entidade) {
-		String update = "update viagem set idMotorista = ?, data = ?,nome = ?, saida = ?, chegada = ?,"
-				+ "indo = ? where idViagem = ?";
+		String update = "update viagem set idMotorista = ?,nome = ? where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			updateStmt.setDate(2, Date.valueOf(entidade.getData()));
-			updateStmt.setString(3, entidade.getNome());
-			updateStmt.setTime(4, Time.valueOf(entidade.getSaida()));
-			updateStmt.setTime(5, Time.valueOf(entidade.getChegada()));
-			updateStmt.setBoolean(6, entidade.getIndo());
+			// updateStmt.setDate(2, Date.valueOf(entidade.getData()));
+			updateStmt.setString(2, entidade.getNome());
+			// updateStmt.setTime(4, Time.valueOf(entidade.getSaida()));
 			updateStmt.executeUpdate();
-			updateStmt.setInt(7, entidade.getIdViagem());
+			updateStmt.setInt(3, entidade.getIdViagem());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -92,21 +83,11 @@ public class ViagemJdbc implements ViagemDao {
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
-
-				// separar em uma variavel, pois se vier null do banco dá null
-				// pointer exception
-				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setNome(rs.getString("nome"));
-				viagem.setSaida(rs.getTime("saida").toLocalTime());
-				viagem.setChegada(rs.getTime("chegada").toLocalTime());
-				viagem.setIndo(rs.getBoolean("indo"));
-
-				// aqui já vai puxar o cbx na hora de cadastrar passageiro
 				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
 				viagem.setMotorista(motorista);
 				rotas.add(viagem);
-
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -124,11 +105,7 @@ public class ViagemJdbc implements ViagemDao {
 			Viagem viagem = new Viagem();
 			viagem.setIdViagem(rs.getInt("idViagem"));
 			viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
-			viagem.setData(rs.getDate("data").toLocalDate());
 			viagem.setNome(rs.getString("nome"));
-			viagem.setSaida(rs.getTime("saida").toLocalTime());
-			viagem.setChegada(rs.getTime("chegada").toLocalTime());
-			viagem.setIndo(rs.getBoolean("indo"));
 			return viagem;
 		} catch (SQLException e1) {
 			e1.printStackTrace();

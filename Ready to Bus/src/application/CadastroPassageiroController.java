@@ -47,6 +47,7 @@ public class CadastroPassageiroController {
 	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 	private Passageiro passageiro;
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
+	private Mensagens msg = new Mensagens();
 
 	void initialize() {
 		cbxRota.setItems(FXCollections.observableArrayList(viagemDao.listar()));
@@ -57,12 +58,21 @@ public class CadastroPassageiroController {
 		passageiro = new Passageiro(tfNomePassageiro.getText(), tfLogin.getText(), pfSenha.getText(),
 				tfCpfPassageiro.getText(), tfTelefonePassageiro.getText());
 		passageiroDao.inserir(passageiro);
+		msg.salvo();
+		limparCampos();
 	}
 
 	@FXML
 	void onVoltar(ActionEvent event) {
-
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
+	}
+	
+	void limparCampos() {
+		tfCpfPassageiro.setText("");
+		tfNomePassageiro.setText("");
+		tfLogin.setText("");
+		tfTelefonePassageiro.setText("");
+		cbxRota.setValue(null);
 	}
 
 }

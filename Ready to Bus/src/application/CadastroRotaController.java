@@ -31,6 +31,7 @@ public class CadastroRotaController {
 	private MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	private Viagem viagem;
+	private Mensagens msg = new Mensagens();
 
 	@FXML
 	public void initialize() {
@@ -41,12 +42,18 @@ public class CadastroRotaController {
 	void onSalvar(ActionEvent event) {
 		viagem = new Viagem(cbxMotorista.getValue(), tfNomeRota.getText());
 		viagemDao.inserir(viagem);
+		msg.salvo();
+		limparCampos();
 	}
 
 	@FXML
 	void onVoltar(ActionEvent event) {
-
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
 	}
 
+	
+   void limparCampos() {
+	  tfNomeRota.setText("");
+	  cbxMotorista.setValue(null);
+  }
 }

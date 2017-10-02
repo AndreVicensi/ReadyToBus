@@ -91,12 +91,8 @@ public class MotoristaJdbc implements MotoristaDao {
 				motorista.setApelido(rs.getString("apelido"));
 				motorista.setLogin(rs.getString("login"));
 				motorista.setSenha(rs.getString("senha"));
-
-				// Empresa empresa = empresaJdbc.get(rs.getInt("idEmpresa"));
-				// motorista.setEmpresa(empresa);
 				motorista.setDirigindo(rs.getBoolean("dirigindo"));
-
-				//coloquei essa parte de baixo
+				// coloquei essa parte de baixo
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
 				motorista.setEmpresa(empresa);
