@@ -58,6 +58,11 @@ public class Passageiro implements Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+	public void setViagem(Viagem viagem) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

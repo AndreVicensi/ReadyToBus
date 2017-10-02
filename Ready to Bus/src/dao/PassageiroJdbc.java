@@ -9,7 +9,9 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
+import model.Motorista;
 import model.Passageiro;
+import model.Viagem;
 
 public class PassageiroJdbc implements PassageiroDao {
 
@@ -87,6 +89,11 @@ public class PassageiroJdbc implements PassageiroDao {
 				passageiro.setSenha(rs.getString("senha"));
 				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
+
+				Viagem viagem = new Viagem();
+				viagem.setIdViagem(rs.getInt("idMotorista"));
+				passageiro.setViagem(viagem);
+				passageiros.add(passageiro);
 
 			}
 		} catch (SQLException e1) {
