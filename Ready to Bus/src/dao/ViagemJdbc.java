@@ -9,6 +9,7 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
+import model.Empresa;
 import model.Motorista;
 import model.Viagem;
 
@@ -16,9 +17,6 @@ public class ViagemJdbc implements ViagemDao {
 
 	private Conexao conexao;
 
-	//alter table passageiro add idViagem int;
-	//ALTER TABLE passageiro ADD CONSTRAINT idViagem FOREIGN KEY(idViagem) REFERENCES viagem (idViagem);
-	
 	public ViagemJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
@@ -82,8 +80,12 @@ public class ViagemJdbc implements ViagemDao {
 				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
 				viagem.setNome(rs.getString("nome"));
+
 				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+				motorista.setEmpresa(empresa);
 				viagem.setMotorista(motorista);
 				rotas.add(viagem);
 			}
@@ -102,8 +104,8 @@ public class ViagemJdbc implements ViagemDao {
 			ResultSet rs = stmt.executeQuery(sql);
 			Viagem viagem = new Viagem();
 			viagem.setIdViagem(rs.getInt("idViagem"));
-			viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
 			viagem.setNome(rs.getString("nome"));
+			viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
 			return viagem;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
