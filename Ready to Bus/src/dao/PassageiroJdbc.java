@@ -9,7 +9,6 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
-import model.Motorista;
 import model.Passageiro;
 import model.Viagem;
 
@@ -20,6 +19,8 @@ public class PassageiroJdbc implements PassageiroDao {
 	public PassageiroJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
+
+	private ViagemJdbc viagemJdbc = new ViagemJdbc(conexao);
 
 	@Override
 	public void inserir(Passageiro entidade) {
@@ -117,6 +118,7 @@ public class PassageiroJdbc implements PassageiroDao {
 			passageiro.setSenha(rs.getString("senha"));
 			passageiro.setCpf(rs.getString("cpf"));
 			passageiro.setTelefone(rs.getString("telefone"));
+			passageiro.setViagem(viagemJdbc.get(rs.getInt("idViagem")));
 			return passageiro;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
