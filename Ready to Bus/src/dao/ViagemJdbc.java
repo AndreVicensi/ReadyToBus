@@ -3,10 +3,9 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
 import model.Empresa;
@@ -71,7 +70,7 @@ public class ViagemJdbc implements ViagemDao {
 	@Override
 	public List<Viagem> listar() {
 		Statement stmt = null;
-		List<Viagem> rotas = new ArrayList<Viagem>();
+		List<Viagem> viagems = new ArrayList<Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from viagem";
@@ -83,16 +82,18 @@ public class ViagemJdbc implements ViagemDao {
 
 				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				viagem.setMotorista(motorista);
+
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
 				motorista.setEmpresa(empresa);
-				viagem.setMotorista(motorista);
-				rotas.add(viagem);
+				viagems.add(viagem);
+
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		return rotas;
+		return viagems;
 	}
 
 	@Override
