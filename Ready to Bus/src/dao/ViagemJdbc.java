@@ -82,11 +82,9 @@ public class ViagemJdbc implements ViagemDao {
 
 				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
+
 				viagem.setMotorista(motorista);
 
-				Empresa empresa = new Empresa();
-				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
-				motorista.setEmpresa(empresa);
 				viagems.add(viagem);
 
 			}

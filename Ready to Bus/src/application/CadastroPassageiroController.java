@@ -49,7 +49,7 @@ public class CadastroPassageiroController {
 	private ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	private Mensagens msg = new Mensagens();
 
-	void initialize() {
+	public void initialize() {
 		cbxRota.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 	}
 
@@ -65,6 +65,7 @@ public class CadastroPassageiroController {
 	@FXML
 	void onVoltar(ActionEvent event) {
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
+		System.out.println(viagemDao.listar().toString());
 	}
 
 	void limparCampos() {
