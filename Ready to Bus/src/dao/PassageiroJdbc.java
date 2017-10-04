@@ -24,7 +24,7 @@ public class PassageiroJdbc implements PassageiroDao {
 
 	@Override
 	public void inserir(Passageiro entidade) {
-		String insert = "insert into motorista values (idPassageiro,?,?,?,?,?,?)";
+		String insert = "insert into passageiro values (idPassageiro,?,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);

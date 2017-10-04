@@ -75,6 +75,8 @@ public class CadastroPassageiroController {
 		tfLogin.setText("");
 		tfTelefonePassageiro.setText("");
 		cbxRota.setValue(null);
+		pfSenha.setText("");
+		pfConfirmarSenha.setText("");
 	}
 
 }
