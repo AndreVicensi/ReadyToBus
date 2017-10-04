@@ -15,10 +15,9 @@ public class Passageiro implements Usuario {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Passageiro(int idPassageiro, String nome, String login, String senha, String cpf, String telefone,
+	public Passageiro(String nome, String login, String senha, String cpf, String telefone,
 			Viagem viagem) {
 		super();
-		this.idPassageiro = idPassageiro;
 		this.nome = nome;
 		this.login = login;
 		this.senha = senha;
