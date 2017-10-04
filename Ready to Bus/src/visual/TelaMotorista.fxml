@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MotoristaController">
+   <children>
+      <Pane layoutX="-6.0" layoutY="-4.0" prefHeight="400.0" prefWidth="600.0" styleClass="tela" stylesheets="@TelaCadastroEmpresa.css">
+         <children>
+            <ImageView fitHeight="768.0" fitWidth="1280.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../arquivos/estrada.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="70.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+            <Label layoutX="11.0" layoutY="-3.0" text="Controle motorista">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgDirigindo1" fitHeight="68.0" fitWidth="68.0" layoutX="355.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true" />
+            <TableView fx:id="tblLista" layoutX="110.0" layoutY="200.0" prefHeight="490.0" prefWidth="1076.0">
+              <columns>
+                <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" text="Passageiro" />
+                <TableColumn fx:id="tbcTelefone" prefWidth="253.66668701171875" text="Telefone" />
+                  <TableColumn fx:id="tbcStatus" prefWidth="163.0" text="Status" />
+                  <TableColumn fx:id="tbcCheck" prefWidth="81.6666259765625" text="Check-in" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnDirigir" layoutX="158.0" layoutY="111.0" mnemonicParsing="false" text="Dirigir" />
+            <Button fx:id="btnChegada" layoutX="277.0" layoutY="111.0" mnemonicParsing="false" text="Chegada" />
+            <Label fx:id="ldataDia" layoutX="913.0" layoutY="120.0" text="data do dia">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="484.0" layoutY="135.0" text="Dirigindo" />
+            <ImageView fx:id="imgDirigindo" fitHeight="68.0" fitWidth="68.0" layoutX="593.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

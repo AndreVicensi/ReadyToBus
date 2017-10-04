@@ -55,7 +55,6 @@ public class CadastroPassageiroController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		// o banco nao tem id auto-increment
 		passageiro = new Passageiro(tfNomePassageiro.getText(), tfLogin.getText(), pfSenha.getText(),
 				tfCpfPassageiro.getText(), tfTelefonePassageiro.getText(), cbxRota.getValue());
 		passageiroDao.inserir(passageiro);
@@ -66,7 +65,7 @@ public class CadastroPassageiroController {
 	@FXML
 	void onVoltar(ActionEvent event) {
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
-		System.out.println(viagemDao.listar().toString());
+
 	}
 
 	void limparCampos() {
