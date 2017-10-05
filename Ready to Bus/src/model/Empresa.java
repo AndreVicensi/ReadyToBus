@@ -50,5 +50,5 @@ public class Empresa implements Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 }

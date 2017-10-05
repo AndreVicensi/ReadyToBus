@@ -10,6 +10,8 @@ import metodos.MetodoConfereSenha;
 import metodos.MetodosLogin;
 import metodos.MetodosTelas;
 import model.Empresa;
+import model.Motorista;
+import model.Passageiro;
 import model.Usuario;
 
 public class TelaLoginController {
@@ -56,14 +58,25 @@ public class TelaLoginController {
 	@FXML
 	void onLogin(ActionEvent event) {
 		// pega o login do usuario
+		
 		usuario = login.getLoginEmpresa(tfLogin.getText());
+		if(usuario == null) {
+			usuario = login.getLoginMotorista(tfLogin.getText());
+		}
+		if(usuario == null) {
+			usuario = login.getLoginPassageiro(tfLogin.getText());
+		}
 		// coloca valores no confere senha
 		confereSenha = new MetodoConfereSenha(usuario.getSenha(), pfSenha.getText());
 		// confere a senha
 		if (!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario != null) {
-			tela.carregarTela("/visual/TelaEmpresa.fxml");
 			if(usuario instanceof Empresa) {
 				AplicacaoSessao.empresa = (Empresa) usuario;
+				tela.carregarTela("/visual/TelaEmpresa.fxml");
+			} else if(usuario instanceof Motorista) {
+				tela.carregarTela("/visual/TelaMotorista.fxml");
+			} else if(usuario instanceof Passageiro) {
+				tela.carregarTela("/visual/TelaStatusPassageiro.fxml");
 			}
 		} else {
 			mensagens.erroSenha();

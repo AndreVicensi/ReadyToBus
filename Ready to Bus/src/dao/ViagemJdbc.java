@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
-import model.Empresa;
 import model.Motorista;
 import model.Viagem;
 
