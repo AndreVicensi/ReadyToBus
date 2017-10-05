@@ -45,7 +45,10 @@
                   <Font size="64.0" />
                </font>
             </Button>
-            <Button fx:id="btnSair" layoutX="1222.0" layoutY="4.0" mnemonicParsing="false" onAction="#onSair" prefHeight="48.0" prefWidth="65.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" />
+            <Button fx:id="btnSair" layoutX="1182.0" mnemonicParsing="false" onAction="#onSair" prefHeight="48.0" prefWidth="104.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>

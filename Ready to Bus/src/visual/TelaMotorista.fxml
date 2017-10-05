@@ -27,24 +27,27 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tblLista" layoutX="110.0" layoutY="200.0" prefHeight="490.0" prefWidth="1076.0">
+            <TableView fx:id="tblLista" layoutX="110.0" layoutY="200.0" prefHeight="490.0" prefWidth="1076.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
               <columns>
-                <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" text="Passageiro" />
+                <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" style="fx-background-color: FF7801;" text="Passageiro" />
                 <TableColumn fx:id="tbcTelefone" prefWidth="253.66668701171875" text="Telefone" />
                   <TableColumn fx:id="tbcStatus" prefWidth="163.0" text="Status" />
                   <TableColumn fx:id="tbcCheck" prefWidth="81.6666259765625" text="Check-in" />
               </columns>
             </TableView>
-            <Button fx:id="btnDirigir" layoutX="158.0" layoutY="111.0" mnemonicParsing="false" onAction="#onDirigir" text="Dirigir" />
-            <Button fx:id="btnChegada" layoutX="277.0" layoutY="111.0" mnemonicParsing="false" onAction="#onChegada" text="Chegada" />
+            <Button fx:id="btnDirigir" layoutX="86.0" layoutY="111.0" mnemonicParsing="false" onAction="#onDirigir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Dirigir" />
+            <Button fx:id="btnChegada" layoutX="277.0" layoutY="111.0" mnemonicParsing="false" onAction="#onChegada" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Chegada" />
             <Label fx:id="ldataDia" layoutX="913.0" layoutY="120.0" text="data do dia">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
             <Label layoutX="484.0" layoutY="135.0" text="Dirigindo" />
-            <ImageView fx:id="imgDirigindo" fitHeight="68.0" fitWidth="68.0" layoutX="593.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="btnSair" layoutX="1191.0" layoutY="1.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" text="SAIR" textAlignment="CENTER">
+            <ImageView fx:id="imgDirigindo" fitHeight="68.0" fitWidth="68.0" layoutX="593.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../arquivos/nao.png" />
+               </image></ImageView>
+            <Button fx:id="btnSair" layoutX="1191.0" layoutY="1.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

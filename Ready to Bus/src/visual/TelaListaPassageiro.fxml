@@ -27,7 +27,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tblLista" layoutX="102.0" layoutY="194.0" prefHeight="490.0" prefWidth="1076.0">
+            <TableView fx:id="tblLista" layoutX="102.0" layoutY="194.0" prefHeight="490.0" prefWidth="1076.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
               <columns>
                 <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" text="Passageiro" />
                 <TableColumn fx:id="tbcTelefone" prefWidth="253.66668701171875" text="Telefone" />
@@ -35,8 +35,8 @@
                   <TableColumn fx:id="tbcCheck" prefWidth="81.6666259765625" text="Check-in" />
               </columns>
             </TableView>
-            <Button fx:id="btnConfirmarEmbarque" layoutX="543.0" layoutY="108.0" mnemonicParsing="false" onAction="#onConfirmarEmbarque" text="Confirmar Embarque" />
-            <Button fx:id="btnAlterarStatus" layoutX="691.0" layoutY="108.0" mnemonicParsing="false" onAction="#onAlterarStatus" text="Alterar Status" />
+            <Button fx:id="btnConfirmarEmbarque" layoutX="444.0" layoutY="101.0" mnemonicParsing="false" onAction="#onConfirmarEmbarque" prefWidth="177.0" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Confirmar " />
+            <Button fx:id="btnAlterarStatus" layoutX="677.0" layoutY="101.0" mnemonicParsing="false" onAction="#onAlterarStatus" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Alterar Status" />
             <Label fx:id="ldataDia" layoutX="913.0" layoutY="120.0" text="data do dia">
                <font>
                   <Font size="48.0" />
@@ -44,7 +44,7 @@
             </Label>
             <Label layoutX="182.0" layoutY="125.0" text="Motorista:" />
             <Label fx:id="lApelidoMotorista" layoutX="254.0" layoutY="125.0" text="Apelido Motorista" />
-            <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" text="SAIR" textAlignment="CENTER">
+            <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

@@ -58,7 +58,6 @@ public class TelaLoginController {
 	@FXML
 	void onLogin(ActionEvent event) {
 		// pega o login do usuario
-
 		usuario = login.getLoginEmpresa(tfLogin.getText());
 		if (usuario == null) {
 			usuario = login.getLoginMotorista(tfLogin.getText());
@@ -76,6 +75,7 @@ public class TelaLoginController {
 			} else if (usuario instanceof Motorista) {
 				tela.carregarTela("/visual/TelaMotorista.fxml");
 			} else if (usuario instanceof Passageiro) {
+				AplicacaoSessao.passageiro = (Passageiro) usuario;
 				tela.carregarTela("/visual/TelaStatusPassageiro.fxml");
 			}
 		} else {

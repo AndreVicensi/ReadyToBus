@@ -45,14 +45,17 @@ public class MotoristaController {
 
 	private MetodosTelas tela = new MetodosTelas();
 
+	private Image dirigindo = new Image("/arquivos/sim.png");
+	private Image chegada = new Image("/arquivos/nao.png");
+	
 	@FXML
 	void onChegada(ActionEvent event) {
-
+		imgDirigindo.setImage(chegada);
 	}
 
 	@FXML
 	void onDirigir(ActionEvent event) {
-
+		imgDirigindo.setImage(dirigindo);
 	}
 
 	@FXML
