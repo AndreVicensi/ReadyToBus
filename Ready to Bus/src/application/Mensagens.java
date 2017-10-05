@@ -14,13 +14,6 @@ public class Mensagens {
 
 	}
 
-	public void erroSexo() {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Erro");
-		alert.setHeaderText("Ação inválida");
-		alert.setContentText("Selecione o sexo");
-		alert.showAndWait();
-	}
 
 	public void erroPrenchimento() {
 		Alert alert = new Alert(AlertType.ERROR);
