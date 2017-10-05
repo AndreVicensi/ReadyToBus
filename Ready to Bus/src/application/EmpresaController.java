@@ -54,6 +54,9 @@ public class EmpresaController {
 	@FXML
 	private ImageView imgDirigindo3;
 
+	@FXML
+	private Button btnSair;
+
 	private MetodosTelas tela = new MetodosTelas();
 
 	@FXML
@@ -87,6 +90,11 @@ public class EmpresaController {
 	@FXML
 	void verLista3(ActionEvent event) {
 
+	}
+
+	@FXML
+	void onSair(ActionEvent event) {
+		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
 
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
 
 public class ListaPassageiroController {
@@ -39,6 +40,11 @@ public class ListaPassageiroController {
 	private Label lApelidoMotorista;
 
 	@FXML
+	private Button btnSair;
+
+	private MetodosTelas tela = new MetodosTelas();
+
+	@FXML
 	void onAlterarStatus(ActionEvent event) {
 
 	}
@@ -46,6 +52,11 @@ public class ListaPassageiroController {
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
 
+	}
+
+	@FXML
+	void onSair(ActionEvent event) {
+		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
 
 }

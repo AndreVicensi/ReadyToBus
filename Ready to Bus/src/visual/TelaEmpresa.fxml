@@ -46,6 +46,11 @@
             <Label layoutX="927.0" layoutY="390.0" text="Dirigindo" />
             <Button fx:id="btnVerLista3" layoutX="983.0" layoutY="510.0" mnemonicParsing="false" onAction="#verLista3" text="Ver lista" />
             <ImageView fx:id="imgDirigindo3" fitHeight="68.0" fitWidth="68.0" layoutX="1036.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" text="SAIR" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
