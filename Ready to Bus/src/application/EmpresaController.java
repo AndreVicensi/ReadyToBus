@@ -80,16 +80,17 @@ public class EmpresaController {
 	@FXML
 	void verLista1(ActionEvent event) {
 
+		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}
 
 	@FXML
 	void verLista2(ActionEvent event) {
-
+		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}
 
 	@FXML
 	void verLista3(ActionEvent event) {
-
+		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}
 
 	@FXML
