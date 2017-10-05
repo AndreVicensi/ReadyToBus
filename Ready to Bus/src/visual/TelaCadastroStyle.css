@@ -12,3 +12,8 @@
 .cxtxt{
 	-fx-background-color: FFD20F;
 }
+
+.sair{
+	-fx-background-color: #FF370C;
+	-fx-pref-height: 48px;
+}

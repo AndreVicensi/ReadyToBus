@@ -25,31 +25,27 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="btnVaiVolta" layoutX="185.0" layoutY="99.0" mnemonicParsing="false" onAction="#vaiVolta" prefHeight="298.0" prefWidth="446.0" text="VOU E VOLTO">
+            <Button fx:id="btnVaiVolta" layoutX="185.0" layoutY="99.0" mnemonicParsing="false" onAction="#vaiVolta" prefHeight="298.0" prefWidth="446.0" style="-fx-background-color: #0c0;" text="VOU E VOLTO">
                <font>
                   <Font size="48.0" />
                </font>
             </Button>
-            <Button fx:id="btnNaoVai" layoutX="183.0" layoutY="409.0" mnemonicParsing="false" onAction="#naoVai" prefHeight="298.0" prefWidth="450.0" text="NÃO VOU">
+            <Button fx:id="btnNaoVai" layoutX="183.0" layoutY="409.0" mnemonicParsing="false" onAction="#naoVai" prefHeight="298.0" prefWidth="450.0" style="-fx-background-color: #c00;" text="NÃO VOU">
                <font>
                   <Font size="64.0" />
                </font>
             </Button>
-            <Button fx:id="btnSoVai" layoutX="647.0" layoutY="99.0" mnemonicParsing="false" onAction="#soVai" prefHeight="298.0" prefWidth="442.0" text="SÓ VOU">
+            <Button fx:id="btnSoVai" layoutX="647.0" layoutY="99.0" mnemonicParsing="false" onAction="#soVai" prefHeight="298.0" prefWidth="442.0" style="-fx-background-color: #00c;" text="SÓ VOU">
                <font>
                   <Font size="64.0" />
                </font>
             </Button>
-            <Button fx:id="btnSoVolta" layoutX="645.0" layoutY="409.0" mnemonicParsing="false" onAction="#soVolta" prefHeight="298.0" prefWidth="442.0" text="SÓ VOLTO">
+            <Button fx:id="btnSoVolta" layoutX="645.0" layoutY="409.0" mnemonicParsing="false" onAction="#soVolta" prefHeight="298.0" prefWidth="442.0" style="-fx-background-color: #cc0;" text="SÓ VOLTO">
                <font>
                   <Font size="64.0" />
                </font>
             </Button>
-            <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" text="SAIR" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Button>
+            <Button fx:id="btnSair" layoutX="1222.0" layoutY="4.0" mnemonicParsing="false" onAction="#onSair" prefHeight="48.0" prefWidth="65.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" />
          </children>
       </Pane>
    </children>
