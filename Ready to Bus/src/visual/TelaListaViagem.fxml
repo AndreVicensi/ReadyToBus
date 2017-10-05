@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ListaViagemController">
+   <children>
+      <Pane layoutX="-6.0" layoutY="-4.0" prefHeight="400.0" prefWidth="600.0" styleClass="tela" stylesheets="@TelaCadastroEmpresa.css">
+         <children>
+            <ImageView fitHeight="768.0" fitWidth="1280.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../arquivos/estrada.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="70.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+            <Label layoutX="11.0" layoutY="-3.0" text="Controle rota">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblLista" layoutX="102.0" layoutY="250.0" prefHeight="434.0" prefWidth="1076.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
+              <columns>
+                <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" text="Passageiro" />
+                <TableColumn fx:id="tbcTelefone" prefWidth="253.66668701171875" text="Telefone" />
+                  <TableColumn fx:id="tbcStatus" prefWidth="163.0" text="Status" />
+                  <TableColumn fx:id="tbcCheck" prefWidth="81.6666259765625" text="Check-in" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnVoltar" layoutX="571.0" layoutY="119.0" mnemonicParsing="false" onAction="#onVoltar" prefWidth="177.0" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
+            <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="170.0" layoutY="119.0" text="SAÍDA" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="119.0" layoutX="103.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
+            <Label layoutX="239.0" layoutY="110.0" text="IDA">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lSaidaIda" layoutX="142.0" layoutY="163.0" text="saída" />
+            <Label fx:id="lChegadaIda" layoutX="322.0" layoutY="163.0" text="chegada" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="119.0" layoutX="868.0" layoutY="104.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
+            <Label layoutX="1004.0" layoutY="119.0" text="VOLTA">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lSaidaVolta" layoutX="907.0" layoutY="172.0" text="saída" />
+            <Label fx:id="lChegadaVolta" layoutX="1087.0" layoutY="172.0" text="chegada" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
