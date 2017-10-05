@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
 
-public class MotoristaController {
+public class ListaPassageiroController {
 
 	@FXML
 	private TableView<Passageiro_Viagem> tblLista;
@@ -29,16 +28,16 @@ public class MotoristaController {
 	private TableColumn<Passageiro_Viagem, Image> tbcCheck;
 
 	@FXML
-	private Button btnDirigir;
+	private Button btnConfirmarEmbarque;
 
 	@FXML
-	private Button btnChegada;
+	private Button btnAlterarStatus;
 
 	@FXML
 	private Label ldataDia;
 
 	@FXML
-	private ImageView imgDirigindo;
+	private Label lApelidoMotorista;
 
 	@FXML
 	private Button btnSair;
@@ -46,12 +45,12 @@ public class MotoristaController {
 	private MetodosTelas tela = new MetodosTelas();
 
 	@FXML
-	void onChegada(ActionEvent event) {
+	void onAlterarStatus(ActionEvent event) {
 
 	}
 
 	@FXML
-	void onDirigir(ActionEvent event) {
+	void onConfirmarEmbarque(ActionEvent event) {
 
 	}
 
@@ -59,4 +58,5 @@ public class MotoristaController {
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
+
 }

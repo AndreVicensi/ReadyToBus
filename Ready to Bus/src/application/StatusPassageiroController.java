@@ -4,6 +4,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import metodos.MetodosTelas;
 
 public class StatusPassageiroController {
 
@@ -18,6 +19,11 @@ public class StatusPassageiroController {
 
 	@FXML
 	private Button btnSoVolta;
+
+	@FXML
+	private Button btnSair;
+
+	private MetodosTelas tela = new MetodosTelas();
 
 	@FXML
 	void naoVai(ActionEvent event) {
@@ -37,6 +43,11 @@ public class StatusPassageiroController {
 	@FXML
 	void vaiVolta(ActionEvent event) {
 
+	}
+
+	@FXML
+	void onSair(ActionEvent event) {
+		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
 
 }
