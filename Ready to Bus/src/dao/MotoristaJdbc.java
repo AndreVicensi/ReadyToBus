@@ -127,5 +127,16 @@ public class MotoristaJdbc implements MotoristaDao {
 		}
 		return null;
 	}
-
+	
+	public void alterarDiringindo(Motorista entidade, Boolean dirigindo) {
+		String update = "update motorista set dirigindo = ?  where idMotorista = " + entidade.getIdMotorista();
+		PreparedStatement updateStmt;
+		try {
+			updateStmt = conexao.get().prepareStatement(update);
+			updateStmt.setBoolean(1, dirigindo);
+			updateStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

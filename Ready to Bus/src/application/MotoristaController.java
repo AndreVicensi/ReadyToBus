@@ -1,5 +1,7 @@
 package application;
 
+import dao.DaoFactory;
+import dao.MotoristaDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
 
@@ -44,17 +47,19 @@ public class MotoristaController {
 	private Button btnSair;
 
 	private MetodosTelas tela = new MetodosTelas();
-
+	private static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
 	private Image dirigindo = new Image("/arquivos/sim.png");
 	private Image chegada = new Image("/arquivos/nao.png");
 	
 	@FXML
 	void onChegada(ActionEvent event) {
+		motoristaDao.alterarDiringindo(AplicacaoSessao.motorista, false);
 		imgDirigindo.setImage(chegada);
 	}
 
 	@FXML
 	void onDirigir(ActionEvent event) {
+		motoristaDao.alterarDiringindo(AplicacaoSessao.motorista, true);
 		imgDirigindo.setImage(dirigindo);
 	}
 

@@ -73,6 +73,7 @@ public class TelaLoginController {
 				AplicacaoSessao.empresa = (Empresa) usuario;
 				tela.carregarTela("/visual/TelaEmpresa.fxml");
 			} else if (usuario instanceof Motorista) {
+				AplicacaoSessao.motorista = (Motorista) usuario;
 				tela.carregarTela("/visual/TelaMotorista.fxml");
 			} else if (usuario instanceof Passageiro) {
 				AplicacaoSessao.passageiro = (Passageiro) usuario;
