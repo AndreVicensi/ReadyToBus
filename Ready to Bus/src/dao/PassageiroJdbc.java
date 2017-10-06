@@ -10,7 +10,6 @@ import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
 import model.Passageiro;
-import model.Viagem;
 
 public class PassageiroJdbc implements PassageiroDao {
 
@@ -20,11 +19,9 @@ public class PassageiroJdbc implements PassageiroDao {
 		this.conexao = conexao;
 	}
 
-	private ViagemJdbc viagemJdbc = new ViagemJdbc(conexao);
-
 	@Override
 	public void inserir(Passageiro entidade) {
-		String insert = "insert into passageiro values (idPassageiro,?,?,?,?,?,?)";
+		String insert = "insert into passageiro values (idPassageiro,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -33,7 +30,6 @@ public class PassageiroJdbc implements PassageiroDao {
 			insertStmt.setString(3, entidade.getSenha());
 			insertStmt.setString(4, entidade.getCpf());
 			insertStmt.setString(5, entidade.getTelefone());
-			insertStmt.setInt(6, entidade.getViagem().getIdViagem());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -58,8 +54,7 @@ public class PassageiroJdbc implements PassageiroDao {
 
 	@Override
 	public void alterar(Passageiro entidade) {
-		String update = "update passageiro set nome = ?, login = ?, senha = ?,cpf = ?,telefone = ?"
-				+ " where idPassageiro = ?";
+		String update = "update passageiro set nome = ?, login = ?, senha = ?,cpf = ?,telefone = ?  where idPassageiro = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -92,9 +87,6 @@ public class PassageiroJdbc implements PassageiroDao {
 				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
 
-				Viagem viagem = new Viagem();
-				viagem.setIdViagem(rs.getInt("idViagem"));
-				passageiro.setViagem(viagem);
 				passageiros.add(passageiro);
 
 			}
@@ -118,7 +110,6 @@ public class PassageiroJdbc implements PassageiroDao {
 			passageiro.setSenha(rs.getString("senha"));
 			passageiro.setCpf(rs.getString("cpf"));
 			passageiro.setTelefone(rs.getString("telefone"));
-			passageiro.setViagem(viagemJdbc.get(rs.getInt("idViagem")));
 			return passageiro;
 		} catch (SQLException e1) {
 			e1.printStackTrace();

@@ -8,22 +8,21 @@ public class Passageiro implements Usuario {
 	private String senha;
 	private String cpf;
 	private String telefone;
-	private Viagem viagem;
+
 
 	public Passageiro() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Passageiro(String nome, String login, String senha, String cpf, String telefone,
-			Viagem viagem) {
+	public Passageiro(String nome, String login, String senha, String cpf, String telefone) {
 		super();
 		this.nome = nome;
 		this.login = login;
 		this.senha = senha;
 		this.cpf = cpf;
 		this.telefone = telefone;
-		this.viagem = viagem;
+		
 	}
 
 	public int getIdPassageiro() {
@@ -74,18 +73,11 @@ public class Passageiro implements Usuario {
 		this.telefone = telefone;
 	}
 
-	public Viagem getViagem() {
-		return viagem;
-	}
-
-	public void setViagem(Viagem viagem) {
-		this.viagem = viagem;
-	}
 
 	@Override
 	public String toString() {
 		return "Passageiro [idPassageiro=" + idPassageiro + ", nome=" + nome + ", login=" + login + ", senha=" + senha
-				+ ", cpf=" + cpf + ", telefone=" + telefone + ", viagem=" + viagem + "]";
+				+ ", cpf=" + cpf + ", telefone=" + telefone + "]";
 	}
 
 }

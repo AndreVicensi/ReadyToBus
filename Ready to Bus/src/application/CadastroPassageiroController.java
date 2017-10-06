@@ -2,17 +2,18 @@ package application;
 
 import dao.DaoFactory;
 import dao.PassageiroDao;
-import dao.ViagemDao;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import metodos.MetodosTelas;
 import model.Passageiro;
-import model.Viagem;
 
 public class CadastroPassageiroController {
 
@@ -35,31 +36,83 @@ public class CadastroPassageiroController {
 	private PasswordField pfConfirmarSenha;
 
 	@FXML
-	private ComboBox<Viagem> cbxRota;
-
-	@FXML
 	private TextField tfCpfPassageiro;
 
 	@FXML
 	private TextField tfTelefonePassageiro;
 
+	@FXML
+	private Button btnNovo;
+
+	@FXML
+	private Button btnExcluir;
+
+	@FXML
+	private TableView<Passageiro> tblPassageiro;
+
+	@FXML
+	private TableColumn<Passageiro, Passageiro> tbcNomePassageiro;
+
 	MetodosTelas tela = new MetodosTelas();
 	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 	private Passageiro passageiro;
-	private ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	private Mensagens msg = new Mensagens();
+	private boolean editando;
 
 	public void initialize() {
-		cbxRota.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+
+		// cbxRota.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+		tbcNomePassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		tblPassageiro.setItems(FXCollections.observableArrayList(passageiroDao.listar()));
+		novo();
+	}
+
+	@FXML
+	void onNovo(ActionEvent event) {
+		novo();
+	}
+
+	@FXML
+	void onEditar(MouseEvent event) {
+		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED))
+			;
+
+		passageiro = tblPassageiro.getSelectionModel().getSelectedItem();
+		tfNomePassageiro.setText(passageiro.getNome());
+		tfCpfPassageiro.setText(passageiro.getCpf());
+		tfTelefonePassageiro.setText(passageiro.getTelefone());
+		tfLogin.setText(passageiro.getLogin());
+		pfSenha.setText(passageiro.getSenha());
+		pfConfirmarSenha.setText(passageiro.getSenha());
+
+		editando = true;
 	}
 
 	@FXML
 	void onSalvar(ActionEvent event) {
 		passageiro = new Passageiro(tfNomePassageiro.getText(), tfLogin.getText(), pfSenha.getText(),
-				tfCpfPassageiro.getText(), tfTelefonePassageiro.getText(), cbxRota.getValue());
-		passageiroDao.inserir(passageiro);
+				tfCpfPassageiro.getText(), tfTelefonePassageiro.getText());
+
+		if (editando) {
+			passageiroDao.alterar(passageiro);
+			tblPassageiro.refresh(); // atualiza
+
+		} else {
+			passageiroDao.inserir(passageiro);
+			tblPassageiro.getItems().add(passageiro); // adiciona na lista
+		}
+
 		msg.salvo();
-		limparCampos();
+		novo();
+	}
+
+	@FXML
+	void onExcluir(ActionEvent event) {
+
+		tblPassageiro.getItems().remove(passageiro);
+		passageiroDao.excluir((passageiro.getIdPassageiro()));
+		novo();
+
 	}
 
 	@FXML
@@ -73,9 +126,14 @@ public class CadastroPassageiroController {
 		tfNomePassageiro.setText("");
 		tfLogin.setText("");
 		tfTelefonePassageiro.setText("");
-		cbxRota.setValue(null);
 		pfSenha.setText("");
 		pfConfirmarSenha.setText("");
+	}
+
+	private void novo() {
+		editando = false;
+		passageiro = new Passageiro();
+		limparCampos();
 	}
 
 }

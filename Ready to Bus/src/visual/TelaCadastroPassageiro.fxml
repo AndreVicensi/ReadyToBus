@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,29 +23,34 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="596.0" layoutX="120.0" layoutY="112.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1048.0" />
-            <Label layoutX="488.0" layoutY="417.0" text="Login " />
-            <Label layoutX="488.0" layoutY="453.0" text="Senha" />
-            <TextField fx:id="tfLogin" layoutX="543.0" layoutY="413.0" />
-            <Button fx:id="btnVoltar" layoutX="354.0" layoutY="590.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
-            <Button fx:id="btnSalvar" layoutX="758.0" layoutY="590.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
-            <PasswordField fx:id="pfSenha" layoutX="543.0" layoutY="449.0" />
-            <Label layoutX="398.0" layoutY="180.0" text="Nome do passageiro" />
-            <TextField fx:id="tfNomePassageiro" layoutX="546.0" layoutY="175.0" prefHeight="25.0" prefWidth="297.0" />
-            <Label layoutX="483.0" layoutY="228.0" text="Rota" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="670.0" layoutX="36.0" layoutY="68.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1208.0" />
+            <Button fx:id="btnVoltar" layoutX="1082.0" layoutY="661.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
+            <Button fx:id="btnSalvar" layoutX="771.0" layoutY="498.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
             <Label layoutX="11.0" layoutY="-3.0" text="Cadastrar novo passageiro">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <PasswordField fx:id="pfConfirmarSenha" layoutX="543.0" layoutY="504.0" />
-            <Label layoutX="433.0" layoutY="508.0" text="Confirmar senha" />
-            <ComboBox fx:id="cbxRota" layoutX="544.0" layoutY="225.0" prefHeight="25.0" prefWidth="282.0" />
-            <Label layoutX="486.0" layoutY="277.0" text="CPF" />
-            <TextField fx:id="tfCpfPassageiro" layoutX="541.0" layoutY="273.0" prefHeight="25.0" prefWidth="194.0" />
-            <Label layoutX="461.0" layoutY="338.0" text="Telefone" />
-            <TextField fx:id="tfTelefonePassageiro" layoutX="543.0" layoutY="334.0" prefHeight="25.0" prefWidth="194.0" />
+            <Button fx:id="btnNovo" layoutX="548.0" layoutY="498.0" mnemonicParsing="false" onAction="#onNovo" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Novo" />
+            <TableView fx:id="tblPassageiro" layoutX="88.0" layoutY="108.0" onMouseClicked="#onEditar" prefHeight="598.0" prefWidth="418.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
+               <columns>
+                  <TableColumn fx:id="tbcNomePassageiro" prefWidth="403.0" style="fx-background-color: FF7801;" text="Passageiros" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnExcluir" layoutX="1007.0" layoutY="498.0" mnemonicParsing="false" onAction="#onExcluir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Excluir" />
          </children>
       </Pane>
+      <Label layoutX="731.0" layoutY="348.0" text="Login " />
+      <Label layoutX="731.0" layoutY="384.0" text="Senha" />
+      <TextField fx:id="tfLogin" layoutX="786.0" layoutY="344.0" />
+      <PasswordField fx:id="pfSenha" layoutX="786.0" layoutY="380.0" />
+      <Label layoutX="634.0" layoutY="148.0" text="Nome do passageiro" />
+      <TextField fx:id="tfNomePassageiro" layoutX="782.0" layoutY="143.0" prefHeight="25.0" prefWidth="297.0" />
+      <PasswordField fx:id="pfConfirmarSenha" layoutX="786.0" layoutY="435.0" />
+      <Label layoutX="676.0" layoutY="439.0" text="Confirmar senha" />
+      <Label layoutX="729.0" layoutY="208.0" text="CPF" />
+      <TextField fx:id="tfCpfPassageiro" layoutX="784.0" layoutY="204.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label layoutX="704.0" layoutY="269.0" text="Telefone" />
+      <TextField fx:id="tfTelefonePassageiro" layoutX="786.0" layoutY="265.0" prefHeight="25.0" prefWidth="194.0" />
    </children>
 </AnchorPane>

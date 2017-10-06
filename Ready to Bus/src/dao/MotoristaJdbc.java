@@ -25,7 +25,7 @@ public class MotoristaJdbc implements MotoristaDao {
 	// insere motorista no banco de dados
 	@Override
 	public void inserir(Motorista entidade) {
-		String insert = "insert into motorista values (idMotorista,?,?,?,?,?,?)";
+		String insert = "insert into motorista values (idMotorista,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -34,7 +34,6 @@ public class MotoristaJdbc implements MotoristaDao {
 			insertStmt.setString(3, entidade.getLogin());
 			insertStmt.setString(4, entidade.getSenha());
 			insertStmt.setInt(5, entidade.getEmpresa().getIdEmpresa());
-			insertStmt.setBoolean(6, entidade.isDirigindo());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -59,8 +58,7 @@ public class MotoristaJdbc implements MotoristaDao {
 
 	@Override
 	public void alterar(Motorista entidade) {
-		String update = "update motorista set nome = ?, apelido = ?, login = ?, senha = ?,"
-				+ "dirigindo = ?  where idMotorista = ?";
+		String update = "update motorista set nome = ?, apelido = ?, login = ?, senha = ? where idMotorista = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -68,8 +66,7 @@ public class MotoristaJdbc implements MotoristaDao {
 			updateStmt.setString(2, entidade.getApelido());
 			updateStmt.setString(3, entidade.getLogin());
 			updateStmt.setString(4, entidade.getSenha());
-			updateStmt.setBoolean(5, entidade.isDirigindo());
-			updateStmt.setInt(6, entidade.getIdMotorista());
+			updateStmt.setInt(5, entidade.getIdMotorista());
 			updateStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -91,7 +88,6 @@ public class MotoristaJdbc implements MotoristaDao {
 				motorista.setApelido(rs.getString("apelido"));
 				motorista.setLogin(rs.getString("login"));
 				motorista.setSenha(rs.getString("senha"));
-				motorista.setDirigindo(rs.getBoolean("dirigindo"));
 
 				// coloquei essa parte de baixo
 				Empresa empresa = new Empresa();
@@ -120,14 +116,13 @@ public class MotoristaJdbc implements MotoristaDao {
 			motorista.setLogin(rs.getString("login"));
 			motorista.setSenha(rs.getString("senha"));
 			motorista.setEmpresa(empresaJdbc.get(rs.getInt("idEmpresa")));
-			motorista.setDirigindo(rs.getBoolean("dirigindo"));
 			return motorista;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public void alterarDiringindo(Motorista entidade, Boolean dirigindo) {
 		String update = "update motorista set dirigindo = ?  where idMotorista = " + entidade.getIdMotorista();
 		PreparedStatement updateStmt;

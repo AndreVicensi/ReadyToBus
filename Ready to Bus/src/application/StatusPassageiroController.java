@@ -1,9 +1,6 @@
 
 package application;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import dao.DaoFactory;
 import dao.MotoristaDao;
 import dao.PassageiroDao;
@@ -38,6 +35,16 @@ public class StatusPassageiroController {
 	private MetodosTelas tela = new MetodosTelas();
 
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
+
+	private Passageiro_Viagem passageiro_viagem;
+
+	public void initialize() {
+
+		// passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro,
+		// AplicacaoSessao.passageiro.getViagem());
+		passageiroViagemDao.inserir(passageiro_viagem);
+	}
+
 	@FXML
 	void naoVai(ActionEvent event) {
 		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 2);
