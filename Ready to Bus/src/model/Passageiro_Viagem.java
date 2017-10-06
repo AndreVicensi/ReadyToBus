@@ -14,6 +14,21 @@ public class Passageiro_Viagem {
 	private LocalTime saida;
 	private Boolean indo;
 
+	
+
+	public Passageiro_Viagem() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Passageiro_Viagem(Passageiro passageiro, Viagem viagem) {
+		super();
+		this.passageiro = passageiro;
+		this.viagem = viagem;
+	
+
+	}
+
 	public Passageiro getPassageiro() {
 		return passageiro;
 	}

@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -21,7 +22,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	public Passageiro_ViagemJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
-	
+
 	@Override
 	public void inserir(Passageiro_Viagem entidade) {
 		String insert = "insert into viagem_passageiro values (?,?,?,?,?,?,?,?)";
@@ -63,7 +64,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				Passageiro passageiro = new Passageiro();
 				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
 				passageiro_Viagem.setPassageiro(passageiro);
-				Viagem  viagem = new Viagem(); 
+				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
 				passageiro_Viagem.setViagem(viagem);
 				passageiro_Viagem.setStatus(rs.getInt("status"));
@@ -80,20 +81,20 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		}
 		return lista;
 	}
-	
+
 	public List<Passageiro_Viagem> lista(Integer codigo) {
 		Statement stmt = null;
 		List<Passageiro_Viagem> lista = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from viagem_passageiro where idViagem = "+ codigo;
+			String sql = "select * from viagem_passageiro where idViagem = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiro_Viagem = new Passageiro_Viagem();
 				Passageiro passageiro = new Passageiro();
 				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
 				passageiro_Viagem.setPassageiro(passageiro);
-				Viagem  viagem = new Viagem(); 
+				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
 				passageiro_Viagem.setViagem(viagem);
 				passageiro_Viagem.setStatus(rs.getInt("status"));
@@ -115,6 +116,30 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	public Passageiro_Viagem get(Integer codigo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void alterarStatus(Passageiro entidade, Integer status) {
+		String update = "update viagem_passageiro set status = ?  where idPassageiro = " + entidade.getIdPassageiro();
+		PreparedStatement updateStmt;
+		try {
+			updateStmt = conexao.get().prepareStatement(update);
+			updateStmt.setInt(1, status);
+			updateStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void fazerCheck(Passageiro entidade, Boolean confirmacao) {
+		String update = "update viagem_passageiro set confimacao = ?  where idPassageiro = " + entidade.getIdPassageiro();
+		PreparedStatement updateStmt;
+		try {
+			updateStmt = conexao.get().prepareStatement(update);
+			updateStmt.setBoolean(1, confirmacao);
+			updateStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
