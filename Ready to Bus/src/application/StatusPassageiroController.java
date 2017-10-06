@@ -1,22 +1,15 @@
 
 package application;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import dao.DaoFactory;
-import dao.MotoristaDao;
 import dao.PassageiroDao;
 import dao.Passageiro_ViagemDao;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
-import model.Passageiro;
 import model.Passageiro_Viagem;
-import model.Viagem;
 
 public class StatusPassageiroController {
 

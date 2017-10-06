@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -31,7 +30,6 @@
             <PasswordField fx:id="pfSenha" layoutX="543.0" layoutY="449.0" />
             <Label layoutX="398.0" layoutY="180.0" text="Nome do passageiro" />
             <TextField fx:id="tfNomePassageiro" layoutX="546.0" layoutY="175.0" prefHeight="25.0" prefWidth="297.0" />
-            <Label layoutX="483.0" layoutY="228.0" text="Rota" />
             <Label layoutX="11.0" layoutY="-3.0" text="Cadastrar novo passageiro">
                <font>
                   <Font size="36.0" />
@@ -39,7 +37,6 @@
             </Label>
             <PasswordField fx:id="pfConfirmarSenha" layoutX="543.0" layoutY="504.0" />
             <Label layoutX="433.0" layoutY="508.0" text="Confirmar senha" />
-            <ComboBox fx:id="cbxRota" layoutX="544.0" layoutY="225.0" prefHeight="25.0" prefWidth="282.0" />
             <Label layoutX="486.0" layoutY="277.0" text="CPF" />
             <TextField fx:id="tfCpfPassageiro" layoutX="541.0" layoutY="273.0" prefHeight="25.0" prefWidth="194.0" />
             <Label layoutX="461.0" layoutY="338.0" text="Telefone" />
