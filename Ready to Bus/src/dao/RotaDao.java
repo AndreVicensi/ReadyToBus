@@ -1,7 +1,7 @@
 package dao;
 
-import model.Viagem;
+import model.Rota;
 
-//public interface RotaDao extends CrudDao<Rota>{
+public interface RotaDao extends CrudDao<Rota>{
 
-//}
+}

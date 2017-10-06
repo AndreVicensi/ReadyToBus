@@ -1,19 +1,59 @@
 package model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Viagem {
 
 	private int idViagem;
-	private Motorista motorista;
-	private String nome;
+	private LocalDate data;
+	private LocalTime saida;
+	private LocalTime chegada;
+	private Boolean dirigindo;
+	private Rota rota;
 
 	public Viagem() {
 		super();
 	}
 
-	public Viagem(Motorista motorista, String nome) {
+	public Viagem(LocalDate data, LocalTime saida, LocalTime chegada, Rota rota) {
 		super();
-		this.motorista = motorista;
-		this.nome = nome;
+		this.data = data;
+		this.saida = saida;
+		this.chegada = chegada;
+		this.rota = rota;
+	}
+
+	public LocalTime getChegada() {
+		return chegada;
+	}
+
+	public void setChegada(LocalTime chegada) {
+		this.chegada = chegada;
+	}
+
+	public LocalTime getSaida() {
+		return saida;
+	}
+
+	public void setSaida(LocalTime saida) {
+		this.saida = saida;
+	}
+
+	public Boolean getDirigindo() {
+		return dirigindo;
+	}
+
+	public void setDirigindo(Boolean dirigindo) {
+		this.dirigindo = dirigindo;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public LocalDate getData() {
+		return data;
 	}
 
 	public int getIdViagem() {
@@ -24,25 +64,12 @@ public class Viagem {
 		this.idViagem = idViagem;
 	}
 
-	public Motorista getMotorista() {
-		return motorista;
+	public Rota getRota() {
+		return rota;
 	}
 
-	public void setMotorista(Motorista motorista) {
-		this.motorista = motorista;
+	public void setRota(Rota rota) {
+		this.rota = rota;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String toString() {
-		return nome;
-	}
-	
 
 }

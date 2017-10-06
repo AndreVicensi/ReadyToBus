@@ -9,9 +9,9 @@ import java.util.List;
 
 import conexao.Conexao;
 import model.Motorista;
-import model.Viagem;
+import model.Rota;
 
-public class RotaJdbc implements ViagemDao {
+public class RotaJdbc implements RotaDao {
 
 	private Conexao conexao;
 
@@ -22,17 +22,17 @@ public class RotaJdbc implements ViagemDao {
 	private MotoristaJdbc motoristaJdbc = new MotoristaJdbc(conexao);
 
 	@Override
-	public void inserir(Viagem entidade) {
-		String insert = "insert into viagem values (idViagem,?,?)";
+	public void inserir(Rota entidade) {
+		String insert = "insert into rota values (idRota,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-			insertStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			insertStmt.setString(2, entidade.getNome());
+			insertStmt.setInt(2, entidade.getMotorista().getIdMotorista());
+			insertStmt.setString(1, entidade.getNome());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
-			entidade.setIdViagem(resultSet.getInt(1));
+			entidade.setIdRota(resultSet.getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +40,7 @@ public class RotaJdbc implements ViagemDao {
 
 	@Override
 	public void excluir(Integer codigo) {
-		String delete = "delete from motorista where idViagem = ?";
+		String delete = "delete from rota where idRota = ?";
 		PreparedStatement deleteStmt;
 		try {
 			deleteStmt = conexao.get().prepareStatement(delete);
@@ -52,59 +52,59 @@ public class RotaJdbc implements ViagemDao {
 	}
 
 	@Override
-	public void alterar(Viagem entidade) {
-		String update = "update viagem set idMotorista = ?,nome = ? where idViagem = ?";
+	public void alterar(Rota entidade) {
+		String update = "update rota set idMotorista = ?,nome = ? where idRota = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
 			updateStmt.setString(2, entidade.getNome());
 			updateStmt.executeUpdate();
-			updateStmt.setInt(3, entidade.getIdViagem());
+			updateStmt.setInt(3, entidade.getIdRota());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public List<Viagem> listar() {
+	public List<Rota> listar() {
 		Statement stmt = null;
-		List<Viagem> viagems = new ArrayList<Viagem>();
+		List<Rota> rotas = new ArrayList<Rota>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from viagem";
+			String sql = "select * from rota";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				Viagem viagem = new Viagem();
-				viagem.setIdViagem(rs.getInt("idViagem"));
-				viagem.setNome(rs.getString("nome"));
+				Rota rota = new Rota();
+				rota.setIdRota(rs.getInt("idRota"));
+				rota.setNome(rs.getString("nome"));
 
 				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
 
-				viagem.setMotorista(motorista);
+				rota.setMotorista(motorista);
 
-				viagems.add(viagem);
+				rotas.add(rota);
 
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		return viagems;
+		return rotas;
 	}
 
 	@Override
-	public Viagem get(Integer codigo) {
+	public Rota get(Integer codigo) {
 		Statement stmt = null;
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from viagem where idViagem = " + codigo;
+			String sql = "select * from rota where idRota = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
-			Viagem viagem = new Viagem();
-			viagem.setIdViagem(rs.getInt("idViagem"));
-			viagem.setNome(rs.getString("nome"));
-			viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
-			return viagem;
+			Rota rota = new Rota();
+			rota.setIdRota(rs.getInt("idRota"));
+			rota.setNome(rs.getString("nome"));
+			rota.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
+			return rota;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

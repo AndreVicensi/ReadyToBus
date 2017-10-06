@@ -1,14 +1,16 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
-import model.Motorista;
+import model.Rota;
 import model.Viagem;
 
 public class ViagemJdbc implements ViagemDao {
@@ -19,16 +21,17 @@ public class ViagemJdbc implements ViagemDao {
 		this.conexao = conexao;
 	}
 
-	private MotoristaJdbc motoristaJdbc = new MotoristaJdbc(conexao);
-
 	@Override
 	public void inserir(Viagem entidade) {
-		String insert = "insert into viagem values (idViagem,?,?)";
+		String insert = "insert into viagem values (idViagem,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-			insertStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			insertStmt.setString(2, entidade.getNome());
+			insertStmt.setDate(1, Date.valueOf(entidade.getData()));
+			insertStmt.setTime(2, Time.valueOf(entidade.getSaida()));
+			insertStmt.setTime(3, Time.valueOf(entidade.getChegada()));
+			insertStmt.setBoolean(4, entidade.getDirigindo());
+			insertStmt.setInt(5, entidade.getRota().getIdRota());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -40,7 +43,7 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void excluir(Integer codigo) {
-		String delete = "delete from motorista where idViagem = ?";
+		String delete = "delete from viagem where idViagem = ?";
 		PreparedStatement deleteStmt;
 		try {
 			deleteStmt = conexao.get().prepareStatement(delete);
@@ -53,14 +56,18 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void alterar(Viagem entidade) {
-		String update = "update viagem set idMotorista = ?,nome = ? where idViagem = ?";
+		String update = "update viagem set data = ?, saida = ?, chegada = ?, dirigindo = ?, idRota = ?"
+				+ " where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
-			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
-			updateStmt.setString(2, entidade.getNome());
+			updateStmt.setDate(1, Date.valueOf(entidade.getData()));
+			updateStmt.setTime(2, Time.valueOf(entidade.getSaida()));
+			updateStmt.setTime(3, Time.valueOf(entidade.getChegada()));
+			updateStmt.setBoolean(4, entidade.getDirigindo());
+			updateStmt.setInt(5, entidade.getRota().getIdRota());
 			updateStmt.executeUpdate();
-			updateStmt.setInt(3, entidade.getIdViagem());
+			updateStmt.setInt(6, entidade.getIdViagem());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,15 +84,13 @@ public class ViagemJdbc implements ViagemDao {
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
 				viagem.setIdViagem(rs.getInt("idViagem"));
-				viagem.setNome(rs.getString("nome"));
-
-				Motorista motorista = new Motorista();
-				motorista.setIdMotorista(rs.getInt("idMotorista"));
-
-				viagem.setMotorista(motorista);
-
+				viagem.setData(rs.getDate("data").toLocalDate());
+				viagem.setSaida(rs.getTime("saida").toLocalTime());
+				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+				Rota rota = new Rota();
+				rota.setIdRota(rs.getInt("idRota"));
+				viagem.setRota(rota);
 				viagems.add(viagem);
-
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -102,8 +107,12 @@ public class ViagemJdbc implements ViagemDao {
 			ResultSet rs = stmt.executeQuery(sql);
 			Viagem viagem = new Viagem();
 			viagem.setIdViagem(rs.getInt("idViagem"));
-			viagem.setNome(rs.getString("nome"));
-			viagem.setMotorista(motoristaJdbc.get(rs.getInt("idMotorista")));
+			viagem.setData(rs.getDate("data").toLocalDate());
+			viagem.setSaida(rs.getTime("saida").toLocalTime());
+			viagem.setChegada(rs.getTime("chegada").toLocalTime());
+			Rota rota = new Rota();
+			rota.setIdRota(rs.getInt("idRota"));
+			viagem.setRota(rota);
 			return viagem;
 		} catch (SQLException e1) {
 			e1.printStackTrace();

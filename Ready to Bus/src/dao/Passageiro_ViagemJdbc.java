@@ -1,10 +1,8 @@
 package dao;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,18 +23,12 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 
 	@Override
 	public void inserir(Passageiro_Viagem entidade) {
-		String insert = "insert into viagem_passageiro values (?,?,?,?,?,?,?,?)";
+		String insert = "insert into passageiro_viagem(idViagem,idPassageiro) values (?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert);
 			insertStmt.setInt(1, entidade.getViagem().getIdViagem());
 			insertStmt.setInt(2, entidade.getPassageiro().getIdPassageiro());
-			insertStmt.setInt(3, entidade.getStatus());
-			insertStmt.setBoolean(4, entidade.isConfirmacao());
-			insertStmt.setDate(5, Date.valueOf(entidade.getData()));
-			insertStmt.setTime(6, Time.valueOf(entidade.getSaida()));
-			insertStmt.setTime(7, Time.valueOf(entidade.getSaida()));
-			insertStmt.setBoolean(8, entidade.getIndo());
 			insertStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,7 +49,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> lista = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from viagem_passageiro";
+			String sql = "select * from passageiro_viagem";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiro_Viagem = new Passageiro_Viagem();
@@ -69,10 +61,6 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				passageiro_Viagem.setViagem(viagem);
 				passageiro_Viagem.setStatus(rs.getInt("status"));
 				passageiro_Viagem.setConfirmacao(rs.getBoolean("confirmacao"));
-				passageiro_Viagem.setData(rs.getDate("data").toLocalDate());
-				passageiro_Viagem.setSaida(rs.getTime("saida").toLocalTime());
-				passageiro_Viagem.setChegada(rs.getTime("chegada").toLocalTime());
-				passageiro_Viagem.setIndo(rs.getBoolean("indo"));
 				lista.add(passageiro_Viagem);
 
 			}
@@ -87,7 +75,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> lista = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from viagem_passageiro where idViagem = " + codigo;
+			String sql = "select * from passageiro_viagem where idViagem = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiro_Viagem = new Passageiro_Viagem();
@@ -99,12 +87,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				passageiro_Viagem.setViagem(viagem);
 				passageiro_Viagem.setStatus(rs.getInt("status"));
 				passageiro_Viagem.setConfirmacao(rs.getBoolean("confirmacao"));
-				passageiro_Viagem.setData(rs.getDate("data").toLocalDate());
-				passageiro_Viagem.setSaida(rs.getTime("saida").toLocalTime());
-				passageiro_Viagem.setChegada(rs.getTime("chegada").toLocalTime());
-				passageiro_Viagem.setIndo(rs.getBoolean("indo"));
 				lista.add(passageiro_Viagem);
-
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -119,7 +102,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	public void alterarStatus(Passageiro entidade, Integer status) {
-		String update = "update viagem_passageiro set status = ?  where idPassageiro = " + entidade.getIdPassageiro();
+		String update = "update passageiro_viagem set status = ?  where idPassageiro = " + entidade.getIdPassageiro();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -131,7 +114,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	public void fazerCheck(Passageiro entidade, Boolean confirmacao) {
-		String update = "update viagem_passageiro set confimacao = ?  where idPassageiro = " + entidade.getIdPassageiro();
+		String update = "update passageiro_viagem set confimacao = ?  where idPassageiro = " + entidade.getIdPassageiro();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);

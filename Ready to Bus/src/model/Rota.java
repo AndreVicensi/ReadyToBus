@@ -2,7 +2,7 @@ package model;
 
 public class Rota {
 
-	private int idViagem;
+	private int idRota;
 	private Motorista motorista;
 	private String nome;
 
@@ -16,12 +16,12 @@ public class Rota {
 		this.nome = nome;
 	}
 
-	public int getIdViagem() {
-		return idViagem;
+	public int getIdRota() {
+		return idRota;
 	}
 
-	public void setIdViagem(int idViagem) {
-		this.idViagem = idViagem;
+	public void setIdRota(int idRota) {
+		this.idRota = idRota;
 	}
 
 	public Motorista getMotorista() {
