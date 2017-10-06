@@ -8,7 +8,6 @@ public class Motorista implements Usuario {
 	private String login;
 	private String senha;
 	private Empresa empresa;
-	private boolean dirigindo;
 
 	public Motorista() {
 		super();
@@ -63,14 +62,6 @@ public class Motorista implements Usuario {
 		this.empresa = empresa;
 	}
 
-	public boolean isDirigindo() {
-		return dirigindo;
-	}
-
-	public void setDirigindo(boolean dirigindo) {
-		this.dirigindo = dirigindo;
-	}
-
 	public int getIdMotorista() {
 		return idMotorista;
 	}
@@ -83,6 +74,7 @@ public class Motorista implements Usuario {
 	public String toString() {
 		return nome;
 	}
+
 
 
 }

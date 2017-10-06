@@ -23,7 +23,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="470.0" layoutX="312.0" layoutY="138.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="640.0" />
             <Button fx:id="btnVoltar" layoutX="349.0" layoutY="501.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
             <Button fx:id="btnSalvar" layoutX="787.0" layoutY="501.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
-            <Label layoutX="11.0" layoutY="-3.0" text="Cadastrar passageiro na rota">
+            <Label layoutX="11.0" layoutY="-3.0" text="Cadastrar Viagem">
                <font>
                   <Font size="36.0" />
                </font>
