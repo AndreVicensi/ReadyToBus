@@ -1,5 +1,7 @@
 package application;
 
+import java.time.LocalTime;
+
 import dao.DaoFactory;
 import dao.ViagemDao;
 import javafx.event.ActionEvent;
@@ -54,17 +56,23 @@ public class MotoristaController {
 	public Viagem viagem;
 	private Image dirigindo = new Image("/arquivos/sim.png");
 	private Image chegada = new Image("/arquivos/nao.png");
+	LocalTime tempo = LocalTime.now();
 
 	@FXML
 	void onChegada(ActionEvent event) {
-		viagemDao.alterarDiringindo(viagem.getIdViagem(), false);
+		//viagemDao.alterarDiringindo(viagem.getIdViagem(), false);
 		imgDirigindo.setImage(chegada);
+		viagem.setChegada(tempo);
+		viagemDao.alterar(viagem);
 	}
 
 	@FXML
 	void onDirigir(ActionEvent event) {
-		viagemDao.alterarDiringindo(viagem.getIdViagem(), true);
+		//viagemDao.alterarDiringindo(viagem.getIdViagem(), true);
 		imgDirigindo.setImage(dirigindo);
+		viagem.setChegada(tempo);
+		viagemDao.alterar(viagem);
+		
 	}
 
 	@FXML

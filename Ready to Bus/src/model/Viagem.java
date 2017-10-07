@@ -17,12 +17,18 @@ public class Viagem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Viagem(Rota rota, LocalDate data) {
-		super();
-		this.rota = rota;
-		this.data = data;
 
+
+	public Viagem(LocalDate data, LocalTime saida, LocalTime chegada, Boolean dirigindo, Rota rota) {
+		super();
+		this.data = data;
+		this.saida = saida;
+		this.chegada = chegada;
+		this.dirigindo = dirigindo;
+		this.rota = rota;
 	}
+
+
 
 	public LocalTime getChegada() {
 		return chegada;

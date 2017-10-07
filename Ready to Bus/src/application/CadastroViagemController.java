@@ -1,5 +1,7 @@
 package application;
 
+import java.time.LocalTime;
+
 import dao.DaoFactory;
 import dao.RotaDao;
 import dao.ViagemDao;
@@ -15,18 +17,18 @@ import model.Viagem;
 
 public class CadastroViagemController {
 
-    @FXML
-    private Button btnVoltar;
 
-    @FXML
-    private Button btnSalvar;
+	@FXML
+	private Button btnVoltar;
 
-    @FXML
-    private ComboBox<Rota> cbxRota;
+	@FXML
+	private Button btnSalvar;
 
-    @FXML
-    private DatePicker dpData;
+	@FXML
+	private ComboBox<Rota> cbxRota;
 
+	@FXML
+	private DatePicker dpData;
 
 	MetodosTelas tela = new MetodosTelas();
 
@@ -42,7 +44,9 @@ public class CadastroViagemController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		viagem = new Viagem(cbxRota.getValue(), dpData.getValue());
+
+		LocalTime tempo = LocalTime.now();
+		viagem = new Viagem(dpData.getValue(), tempo, tempo, false, cbxRota.getValue());
 		viagemDao.inserir(viagem);
 		msg.salvo();
 		limparCampos();
@@ -53,10 +57,8 @@ public class CadastroViagemController {
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
 	}
 
-	
-   void limparCampos() {
-	  cbxRota.setValue(null);
-	  dpData.setValue(null);
-  }
+	void limparCampos() {
+		cbxRota.setValue(null);
+		dpData.setValue(null);
+	}
 }
-
