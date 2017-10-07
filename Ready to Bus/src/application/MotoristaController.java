@@ -60,18 +60,19 @@ public class MotoristaController {
 
 	@FXML
 	void onChegada(ActionEvent event) {
-		//viagemDao.alterarDiringindo(viagem.getIdViagem(), false);
+		// esses metodos criados no MotoristaFdbc nao tao funcionando
+		viagemDao.alterarDiringindo(viagem, false);
 		imgDirigindo.setImage(chegada);
 		viagem.setChegada(tempo);
-		viagemDao.alterar(viagem);
+		viagemDao.alterarChegada(viagem, tempo);
 	}
 
 	@FXML
 	void onDirigir(ActionEvent event) {
-		//viagemDao.alterarDiringindo(viagem.getIdViagem(), true);
+		viagemDao.alterarDiringindo(viagem, true);
 		imgDirigindo.setImage(dirigindo);
-		viagem.setChegada(tempo);
-		viagemDao.alterar(viagem);
+		viagem.setSaida(tempo);
+		viagemDao.alterarSaida(viagem, tempo);
 		
 	}
 

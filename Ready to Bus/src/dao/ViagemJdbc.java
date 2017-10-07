@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,5 +135,34 @@ public class ViagemJdbc implements ViagemDao {
 		}
 
 	}
+	
+	@Override
+	public void alterarSaida(Viagem entidade, LocalTime data) {
+		String update = "update viagem set saida = ? where idViagem = ?";
+		PreparedStatement updateStmt;
+		try {
+			updateStmt = conexao.get().prepareStatement(update);
+			updateStmt.setTime(1, Time.valueOf(entidade.getSaida()));
+			updateStmt.executeUpdate();
+			updateStmt.setInt(2, entidade.getIdViagem());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void alterarChegada(Viagem entidade, LocalTime data) {
+		String update = "update viagem set chegada = ? where idViagem = ?";
+		PreparedStatement updateStmt;
+		try {
+			updateStmt = conexao.get().prepareStatement(update);
+			updateStmt.setTime(1, Time.valueOf(entidade.getChegada()));
+			updateStmt.executeUpdate();
+			updateStmt.setInt(2, entidade.getIdViagem());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }
