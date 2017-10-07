@@ -54,7 +54,7 @@ public class PassageiroJdbc implements PassageiroDao {
 
 	@Override
 	public void alterar(Passageiro entidade) {
-		String update = "update passageiro set nome = ?, login = ?, senha = ?,cpf = ?,telefone = ?  where idPassageiro = ?";
+		String update = "update passageiro set nome = ?, login = ?, senha = ?, cpf = ?,telefone = ?  where idPassageiro = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);

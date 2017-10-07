@@ -90,8 +90,14 @@ public class CadastroPassageiroController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		passageiro = new Passageiro(tfNomePassageiro.getText(), tfLogin.getText(), pfSenha.getText(),
-				tfCpfPassageiro.getText(), tfTelefonePassageiro.getText());
+		passageiro.setNome(tfNomePassageiro.getText());
+		passageiro.setLogin(tfLogin.getText());
+		passageiro.setSenha(pfSenha.getText());
+		passageiro.setCpf(tfCpfPassageiro.getText());
+		passageiro.setTelefone(tfTelefonePassageiro.getText());
+		// passageiro = new Passageiro(tfNomePassageiro.getText(),
+		// tfLogin.getText(), pfSenha.getText(),
+		// tfCpfPassageiro.getText(), tfTelefonePassageiro.getText());
 
 		if (editando) {
 			passageiroDao.alterar(passageiro);
