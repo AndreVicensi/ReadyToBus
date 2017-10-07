@@ -35,7 +35,7 @@ public class CadastroEmpresaController {
 
 	private MetodosTelas tela = new MetodosTelas();
 	private Empresa empresa;
-	private static EmpresaDao empresaDao = DaoFactory.get().EmpresaDao();
+	private static EmpresaDao empresaDao = DaoFactory.get().empresaDao();
 	private Mensagens msg = new Mensagens();
 
 	@FXML

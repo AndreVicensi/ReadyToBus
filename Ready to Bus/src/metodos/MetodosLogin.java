@@ -10,7 +10,7 @@ import model.Passageiro;
 
 public class MetodosLogin {
 
-	private static EmpresaDao empresaDao = DaoFactory.get().EmpresaDao();
+	private static EmpresaDao empresaDao = DaoFactory.get().empresaDao();
 	public static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
 	public static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 

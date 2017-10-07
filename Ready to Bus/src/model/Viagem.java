@@ -14,14 +14,14 @@ public class Viagem {
 
 	public Viagem() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Viagem(LocalDate data, LocalTime saida, LocalTime chegada, Rota rota) {
+	public Viagem(Rota rota, LocalDate data) {
 		super();
-		this.data = data;
-		this.saida = saida;
-		this.chegada = chegada;
 		this.rota = rota;
+		this.data = data;
+
 	}
 
 	public LocalTime getChegada() {

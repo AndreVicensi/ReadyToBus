@@ -57,6 +57,9 @@ public class EmpresaController {
 	@FXML
 	private Button btnSair;
 
+	@FXML
+	private Button btnCadastrarViagem;
+
 	private MetodosTelas tela = new MetodosTelas();
 
 	@FXML
@@ -75,6 +78,12 @@ public class EmpresaController {
 	void cadastrarRota(ActionEvent event) {
 
 		tela.carregarTela("/visual/TelaCadastroRota.fxml");
+	}
+
+	@FXML
+	void cadastrarViagem(ActionEvent event) {
+
+		tela.carregarTela("/visual/TelaCadastroViagem.fxml");
 	}
 
 	@FXML

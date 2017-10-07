@@ -120,4 +120,19 @@ public class ViagemJdbc implements ViagemDao {
 		return null;
 	}
 
+	@Override
+	public void alterarDiringindo(Viagem entidade, Boolean dirigindo) {
+		String update = "update viagem set dirigindo = ?  where idViagem = ?";
+		PreparedStatement updateStmt;
+		try {
+			updateStmt = conexao.get().prepareStatement(update);
+			updateStmt.setBoolean(1, dirigindo);
+			updateStmt.setInt(2, entidade.getIdViagem());
+			updateStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

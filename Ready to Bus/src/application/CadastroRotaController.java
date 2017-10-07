@@ -29,7 +29,7 @@ public class CadastroRotaController {
 
 	MetodosTelas tela = new MetodosTelas();
 	private MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
-	private static RotaDao rotaDao = DaoFactory.get().RotaDao();
+	private static RotaDao rotaDao = DaoFactory.get().rotaDao();
 	private Rota rota;
 	private Mensagens msg = new Mensagens();
 
