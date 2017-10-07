@@ -73,7 +73,8 @@ public class CadastroMotoristaController {
 	// MotoristaJdbc
 	@FXML
 	void onEditar(MouseEvent event) {
-		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED));
+		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED))
+			;
 
 		motorista = tblMotorista.getSelectionModel().getSelectedItem();
 		tfNomeMotorista.setText(motorista.getNome());
@@ -81,21 +82,27 @@ public class CadastroMotoristaController {
 		tfLogin.setText(motorista.getLogin());
 		pfSenha.setText(motorista.getSenha());
 		pfConfirmarSenha.setText(motorista.getSenha());
-
+		motorista.setEmpresa(AplicacaoSessao.empresa);
 
 		editando = true;
 	}
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		motorista = new Motorista(tfNomeMotorista.getText(), tfApelido.getText(), tfLogin.getText(), pfSenha.getText(),
-				AplicacaoSessao.empresa);
+		motorista.setNome(tfNomeMotorista.getText());
+		motorista.setApelido(tfApelido.getText());
+		motorista.setLogin(tfLogin.getText());
+		motorista.setSenha(pfSenha.getText());
+		motorista.setEmpresa(AplicacaoSessao.empresa);
 
 		if (editando) {
 			motoristaDao.alterar(motorista);
 			tblMotorista.refresh(); // atualiza
 
 		} else {
+			// motorista = new Motorista(tfNomeMotorista.getText(),
+			// tfApelido.getText(), tfLogin.getText(), pfSenha.getText(),
+			// AplicacaoSessao.empresa);
 			motoristaDao.inserir(motorista);
 			tblMotorista.getItems().add(motorista); // adiciona na lista
 		}

@@ -58,7 +58,7 @@ public class MotoristaJdbc implements MotoristaDao {
 
 	@Override
 	public void alterar(Motorista entidade) {
-		String update = "update motorista set nome = ?, apelido = ?, login = ?, senha = ? where idMotorista = ?";
+		String update = "update motorista set nome = ?, apelido = ?, login = ?, senha = ?, idEmpresa = ? where idMotorista = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -66,7 +66,9 @@ public class MotoristaJdbc implements MotoristaDao {
 			updateStmt.setString(2, entidade.getApelido());
 			updateStmt.setString(3, entidade.getLogin());
 			updateStmt.setString(4, entidade.getSenha());
-			updateStmt.setInt(5, entidade.getIdMotorista());
+			updateStmt.setInt(5, entidade.getEmpresa().getIdEmpresa());
+			updateStmt.setInt(6, entidade.getIdMotorista());
+
 			updateStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
