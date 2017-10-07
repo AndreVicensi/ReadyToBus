@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,29 +19,29 @@
                   <Image url="@../arquivos/estrada.jpg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="170.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="944.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="692.0" layoutX="170.0" layoutY="61.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="944.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
             <Label layoutX="11.0" layoutY="-3.0" text="Controle passageiro">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="btnVaiVolta" layoutX="185.0" layoutY="99.0" mnemonicParsing="false" onAction="#vaiVolta" prefHeight="298.0" prefWidth="446.0" style="-fx-background-color: #0c0;" text="VOU E VOLTO">
+            <Button fx:id="btnVaiVolta" layoutX="186.0" layoutY="137.0" mnemonicParsing="false" onAction="#vaiVolta" prefHeight="298.0" prefWidth="446.0" style="-fx-background-color: #0c0;" text="VOU E VOLTO">
                <font>
                   <Font size="48.0" />
                </font>
             </Button>
-            <Button fx:id="btnNaoVai" layoutX="183.0" layoutY="409.0" mnemonicParsing="false" onAction="#naoVai" prefHeight="298.0" prefWidth="450.0" style="-fx-background-color: #c00;" text="NÃO VOU">
+            <Button fx:id="btnNaoVai" layoutX="184.0" layoutY="447.0" mnemonicParsing="false" onAction="#naoVai" prefHeight="298.0" prefWidth="450.0" style="-fx-background-color: #c00;" text="NÃO VOU">
                <font>
                   <Font size="64.0" />
                </font>
             </Button>
-            <Button fx:id="btnSoVai" layoutX="647.0" layoutY="99.0" mnemonicParsing="false" onAction="#soVai" prefHeight="298.0" prefWidth="442.0" style="-fx-background-color: #00c;" text="SÓ VOU">
+            <Button fx:id="btnSoVai" layoutX="648.0" layoutY="137.0" mnemonicParsing="false" onAction="#soVai" prefHeight="298.0" prefWidth="442.0" style="-fx-background-color: #00c;" text="SÓ VOU">
                <font>
                   <Font size="64.0" />
                </font>
             </Button>
-            <Button fx:id="btnSoVolta" layoutX="645.0" layoutY="409.0" mnemonicParsing="false" onAction="#soVolta" prefHeight="298.0" prefWidth="442.0" style="-fx-background-color: #cc0;" text="SÓ VOLTO">
+            <Button fx:id="btnSoVolta" layoutX="646.0" layoutY="447.0" mnemonicParsing="false" onAction="#soVolta" prefHeight="298.0" prefWidth="442.0" style="-fx-background-color: #cc0;" text="SÓ VOLTO">
                <font>
                   <Font size="64.0" />
                </font>
@@ -49,6 +50,11 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
+            <ComboBox fx:id="cbxViagem" layoutX="338.0" layoutY="76.0" prefHeight="25.0" prefWidth="678.0" />
+            <Label layoutX="258.0" layoutY="74.0" text="Viagem">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
          </children>
       </Pane>
    </children>

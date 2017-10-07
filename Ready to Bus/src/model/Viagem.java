@@ -17,8 +17,6 @@ public class Viagem {
 
 	}
 
-
-
 	public Viagem(LocalDate data, LocalTime saida, LocalTime chegada, Boolean dirigindo, Rota rota) {
 		super();
 		this.data = data;
@@ -27,8 +25,6 @@ public class Viagem {
 		this.dirigindo = dirigindo;
 		this.rota = rota;
 	}
-
-
 
 	public LocalTime getChegada() {
 		return chegada;
@@ -77,5 +73,13 @@ public class Viagem {
 	public void setRota(Rota rota) {
 		this.rota = rota;
 	}
+
+	@Override
+	public String toString() {
+		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
+				+ ", dirigindo=" + dirigindo + ", rota=" + rota + "]";
+	}
+
+
 
 }

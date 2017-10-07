@@ -1,14 +1,19 @@
 
 package application;
 
+import dao.CrudDao;
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
+import dao.ViagemDao;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
+import model.Viagem;
 
 public class StatusPassageiroController {
 
@@ -27,9 +32,13 @@ public class StatusPassageiroController {
 	@FXML
 	private Button btnSair;
 
+	@FXML
+	private ComboBox<Viagem> cbxViagem;
+
 	private MetodosTelas tela = new MetodosTelas();
 
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
+	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
 	private Passageiro_Viagem passageiro_viagem;
 
@@ -37,7 +46,9 @@ public class StatusPassageiroController {
 
 		// passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro,
 		// AplicacaoSessao.passageiro.getViagem());
-		passageiroViagemDao.inserir(passageiro_viagem);
+		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+
+		//passageiroViagemDao.inserir(passageiro_viagem);
 	}
 
 	@FXML
