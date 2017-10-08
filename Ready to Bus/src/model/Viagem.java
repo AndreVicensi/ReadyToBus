@@ -77,7 +77,7 @@ public class Viagem {
 	@Override
 	public String toString() {
 		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
-				+ ", dirigindo=" + dirigindo + ", rota=" + rota +"]";
+				+ ", dirigindo=" + dirigindo + ", rota=" + rota+"]";
 	}
 
 
