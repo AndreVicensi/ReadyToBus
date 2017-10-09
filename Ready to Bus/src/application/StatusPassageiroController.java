@@ -1,7 +1,6 @@
 
 package application;
 
-import dao.CrudDao;
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
 import dao.ViagemDao;

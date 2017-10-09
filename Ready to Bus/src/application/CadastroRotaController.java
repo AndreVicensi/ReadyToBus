@@ -65,14 +65,11 @@ public class CadastroRotaController {
 
 	@FXML
 	void onEditar(MouseEvent event) {
-		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED))
-			;
+		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED));
 
 		rota = tblRotas.getSelectionModel().getSelectedItem();
 		tfNomeRota.setText(rota.getNome());
-		
-		cbxMotorista.setValue(rota.getMotorista());
-
+		cbxMotorista.setValue(rota.getMotorista());		
 		editando = true;
 	}
 

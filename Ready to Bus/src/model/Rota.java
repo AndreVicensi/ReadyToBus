@@ -28,6 +28,8 @@ public class Rota {
 		return motorista;
 	}
 
+
+
 	public void setMotorista(Motorista motorista) {
 		this.motorista = motorista;
 	}
