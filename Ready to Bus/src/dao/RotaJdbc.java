@@ -53,14 +53,14 @@ public class RotaJdbc implements RotaDao {
 
 	@Override
 	public void alterar(Rota entidade) {
-		String update = "update rota set idMotorista = ?,nome = ? where idRota = ?";
+		String update = "update rota set idMotorista = ?, nome = ? where idrota = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setInt(1, entidade.getMotorista().getIdMotorista());
 			updateStmt.setString(2, entidade.getNome());
-			updateStmt.executeUpdate();
 			updateStmt.setInt(3, entidade.getIdRota());
+			updateStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
