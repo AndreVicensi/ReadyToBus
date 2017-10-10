@@ -43,8 +43,8 @@ public class StatusPassageiroController {
 
 	public void initialize() {
 
-		// passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro,
-		// AplicacaoSessao.passageiro.getViagem());
+
+		passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro, cbxViagem.getValue());
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 
 		//passageiroViagemDao.inserir(passageiro_viagem);
