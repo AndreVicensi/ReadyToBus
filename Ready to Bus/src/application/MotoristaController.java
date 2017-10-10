@@ -47,11 +47,10 @@ public class MotoristaController {
 
 	@FXML
 	private Button btnSair;
-	
-	
 
 	private MetodosTelas tela = new MetodosTelas();
-	// private static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
+	// private static MotoristaDao motoristaDao =
+	// DaoFactory.get().motoristaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	public Viagem viagem;
 	private Image dirigindo = new Image("/arquivos/sim.png");
@@ -61,7 +60,7 @@ public class MotoristaController {
 	@FXML
 	void onChegada(ActionEvent event) {
 		// esses metodos criados no MotoristaFdbc nao tao funcionando
-		//viagemDao.alterarDiringindo(viagem, false);
+		// viagemDao.alterarDiringindo(viagem, false);
 		imgDirigindo.setImage(chegada);
 		viagem.setChegada(tempo);
 		viagemDao.alterarChegada(viagem, tempo);
@@ -69,15 +68,16 @@ public class MotoristaController {
 
 	@FXML
 	void onDirigir(ActionEvent event) {
-		//viagemDao.alterarDiringindo(viagem, true);
+		// viagemDao.alterarDiringindo(viagem, true);
 		imgDirigindo.setImage(dirigindo);
 		viagem.setSaida(tempo);
 		viagemDao.alterarSaida(viagem, tempo);
-		
+
 	}
 
 	@FXML
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
+
 }

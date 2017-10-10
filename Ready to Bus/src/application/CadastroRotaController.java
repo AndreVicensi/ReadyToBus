@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -68,9 +67,10 @@ public class CadastroRotaController {
 	void onEditar(MouseEvent event) {
 		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED));
 		rota = tblRotas.getSelectionModel().getSelectedItem();
+
 		tfNomeRota.setText(rota.getNome());
-		//pega o id mas nao pega mais nada;
-		
+		// pega o id mas nao pega mais nada;
+
 		cbxMotorista.setValue(rota.getMotorista());
 
 		editando = true;
