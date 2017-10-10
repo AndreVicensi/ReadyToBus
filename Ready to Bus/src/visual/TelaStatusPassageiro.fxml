@@ -50,7 +50,7 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <ComboBox fx:id="cbxViagem" layoutX="338.0" layoutY="76.0" prefHeight="25.0" prefWidth="678.0" />
+            <ComboBox fx:id="cbxViagem" layoutX="338.0" layoutY="76.0" onAction="#onSetarValor" prefHeight="25.0" prefWidth="678.0" />
             <Label layoutX="258.0" layoutY="74.0" text="Viagem">
                <font>
                   <Font name="System Bold" size="18.0" />

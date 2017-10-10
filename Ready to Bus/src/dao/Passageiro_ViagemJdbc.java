@@ -101,8 +101,9 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		return null;
 	}
 
-	public void alterarStatus(Passageiro entidade, Integer status) {
-		String update = "update passageiro_viagem set status = ?  where idPassageiro = " + entidade.getIdPassageiro();
+	public void alterarStatus(Passageiro entidade, Integer status, Viagem viagem) {
+		String update = "update passageiro_viagem set status = ?  where idPassageiro = " + entidade.getIdPassageiro() +
+				" and idViagem = " + viagem.getIdViagem();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);

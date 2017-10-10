@@ -42,32 +42,31 @@ public class StatusPassageiroController {
 	private Passageiro_Viagem passageiro_viagem;
 
 	public void initialize() {
-
-
-		passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro, cbxViagem.getValue());
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
-
-		//passageiroViagemDao.inserir(passageiro_viagem);
 	}
 
 	@FXML
 	void naoVai(ActionEvent event) {
-		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 2);
+		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 2, cbxViagem.getValue());
+		tela.carregarTela("/visual/TelaListaPassageiro.fxml");
 	}
 
 	@FXML
 	void soVai(ActionEvent event) {
-		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 3);
+		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 3, cbxViagem.getValue());
+		tela.carregarTela("/visual/TelaListaPassageiro.fxml");
 	}
 
 	@FXML
 	void soVolta(ActionEvent event) {
-		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 4);
+		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 4, cbxViagem.getValue());
+		tela.carregarTela("/visual/TelaListaPassageiro.fxml");
 	}
 
 	@FXML
 	void vaiVolta(ActionEvent event) {
-		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 1);
+		passageiroViagemDao.alterarStatus(AplicacaoSessao.passageiro, 1, cbxViagem.getValue());
+		tela.carregarTela("/visual/TelaListaPassageiro.fxml");
 	}
 
 	@FXML
@@ -75,4 +74,9 @@ public class StatusPassageiroController {
 		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
 
+    @FXML
+    void onSetarValor(ActionEvent event) {
+    	passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro, cbxViagem.getValue());
+		passageiroViagemDao.inserir(passageiro_viagem);
+    }
 }
