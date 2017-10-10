@@ -67,6 +67,7 @@ public class CadastroRotaController {
 	void onEditar(MouseEvent event) {
 		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED));
 		rota = tblRotas.getSelectionModel().getSelectedItem();
+		rota.setMotorista(cbxMotorista.getValue());
 		tfNomeRota.setText(rota.getNome());
 		//pega o id mas nao pega mais nada;
 		cbxMotorista.setValue(rota.getMotorista());
