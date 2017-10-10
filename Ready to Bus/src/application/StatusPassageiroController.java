@@ -78,5 +78,7 @@ public class StatusPassageiroController {
     void onSetarValor(ActionEvent event) {
     	passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro, cbxViagem.getValue());
 		passageiroViagemDao.inserir(passageiro_viagem);
+		AplicacaoSessao.viagem = cbxViagem.getValue();
+		AplicacaoSessao.passageiro_viagem = passageiro_viagem;
     }
 }
