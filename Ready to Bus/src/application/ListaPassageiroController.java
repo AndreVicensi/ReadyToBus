@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
 
@@ -49,13 +50,13 @@ public class ListaPassageiroController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 	
 	public void initialize() {
+		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
+		//tblLista.setItems(passageiroViagemDao.viewLista(AplicacaoSessao.passageiro, 
+				//AplicacaoSessao.passageiro_viagem).([]) collection.toArray(new [collection.size()]));
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("confirmacao"));
-		//como setar atributos de objetos diferentes num array list?
-		//tblLista.setItems(FXCollections.observableArrayList(
-		//passageiroViagemDao.viewLista(AplicacaoSessao.passageiro, AplicacaoSessao.passageiro_viagem));
 	}
 
 	@FXML
