@@ -127,21 +127,29 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	@Override
-	public void viewLista(Passageiro passageiro, Passageiro_Viagem passageiro_viagem) {
+	public List<Passageiro> Lista(Passageiro_Viagem passageiro_viagem) {
 		Statement stmt = null;
+		List<Passageiro> passageiros = new ArrayList<Passageiro>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from view_lista_passageiros";
+			String sql = "select * from passageiro join passageiro_viagem"
+					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "
+					+ passageiro_viagem.getViagem();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				passageiro.setNome(rs.getString("idNome"));
+				Passageiro passageiro = new Passageiro();
+				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
+				passageiro.setNome(rs.getString("nome"));
+				passageiro.setLogin(rs.getString("login"));
+				passageiro.setSenha(rs.getString("senha"));
+				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
-				passageiro_viagem.setStatus(rs.getInt("status"));
-				passageiro_viagem.setConfirmacao(rs.getBoolean("confirmacao"));
+				passageiros.add(passageiro);
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		return passageiros;
 	}
 
 }

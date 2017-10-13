@@ -2,6 +2,7 @@ package application;
 
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,15 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
+import model.Passageiro;
 import model.Passageiro_Viagem;
 
 public class ListaPassageiroController {
 
 	@FXML
-	private TableView<Passageiro_Viagem> tblLista;
+	private TableView<Passageiro> tblLista;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, String> tbcPassageiro;
@@ -26,10 +28,10 @@ public class ListaPassageiroController {
 	private TableColumn<Passageiro_Viagem, String> tbcTelefone;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, String> tbcStatus;
+	private TableColumn<Passageiro_Viagem, ImageView> tbcStatus;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, Image> tbcCheck;
+	private TableColumn<Passageiro_Viagem, ImageView> tbcCheck;
 
 	@FXML
 	private Button btnConfirmarEmbarque;
@@ -51,12 +53,11 @@ public class ListaPassageiroController {
 	
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
-		//tblLista.setItems(passageiroViagemDao.viewLista(AplicacaoSessao.passageiro, 
-				//AplicacaoSessao.passageiro_viagem).([]) collection.toArray(new [collection.size()]));
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("confirmacao"));
+		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
 	}
 
 	@FXML

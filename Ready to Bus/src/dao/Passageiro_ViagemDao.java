@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import model.Passageiro;
 import model.Passageiro_Viagem;
 import model.Viagem;
@@ -10,5 +12,5 @@ public interface Passageiro_ViagemDao  extends CrudDao<Passageiro_Viagem>{
 	
 	public void fazerCheck(Passageiro entidade, Boolean confirmacao);
 	
-	public void viewLista(Passageiro passageiro, Passageiro_Viagem passageiro_viagem);
+	public List<Passageiro> Lista(Passageiro_Viagem passageiro_viagem);
 }
