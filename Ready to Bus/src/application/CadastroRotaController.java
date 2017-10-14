@@ -69,8 +69,6 @@ public class CadastroRotaController {
 		rota = tblRotas.getSelectionModel().getSelectedItem();
 
 		tfNomeRota.setText(rota.getNome());
-		// pega o id mas nao pega mais nada;
-
 		cbxMotorista.setValue(rota.getMotorista());
 
 		editando = true;

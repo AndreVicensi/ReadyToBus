@@ -74,6 +74,31 @@ public class Motorista implements Usuario {
 	public String toString() {
 		return nome;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idMotorista;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Motorista other = (Motorista) obj;
+		if (idMotorista != other.idMotorista)
+			return false;
+		return true;
+	}
+
+
+
 	
 	
 

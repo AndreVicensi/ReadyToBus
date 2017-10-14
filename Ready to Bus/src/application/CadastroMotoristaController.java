@@ -138,4 +138,6 @@ public class CadastroMotoristaController {
 		motorista = new Motorista();
 		limparCampos();
 	}
+	
+
 }
