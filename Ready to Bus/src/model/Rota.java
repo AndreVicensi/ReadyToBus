@@ -1,6 +1,8 @@
 package model;
 
-public class Rota {
+import componente.RenderizaCombo;
+
+public class Rota implements RenderizaCombo {
 
 	private int idRota;
 	private Motorista motorista;
@@ -66,6 +68,11 @@ public class Rota {
 		if (idRota != other.idRota)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getText() {
+		return nome;
 	}
 
 

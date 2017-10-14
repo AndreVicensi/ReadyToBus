@@ -1,6 +1,8 @@
 
 package application;
 
+import componente.ListCellBean;
+import componente.StringConverterBean;
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
 import dao.ViagemDao;
@@ -39,12 +41,17 @@ public class StatusPassageiroController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
-
 	private Passageiro_Viagem passageiro_viagem;
 
-
-
+	
 	public void initialize() {
+
+		
+		cbxViagem.setCellFactory((comboBox) -> {
+			return new ListCellBean<Viagem>();
+		});
+
+		cbxViagem.setConverter(new StringConverterBean<>());
 
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 	}

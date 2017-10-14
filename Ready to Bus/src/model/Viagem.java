@@ -3,7 +3,9 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Viagem {
+import componente.RenderizaCombo;
+
+public class Viagem implements RenderizaCombo {
 
 	private int idViagem;
 	private LocalDate data;
@@ -102,6 +104,11 @@ public class Viagem {
 		if (idViagem != other.idViagem)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getText() {
+		return null;
 	}
 	
 	
