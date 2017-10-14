@@ -53,9 +53,17 @@ public class MotoristaController {
 	// DaoFactory.get().motoristaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	public Viagem viagem;
-	private Image dirigindo = new Image("/arquivos/sim.png");
-	private Image chegada = new Image("/arquivos/nao.png");
+
+	private Image dirigindo = new Image("/visual/sim.png");
+	private Image chegada = new Image("/visual/nao.png");
 	LocalTime tempo = LocalTime.now();
+	
+	
+
+	public void initialize() {
+		
+
+	}
 
 	@FXML
 	void onChegada(ActionEvent event) {

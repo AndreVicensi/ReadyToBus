@@ -15,7 +15,7 @@
          <children>
             <ImageView fitHeight="768.0" fitWidth="1280.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/estrada.jpg" />
+                  <Image url="@../../arquivos/estrada.jpg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="70.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
@@ -41,7 +41,7 @@
             <Button fx:id="btnVerLista1" layoutX="274.0" layoutY="516.0" mnemonicParsing="false" onAction="#verLista1" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
             <ImageView fx:id="imgDirigindo1" fitHeight="68.0" fitWidth="68.0" layoutX="355.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/nao.png" />
+                  <Image url="@../../arquivos/nao.png" />
                </image></ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="544.0" layoutY="218.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
             <Label fx:id="lRota2" layoutX="663.0" layoutY="252.0" text="Rota" />
@@ -50,7 +50,7 @@
             <Button fx:id="btnVerLista2" layoutX="616.0" layoutY="516.0" mnemonicParsing="false" onAction="#verLista2" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
             <ImageView fx:id="imgDirigindo2" fitHeight="68.0" fitWidth="68.0" layoutX="697.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/nao.png" />
+                  <Image url="@../../arquivos/nao.png" />
                </image></ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="883.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
             <Label fx:id="lRota3" layoutX="1002.0" layoutY="251.0" text="Rota" />

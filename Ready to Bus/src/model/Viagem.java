@@ -74,11 +74,37 @@ public class Viagem {
 		this.rota = rota;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
-				+ ", dirigindo=" + dirigindo + ", rota=" + rota.getNome()+"]";
+		return "idViagem=" + idViagem + ", saida=" + saida + ", chegada=" + chegada
+				+ ", rota=" + getRota().getIdRota();
 	}
+	// nao sei como pegar o nome da rota, só o id
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idViagem;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Viagem other = (Viagem) obj;
+		if (idViagem != other.idViagem)
+			return false;
+		return true;
+	}
+	
+	
 
 
 

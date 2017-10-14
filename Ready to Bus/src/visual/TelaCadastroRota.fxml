@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="768.0" fitWidth="1280.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/estrada.jpg" />
+                <Image url="@../../arquivos/estrada.jpg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />

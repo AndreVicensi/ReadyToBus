@@ -31,9 +31,9 @@ public class MetodosTelas {
 		Text texto = new Text();
 		stage.setScene(new Scene(new StackPane(texto)));
 		stage.setTitle("Importante");
-		texto.setText("True self é uma espécie de rede social offline\n\n\nCriado com o intuito de as pessoas"
-				+ " interagirem entre elas,\nfazendo comentários(bons ou ruins) uma sobre as outras\n\nDesenvolvido por acadêmicos da UNOESC- Xanxerê "
-				+ "do curso de\nTecnologia em Análise e Desenvolvimento de Sistemas - 3ª fase\n\nAndre Vicensi Uliana e João Victor Scanagatta\n\n\n\n TrueSelf® 2017");
+		texto.setText("ReadyToBus é um software desenvolvido para o\ncontrole de passageiros em ônibus escolares\n\n"
+				+ "As empresas tem uma enorme facilidade no controle de\nseus motoristas, passageiros e viagems\n\nDesenvolvido por acadêmicos da UNOESC- Xanxerê "
+				+ "do curso de\nTecnologia em Análise e Desenvolvimento de Sistemas - 4ª fase\n\nAndre Vicensi Uliana e João Victor Scanagatta\n\n\n\n TrueSelf® 2017");
 
 		stage.setWidth(390);
 		stage.setHeight(300);

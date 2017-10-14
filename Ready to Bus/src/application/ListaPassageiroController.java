@@ -62,7 +62,7 @@ public class ListaPassageiroController {
 
 	@FXML
 	void onAlterarStatus(ActionEvent event) {
-		
+		tela.carregarTela("/visual/TelaStatusPassageiro.fxml");
 	}
 
 	@FXML

@@ -76,8 +76,30 @@ public class Passageiro implements Usuario {
 
 	@Override
 	public String toString() {
-		return "Passageiro [idPassageiro=" + idPassageiro + ", nome=" + nome + ", login=" + login + ", senha=" + senha
-				+ ", cpf=" + cpf + ", telefone=" + telefone + "]";
+		return nome;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idPassageiro;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Passageiro other = (Passageiro) obj;
+		if (idPassageiro != other.idPassageiro)
+			return false;
+		return true;
+	}
+
+	
 }

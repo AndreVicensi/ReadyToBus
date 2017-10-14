@@ -51,8 +51,6 @@ public class Rota {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idRota;
-		result = prime * result + ((motorista == null) ? 0 : motorista.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
@@ -67,18 +65,10 @@ public class Rota {
 		Rota other = (Rota) obj;
 		if (idRota != other.idRota)
 			return false;
-		if (motorista == null) {
-			if (other.motorista != null)
-				return false;
-		} else if (!motorista.equals(other.motorista))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
 		return true;
 	}
+
+
 	
 	
 

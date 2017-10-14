@@ -39,9 +39,13 @@ public class StatusPassageiroController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
+
 	private Passageiro_Viagem passageiro_viagem;
 
+
+
 	public void initialize() {
+
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 	}
 
@@ -74,11 +78,11 @@ public class StatusPassageiroController {
 		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
 
-    @FXML
-    void onSetarValor(ActionEvent event) {
-    	passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro, cbxViagem.getValue());
+	@FXML
+	void onSetarValor(ActionEvent event) {
+		passageiro_viagem = new Passageiro_Viagem(AplicacaoSessao.passageiro, cbxViagem.getValue());
 		passageiroViagemDao.inserir(passageiro_viagem);
 		AplicacaoSessao.viagem = cbxViagem.getValue();
 		AplicacaoSessao.passageiro_viagem = passageiro_viagem;
-    }
+	}
 }

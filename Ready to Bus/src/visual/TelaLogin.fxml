@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="768.0" fitWidth="1280.0" layoutX="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/onibus.png" />
+                  <Image url="@../../arquivos/onibus.png" />
                </image>
             </ImageView>
             <Circle fill="#5d6165" layoutX="790.0" layoutY="458.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" />
