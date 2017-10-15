@@ -81,7 +81,7 @@ public class ListaPassageiroController {
 		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
 
-	public static void setViagem(Viagem value) {
+	public static void setViagem(Viagem viagem) {
 		ListaPassageiroController.viagem = viagem;
 		
 	}
