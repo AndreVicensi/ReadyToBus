@@ -22,10 +22,10 @@ public class ListaPassageiroController {
 	private TableView<Passageiro> tblLista;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, String> tbcPassageiro;
+	private TableColumn<Passageiro, String> tbcPassageiro;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, String> tbcTelefone;
+	private TableColumn<Passageiro, String> tbcTelefone;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, ImageView> tbcStatus;

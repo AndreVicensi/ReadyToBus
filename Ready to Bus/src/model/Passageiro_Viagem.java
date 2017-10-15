@@ -9,7 +9,6 @@ public class Passageiro_Viagem {
 
 	public Passageiro_Viagem() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Passageiro_Viagem(Passageiro passageiro, Viagem viagem) {

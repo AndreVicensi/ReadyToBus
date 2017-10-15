@@ -87,7 +87,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				passageiro_Viagem.setViagem(viagem);
 				passageiro_Viagem.setStatus(rs.getInt("status"));
 				passageiro_Viagem.setConfirmacao(rs.getBoolean("confirmacao"));
-				lista.add(passageiro_Viagem);
+				lista.add(passageiro_Viagem);			
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -134,7 +134,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro join passageiro_viagem"
 					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "
-					+ passageiro_viagem.getViagem();
+					+ passageiro_viagem.getViagem().getIdViagem();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro passageiro = new Passageiro();
