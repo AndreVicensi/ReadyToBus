@@ -76,13 +76,13 @@ public class Viagem implements RenderizaCombo {
 		this.rota = rota;
 	}
 
+	// nao sei como pegar o nome da rota, só o id
 
 	@Override
 	public String toString() {
-		return "idViagem=" + idViagem + ", saida=" + saida + ", chegada=" + chegada
-				+ ", rota=" + getRota().getIdRota();
+		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
+				+ ", dirigindo=" + dirigindo + ", rota=" + rota + "]";
 	}
-	// nao sei como pegar o nome da rota, só o id
 
 	@Override
 	public int hashCode() {
@@ -108,12 +108,8 @@ public class Viagem implements RenderizaCombo {
 
 	@Override
 	public String getText() {
-		return null;
+		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
+				+ ", dirigindo=" + dirigindo + ", rota=" + rota.getIdRota() + "]";
 	}
-	
-	
-
-
-
 
 }

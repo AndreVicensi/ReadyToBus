@@ -15,6 +15,7 @@ import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Passageiro;
 import model.Passageiro_Viagem;
+import model.Viagem;
 
 public class ListaPassageiroController {
 
@@ -25,7 +26,7 @@ public class ListaPassageiroController {
 	private TableColumn<Passageiro, String> tbcPassageiro;
 
 	@FXML
-	private TableColumn<Passageiro, String> tbcTelefone;
+	private TableColumn<Passageiro, Integer> tbcTelefone;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, ImageView> tbcStatus;
@@ -47,12 +48,17 @@ public class ListaPassageiroController {
 
 	@FXML
 	private Button btnSair;
+	
+	public static Boolean temViagem = true;
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
+
+	private static Viagem viagem;
 	
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
+		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
@@ -73,6 +79,15 @@ public class ListaPassageiroController {
 	@FXML
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
+	}
+
+	public static void setViagem(Viagem value) {
+		ListaPassageiroController.viagem = viagem;
+		
+	}
+	
+	public static Viagem getViagem() {
+		return viagem;
 	}
 
 }
