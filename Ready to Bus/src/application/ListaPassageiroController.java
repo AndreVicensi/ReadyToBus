@@ -29,7 +29,7 @@ public class ListaPassageiroController {
 	private TableColumn<Passageiro, Integer> tbcTelefone;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, ImageView> tbcStatus;
+	private TableColumn<Passageiro_Viagem, Integer> tbcStatus;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, ImageView> tbcCheck;

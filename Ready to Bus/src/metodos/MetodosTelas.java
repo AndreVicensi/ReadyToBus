@@ -32,18 +32,18 @@ public class MetodosTelas {
 		stage.setScene(new Scene(new StackPane(texto)));
 		stage.setTitle("Importante");
 		texto.setText("ReadyToBus é um software desenvolvido para o\ncontrole de passageiros em ônibus escolares\n\n"
-				+ "As empresas tem uma enorme facilidade no controle de\nseus motoristas, passageiros e viagems\n\nDesenvolvido por acadêmicos da UNOESC- Xanxerê "
-				+ "do curso de\nTecnologia em Análise e Desenvolvimento de Sistemas - 4ª fase\n\nAndre Vicensi Uliana e João Victor Scanagatta\n\n\n\n TrueSelf® 2017");
+				+ "As empresas tem uma enorme facilidade no controle de\nseus motoristas, passageiros e viagens\n\nDesenvolvido por acadêmicos da UNOESC- Xanxerê "
+				+ "do curso de\nTecnologia em Análise e Desenvolvimento de Sistemas - 4ª fase\n\nAndre Vicensi Uliana e João Victor Scanagatta\n\n\n\n ReadyToBus® 2017");
 
 		stage.setWidth(390);
 		stage.setHeight(300);
 		stage.show();
 	}
 
-	
 	/*
-	 * funciona so que o burro do eclipse abre o codigo html ao inves do site no navegador
-	 * */
+	 * funciona so que o burro do eclipse abre o codigo html ao inves do site no
+	 * navegador
+	 */
 	public void abrirSite(String endereco) {
 		BufferedReader br;
 		try {
