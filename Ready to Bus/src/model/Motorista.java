@@ -97,11 +97,4 @@ public class Motorista implements Usuario {
 		return true;
 	}
 
-
-
-	
-	
-
-
-
 }
