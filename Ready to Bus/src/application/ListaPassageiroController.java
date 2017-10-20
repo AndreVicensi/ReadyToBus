@@ -63,12 +63,13 @@ public class ListaPassageiroController {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
 		//pegar o get motorista do MotoristaJdbc
 		lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getNome());
+		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getApelido());
+		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getApelido());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("confirmacao"));
 		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("imagemCheck"));
 		tbcCheck.setCellFactory(new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 			@Override
 			public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
