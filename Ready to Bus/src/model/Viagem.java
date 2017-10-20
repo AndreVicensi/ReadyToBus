@@ -109,7 +109,7 @@ public class Viagem implements RenderizaCombo {
 	@Override
 	public String getText() {
 		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
-				+ ", dirigindo=" + dirigindo + ", rota=" + rota.getIdRota() + "]";
+				+ ", dirigindo=" + dirigindo + ", rota=" + rota.getNome() + "]";
 	}
 
 }

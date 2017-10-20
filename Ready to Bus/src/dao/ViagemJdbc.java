@@ -82,7 +82,7 @@ public class ViagemJdbc implements ViagemDao {
 		List<Viagem> viagems = new ArrayList<Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from viagem";
+			String sql = "select v.*, r.nome from viagem v join rota r on v.idrota = r.idrota ";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
@@ -93,6 +93,7 @@ public class ViagemJdbc implements ViagemDao {
 				
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
+				rota.setNome(rs.getString("nome"));
 				viagem.setRota(rota);
 				viagems.add(viagem);
 			}
