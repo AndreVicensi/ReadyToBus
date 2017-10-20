@@ -16,20 +16,19 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
-import model.Passageiro;
 import model.Passageiro_Viagem;
 import model.Viagem;
 
 public class ListaPassageiroController {
 
 	@FXML
-	private TableView<Passageiro> tblLista;
+	private TableView<Passageiro_Viagem> tblLista;
 
 	@FXML
-	private TableColumn<Passageiro, String> tbcPassageiro;
+	private TableColumn<Passageiro_Viagem, String> tbcPassageiro;
 
 	@FXML
-	private TableColumn<Passageiro, Integer> tbcTelefone;
+	private TableColumn<Passageiro_Viagem, Integer> tbcTelefone;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, Integer> tbcStatus;
@@ -62,13 +61,11 @@ public class ListaPassageiroController {
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
 		//pegar o get motorista do MotoristaJdbc
-		lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getNome());
-		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getApelido());
-		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getApelido());
+		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("confirmacao"));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
 		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
 		tbcCheck.setCellFactory(new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 			@Override

@@ -127,9 +127,9 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	@Override
-	public List<Passageiro> Lista(Passageiro_Viagem passageiro_viagem) {
+	public List<Passageiro_Viagem> Lista(Passageiro_Viagem passageiro_viagem) {
 		Statement stmt = null;
-		List<Passageiro> passageiros = new ArrayList<Passageiro>();
+		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro join passageiro_viagem"
@@ -137,6 +137,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 					+ passageiro_viagem.getViagem().getIdViagem();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
+				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
 				Passageiro passageiro = new Passageiro();
 				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
 				passageiro.setNome(rs.getString("nome"));
@@ -144,7 +145,10 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				passageiro.setSenha(rs.getString("senha"));
 				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
-				passageiros.add(passageiro);
+				passageiroViagem.setPassageiro(passageiro);
+				passageiroViagem.setStatus(rs.getInt("status"));
+				passageiroViagem.setConfirmacao(rs.getBoolean("confirmacao"));
+				passageiros.add(passageiroViagem);
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
