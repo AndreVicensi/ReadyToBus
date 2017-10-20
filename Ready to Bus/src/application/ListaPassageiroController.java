@@ -64,7 +64,7 @@ public class ListaPassageiroController {
 		// pegar o get motorista do MotoristaJdbc
 		pv = passageiroViagemDao.get(AplicacaoSessao.viagem.getIdViagem(),
 				AplicacaoSessao.passageiro.getIdPassageiro());
-		lApelidoMotorista.setText(pv.getViagem().getRota().getMotorista().getNome());
+		//lApelidoMotorista.setText(pv.getViagem().getRota().getMotorista().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
