@@ -4,11 +4,33 @@ public class Passageiro_Viagem {
 
 	private Passageiro passageiro;
 	private Viagem viagem;
+	private Integer idViagem;
+	private Integer idPassageiro;
 	private int status;
 	private boolean confirmacao;
 
 	public Passageiro_Viagem() {
 		super();
+	}
+
+	public Integer getIdViagem() {
+		return idViagem;
+	}
+
+	public void setIdViagem(Integer idViagem) {
+		this.idViagem = idViagem;
+	}
+
+	public Integer getIdPassageiro() {
+		return idPassageiro;
+	}
+
+	public void setIdPassageiro(Integer idPassageiro) {
+		this.idPassageiro = idPassageiro;
+	}
+
+	public void setViagem(Viagem viagem) {
+		this.viagem = viagem;
 	}
 
 	public Passageiro_Viagem(Passageiro passageiro, Viagem viagem) {
@@ -29,10 +51,6 @@ public class Passageiro_Viagem {
 		return viagem;
 	}
 
-	public void setViagem(Viagem viagem) {
-		this.viagem = viagem;
-	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -48,6 +66,5 @@ public class Passageiro_Viagem {
 	public void setConfirmacao(boolean confirmacao) {
 		this.confirmacao = confirmacao;
 	}
-	
-	
+
 }

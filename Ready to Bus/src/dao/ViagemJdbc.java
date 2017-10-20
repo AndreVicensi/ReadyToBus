@@ -21,7 +21,7 @@ public class ViagemJdbc implements ViagemDao {
 	public ViagemJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
-	
+
 	private RotaJdbc rotaJdbc = new RotaJdbc(conexao);
 
 	@Override
@@ -90,7 +90,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
-				
+
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
 				rota.setNome(rs.getString("nome"));
@@ -117,7 +117,7 @@ public class ViagemJdbc implements ViagemDao {
 			viagem.setChegada(rs.getTime("chegada").toLocalTime());
 			viagem.setRota(rotaJdbc.get(rs.getInt("idrota")));
 			viagem.setDirigindo(rs.getBoolean("dirigindo"));
-			
+
 			return viagem;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -139,7 +139,7 @@ public class ViagemJdbc implements ViagemDao {
 		}
 
 	}
-	
+
 	@Override
 	public void alterarSaida(Viagem entidade, LocalTime data) {
 		String update = "update viagem set saida = ? where idViagem = ?";
@@ -153,7 +153,7 @@ public class ViagemJdbc implements ViagemDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void alterarChegada(Viagem entidade, LocalTime data) {
 		String update = "update viagem set chegada = ? where idViagem = ?";
@@ -167,6 +167,5 @@ public class ViagemJdbc implements ViagemDao {
 			e.printStackTrace();
 		}
 	}
-
 
 }

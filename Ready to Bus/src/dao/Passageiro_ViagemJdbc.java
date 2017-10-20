@@ -9,8 +9,10 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
+import model.Motorista;
 import model.Passageiro;
 import model.Passageiro_Viagem;
+import model.Rota;
 import model.Viagem;
 
 public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
@@ -20,6 +22,10 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	public Passageiro_ViagemJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
+
+	private RotaJdbc rotaJdbc = new RotaJdbc(conexao);
+	private MotoristaJdbc motoristaJdbc = new MotoristaJdbc(conexao);
+	private EmpresaJdbc empresaJdbc = new EmpresaJdbc(conexao);
 
 	@Override
 	public void inserir(Passageiro_Viagem entidade) {
@@ -87,7 +93,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				passageiro_Viagem.setViagem(viagem);
 				passageiro_Viagem.setStatus(rs.getInt("status"));
 				passageiro_Viagem.setConfirmacao(rs.getBoolean("confirmacao"));
-				lista.add(passageiro_Viagem);			
+				lista.add(passageiro_Viagem);
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -96,14 +102,63 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	@Override
-	public Passageiro_Viagem get(Integer codigo) {
-		// TODO Auto-generated method stub
+	public Passageiro_Viagem get(Integer codigoViagem, Integer codigoPassageiro) {
+		Statement stmt = null;
+		try {
+			//esse select funciona, nao apaga
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select * from passageiro_viagem pv join passageiro p on pv.idpassageiro = p.idpassageiro "
+					+ "join viagem v on v.idviagem = pv.idviagem  join rota r on r.idrota = v.idrota "
+					+ "join motorista m on m.idmotorista = r.idmotorista " + "where pv.idviagem= " + codigoViagem
+					+ " and pv.idpassageiro= " + codigoPassageiro;
+			ResultSet rs = stmt.executeQuery(sql);
+			Passageiro_Viagem passageiro_viagem = new Passageiro_Viagem();
+			Passageiro passageiro = new Passageiro();
+			passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
+			passageiro.setNome(rs.getString("nome"));
+			passageiro.setLogin(rs.getString("login"));
+			passageiro.setSenha(rs.getString("senha"));
+			passageiro.setCpf(rs.getString("cpf"));
+			passageiro.setTelefone(rs.getString("telefone"));
+			
+			Viagem viagem = new Viagem();
+			viagem.setIdViagem(rs.getInt("idViagem"));
+			viagem.setData(rs.getDate("data").toLocalDate());
+			viagem.setSaida(rs.getTime("saida").toLocalTime());
+			viagem.setChegada(rs.getTime("chegada").toLocalTime());
+
+			viagem.setDirigindo(rs.getBoolean("dirigindo"));
+			Rota rota = new Rota();
+			rota.setIdRota(rs.getInt("idRota"));
+			rota.setNome(rs.getString("nome"));
+
+			passageiro_viagem.setIdViagem(rs.getInt("pv.idViagem"));
+			passageiro_viagem.setIdPassageiro(rs.getInt("pv.idpassageiro"));
+			passageiro_viagem.setStatus(rs.getInt("status"));
+			passageiro_viagem.setConfirmacao(rs.getBoolean("confirmacao"));
+			
+			Motorista motorista = new Motorista();
+			motorista.setIdMotorista(rs.getInt("idMotorista"));
+			motorista.setNome(rs.getString("nome"));
+			motorista.setApelido(rs.getString("apelido"));
+			motorista.setLogin(rs.getString("login"));
+			motorista.setSenha(rs.getString("senha"));
+			
+			passageiro_viagem.setPassageiro(passageiro);
+			passageiro_viagem.setViagem(viagem);
+			rota.setMotorista(motorista);
+			viagem.setRota(rota);
+
+			return passageiro_viagem;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		return null;
 	}
 
 	public void alterarStatus(Passageiro entidade, Integer status, Viagem viagem) {
-		String update = "update passageiro_viagem set status = ?  where idPassageiro = " + entidade.getIdPassageiro() +
-				" and idViagem = " + viagem.getIdViagem();
+		String update = "update passageiro_viagem set status = ?  where idPassageiro = " + entidade.getIdPassageiro()
+				+ " and idViagem = " + viagem.getIdViagem();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -115,7 +170,8 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	public void fazerCheck(Passageiro entidade, Boolean confirmacao) {
-		String update = "update passageiro_viagem set confimacao = ?  where idPassageiro = " + entidade.getIdPassageiro();
+		String update = "update passageiro_viagem set confimacao = ?  where idPassageiro = "
+				+ entidade.getIdPassageiro();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -154,6 +210,12 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			e1.printStackTrace();
 		}
 		return passageiros;
+	}
+
+	@Override
+	public Passageiro_Viagem get(Integer codigo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

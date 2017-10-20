@@ -50,40 +50,45 @@ public class ListaPassageiroController {
 
 	@FXML
 	private Button btnSair;
-	
+
 	public static Boolean temViagem = true;
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 
 	private static Viagem viagem;
-	
+	private static Passageiro_Viagem pv;
+
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
-		//pegar o get motorista do MotoristaJdbc
-		//lApelidoMotorista.setText(AplicacaoSessao.viagem.getRota().getMotorista().getNome());
+		// pegar o get motorista do MotoristaJdbc
+		pv = passageiroViagemDao.get(AplicacaoSessao.viagem.getIdViagem(),
+				AplicacaoSessao.passageiro.getIdPassageiro());
+		lApelidoMotorista.setText(pv.getViagem().getRota().getMotorista().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
-		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
-		tbcCheck.setCellFactory(new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
-			@Override
-			public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
-				final ImageView imageView = new ImageView();
-				TableCell<Passageiro_Viagem, Image> cell = new TableCell<Passageiro_Viagem, Image>() {
-					protected void updateItem(Image item, boolean empty) {
-						if (item != null) {
-							imageView.setFitHeight(20);
-							imageView.setFitWidth(20);
-							imageView.setImage(item);
-						}
+		tblLista.setItems(
+				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
+		tbcCheck.setCellFactory(
+				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
+					@Override
+					public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
+						final ImageView imageView = new ImageView();
+						TableCell<Passageiro_Viagem, Image> cell = new TableCell<Passageiro_Viagem, Image>() {
+							protected void updateItem(Image item, boolean empty) {
+								if (item != null) {
+									imageView.setFitHeight(20);
+									imageView.setFitWidth(20);
+									imageView.setImage(item);
+								}
+							}
+						};
+						cell.setGraphic(imageView);
+						return cell;
 					}
-				};
-				cell.setGraphic(imageView);
-				return cell;
-			}
-		});
+				});
 	}
 
 	@FXML
@@ -103,9 +108,9 @@ public class ListaPassageiroController {
 
 	public static void setViagem(Viagem viagem) {
 		ListaPassageiroController.viagem = viagem;
-		
+
 	}
-	
+
 	public static Viagem getViagem() {
 		return viagem;
 	}
