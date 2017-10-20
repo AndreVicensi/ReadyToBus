@@ -80,8 +80,7 @@ public class Viagem implements RenderizaCombo {
 
 	@Override
 	public String toString() {
-		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
-				+ ", dirigindo=" + dirigindo + ", rota=" + rota + "]";
+		return "Viagem " + rota.getNome() + " data=" + data + ", saida=" + saida;
 	}
 
 	@Override
@@ -108,8 +107,7 @@ public class Viagem implements RenderizaCombo {
 
 	@Override
 	public String getText() {
-		return "Viagem [idViagem=" + idViagem + ", data=" + data + ", saida=" + saida + ", chegada=" + chegada
-				+ ", dirigindo=" + dirigindo + ", rota=" + rota.getNome() + "]";
+		return "Viagem " + rota.getNome() + " data=" + data + ", saida=" + saida;
 	}
 
 }
