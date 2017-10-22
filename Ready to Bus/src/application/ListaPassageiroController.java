@@ -65,8 +65,8 @@ public class ListaPassageiroController {
 		pv = passageiroViagemDao.get(AplicacaoSessao.viagem.getIdViagem(),
 				AplicacaoSessao.passageiro.getIdPassageiro());
 		//lApelidoMotorista.setText(pv.getViagem().getRota().getMotorista().getNome());
-		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
+		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>(""));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
 		tblLista.setItems(
@@ -98,7 +98,6 @@ public class ListaPassageiroController {
 
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
-
 	}
 
 	@FXML

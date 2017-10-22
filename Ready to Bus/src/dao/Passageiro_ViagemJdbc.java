@@ -105,7 +105,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	public Passageiro_Viagem get(Integer codigoViagem, Integer codigoPassageiro) {
 		Statement stmt = null;
 		try {
-			//esse select funciona, nao apaga
+			// esse select funciona, nao apaga
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro_viagem pv join passageiro p on pv.idpassageiro = p.idpassageiro "
 					+ "join viagem v on v.idviagem = pv.idviagem  join rota r on r.idrota = v.idrota "
@@ -120,7 +120,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			passageiro.setSenha(rs.getString("senha"));
 			passageiro.setCpf(rs.getString("cpf"));
 			passageiro.setTelefone(rs.getString("telefone"));
-			
+
 			Viagem viagem = new Viagem();
 			viagem.setIdViagem(rs.getInt("idViagem"));
 			viagem.setData(rs.getDate("data").toLocalDate());
@@ -136,14 +136,14 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			passageiro_viagem.setIdPassageiro(rs.getInt("pv.idpassageiro"));
 			passageiro_viagem.setStatus(rs.getInt("status"));
 			passageiro_viagem.setConfirmacao(rs.getBoolean("confirmacao"));
-			
+
 			Motorista motorista = new Motorista();
 			motorista.setIdMotorista(rs.getInt("idMotorista"));
 			motorista.setNome(rs.getString("nome"));
 			motorista.setApelido(rs.getString("apelido"));
 			motorista.setLogin(rs.getString("login"));
 			motorista.setSenha(rs.getString("senha"));
-			
+
 			passageiro_viagem.setPassageiro(passageiro);
 			passageiro_viagem.setViagem(viagem);
 			rota.setMotorista(motorista);
@@ -188,7 +188,8 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from passageiro join passageiro_viagem"
+			String sql = "select passageiro.idPassageiro,nome, telefone, status, confirmacao "
+					+ "from passageiro join passageiro_viagem"
 					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "
 					+ passageiro_viagem.getViagem().getIdViagem();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -197,9 +198,6 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 				Passageiro passageiro = new Passageiro();
 				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
 				passageiro.setNome(rs.getString("nome"));
-				passageiro.setLogin(rs.getString("login"));
-				passageiro.setSenha(rs.getString("senha"));
-				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
 				passageiroViagem.setPassageiro(passageiro);
 				passageiroViagem.setStatus(rs.getInt("status"));
