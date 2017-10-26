@@ -64,6 +64,7 @@ public class ListaPassageiroController {
 
 		// abaixo consigo pegar o nome da rota, mas se tento pegar o nome do
 		// motorista nao da
+		
 		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		// aqui acima ele está pegando o toString do passageiro, por isso nao
