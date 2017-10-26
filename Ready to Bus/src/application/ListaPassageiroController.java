@@ -28,7 +28,7 @@ public class ListaPassageiroController {
 	private TableColumn<Passageiro_Viagem, String> tbcPassageiro;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, Integer> tbcTelefone;
+	private TableColumn<Passageiro_Viagem, String> tbcTelefone;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, Integer> tbcStatus;
@@ -57,16 +57,18 @@ public class ListaPassageiroController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 
 	private static Viagem viagem;
-	private static Passageiro_Viagem pv;
 
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
 		// pegar o get motorista do MotoristaJdbc
-		pv = passageiroViagemDao.get(AplicacaoSessao.viagem.getIdViagem(),
-				AplicacaoSessao.passageiro.getIdPassageiro());
-		//lApelidoMotorista.setText(pv.getViagem().getRota().getMotorista().getNome());
+
+		// abaixo consigo pegar o nome da rota, mas se tento pegar o nome do
+		// motorista nao da
+		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
-		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>(""));
+		// aqui acima ele está pegando o toString do passageiro, por isso nao
+		// consegue por do telefone
+		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
 		tblLista.setItems(

@@ -23,10 +23,6 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		this.conexao = conexao;
 	}
 
-	private RotaJdbc rotaJdbc = new RotaJdbc(conexao);
-	private MotoristaJdbc motoristaJdbc = new MotoristaJdbc(conexao);
-	private EmpresaJdbc empresaJdbc = new EmpresaJdbc(conexao);
-
 	@Override
 	public void inserir(Passageiro_Viagem entidade) {
 		String insert = "insert into passageiro_viagem(idViagem,idPassageiro) values (?,?)";
@@ -102,15 +98,14 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	@Override
-	public Passageiro_Viagem get(Integer codigoViagem, Integer codigoPassageiro) {
+	public Passageiro_Viagem get(Integer codigoPassageiro) {
 		Statement stmt = null;
 		try {
 			// esse select funciona, nao apaga
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro_viagem pv join passageiro p on pv.idpassageiro = p.idpassageiro "
 					+ "join viagem v on v.idviagem = pv.idviagem  join rota r on r.idrota = v.idrota "
-					+ "join motorista m on m.idmotorista = r.idmotorista " + "where pv.idviagem= " + codigoViagem
-					+ " and pv.idpassageiro= " + codigoPassageiro;
+					+ "join motorista m on m.idmotorista = r.idmotorista " + "where pv.idpassageiro ="+codigoPassageiro;
 			ResultSet rs = stmt.executeQuery(sql);
 			Passageiro_Viagem passageiro_viagem = new Passageiro_Viagem();
 			Passageiro passageiro = new Passageiro();
@@ -188,7 +183,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select passageiro.idPassageiro,nome, telefone, status, confirmacao "
+			String sql = "select passageiro.idPassageiro, passageiro.nome, passageiro.telefone, status, confirmacao "
 					+ "from passageiro join passageiro_viagem"
 					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "
 					+ passageiro_viagem.getViagem().getIdViagem();
@@ -210,10 +205,6 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		return passageiros;
 	}
 
-	@Override
-	public Passageiro_Viagem get(Integer codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

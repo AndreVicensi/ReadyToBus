@@ -76,7 +76,7 @@ public class Passageiro implements Usuario {
 
 	@Override
 	public String toString() {
-		return nome;
+		return nome +" "+ telefone;
 	}
 
 	@Override
