@@ -66,5 +66,9 @@ public class Passageiro_Viagem {
 	public void setConfirmacao(boolean confirmacao) {
 		this.confirmacao = confirmacao;
 	}
+	
+	public String getTelefoneNumero() {
+		return passageiro.getTelefone();
+	}
 
 }
