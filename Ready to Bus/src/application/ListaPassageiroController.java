@@ -68,6 +68,7 @@ public class ListaPassageiroController {
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		// aqui acima ele está pegando o toString do passageiro, por isso nao
 		// consegue por do telefone
+		//isso eu ja sabia!!!
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
