@@ -1,15 +1,21 @@
 package metodos;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Viagem;
 import visual.Main;
 
 public class MetodosTelas {
@@ -57,4 +63,27 @@ public class MetodosTelas {
 			e.printStackTrace();
 		}
 	}
+	
+	public void carregarImagem(ImageView imagem, Viagem viagem) {
+		InputStream input;
+		Image img;
+		if(viagem.getDirigindo() == true) {
+			try {
+				input = new  FileInputStream("/Ready to Bus/arquivos/nao.png");
+				img = new Image(input);
+				imagem.setImage(img);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				input = new  FileInputStream("/Ready to Bus/arquivos/sim.png");
+				img = new Image(input);
+				imagem.setImage(img);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }
