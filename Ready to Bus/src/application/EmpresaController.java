@@ -61,6 +61,10 @@ public class EmpresaController {
 	private Button btnCadastrarViagem;
 
 	private MetodosTelas tela = new MetodosTelas();
+	
+	public void initialize() {
+		//tela.carregarImagem(imgDirigindo1, viagem);
+	}
 
 	@FXML
 	void cadastrarMotorista(ActionEvent event) {

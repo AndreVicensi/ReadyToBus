@@ -69,7 +69,7 @@ public class MetodosTelas {
 		Image img;
 		if(viagem.getDirigindo() == true) {
 			try {
-				input = new  FileInputStream("/Ready to Bus/arquivos/nao.png");
+				input = new  FileInputStream("/Ready to Bus/arquivos/sim.png");
 				img = new Image(input);
 				imagem.setImage(img);
 			} catch (FileNotFoundException e) {
@@ -77,7 +77,7 @@ public class MetodosTelas {
 			}
 		} else {
 			try {
-				input = new  FileInputStream("/Ready to Bus/arquivos/sim.png");
+				input = new  FileInputStream("/Ready to Bus/arquivos/nao.png");
 				img = new Image(input);
 				imagem.setImage(img);
 			} catch (FileNotFoundException e) {

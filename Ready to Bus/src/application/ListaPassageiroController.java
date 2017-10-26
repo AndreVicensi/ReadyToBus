@@ -67,10 +67,7 @@ public class ListaPassageiroController {
 		
 		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getNome());
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
-		// aqui acima ele está pegando o toString do passageiro, por isso nao
-		// consegue por do telefone
-		//isso eu ja sabia!!!
-		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
 		tblLista.setItems(
