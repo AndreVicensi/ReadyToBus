@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
+import model.Motorista;
 import model.Rota;
 import model.Viagem;
 
@@ -82,7 +83,8 @@ public class ViagemJdbc implements ViagemDao {
 		List<Viagem> viagems = new ArrayList<Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select v.*, r.nome from viagem v join rota r on v.idrota = r.idrota ";
+			String sql = "select v.*, r.nome, m.idmotorista, m.nome  from viagem v join rota r on v.idrota = r.idrota "
+					+ "join motorista m on r.idmotorista = m.idmotorista";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
@@ -94,6 +96,12 @@ public class ViagemJdbc implements ViagemDao {
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
 				rota.setNome(rs.getString("nome"));
+
+				Motorista motorista = new Motorista();
+				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				motorista.setNome(rs.getString("m.nome"));
+
+				rota.setMotorista(motorista);
 				viagem.setRota(rota);
 				viagems.add(viagem);
 			}

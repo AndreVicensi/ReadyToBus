@@ -60,12 +60,12 @@ public class ListaPassageiroController {
 
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
-		// pegar o get motorista do MotoristaJdbc
 
 		// abaixo consigo pegar o nome da rota, mas se tento pegar o nome do
 		// motorista nao da
+		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getMotorista().getNome());
 		
-		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getNome());
+		
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
