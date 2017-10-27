@@ -59,7 +59,7 @@
             <Button fx:id="btnVerLista3" layoutX="955.0" layoutY="516.0" mnemonicParsing="false" onAction="#verLista3" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
             <ImageView fx:id="imgDirigindo3" fitHeight="68.0" fitWidth="68.0" layoutX="1036.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../arquivos/nao.png" />
+                  <Image url="@nao.png" />
                </image></ImageView>
             <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
                <font>

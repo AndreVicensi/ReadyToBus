@@ -100,6 +100,7 @@ public class RotaJdbc implements RotaDao {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from rota where idRota = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
 			Rota rota = new Rota();
 			rota.setIdRota(rs.getInt("idRota"));
 			rota.setNome(rs.getString("nome"));
