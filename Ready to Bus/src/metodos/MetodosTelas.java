@@ -64,25 +64,17 @@ public class MetodosTelas {
 		}
 	}
 	
-	public void carregarImagem(ImageView imagem, Viagem viagem) {
+	public void carregarImagem(ImageView imagem, Boolean dirigindo) {
 		InputStream input;
 		Image img;
-		if(viagem.getDirigindo() == true) {
-			try {
-				input = new  FileInputStream("/Ready to Bus/arquivos/sim.png");
-				img = new Image(input);
-				imagem.setImage(img);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+		if(dirigindo == true) {
+			input = getClass().getResourceAsStream("/visual/sim.png");
+			img = new Image(input);
+			imagem.setImage(img);
 		} else {
-			try {
-				input = new  FileInputStream("/Ready to Bus/arquivos/nao.png");
-				img = new Image(input);
-				imagem.setImage(img);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			input = getClass().getResourceAsStream("/visual/nao.png");
+			img = new Image(input);
+			imagem.setImage(img);
 		}
 	}
 	

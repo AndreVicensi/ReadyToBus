@@ -1,5 +1,7 @@
 package application;
 
+import dao.DaoFactory;
+import dao.ViagemDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -61,9 +63,12 @@ public class EmpresaController {
 	private Button btnCadastrarViagem;
 
 	private MetodosTelas tela = new MetodosTelas();
+	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	
 	public void initialize() {
-		//tela.carregarImagem(imgDirigindo1, viagem);
+		tela.carregarImagem(imgDirigindo1, true);
+//		tela.carregarImagem(imgDirigindo2, viagemDao.get(2).getDirigindo());
+//		tela.carregarImagem(imgDirigindo3, viagemDao.get(3).getDirigindo());
 	}
 
 	@FXML
@@ -92,7 +97,7 @@ public class EmpresaController {
 
 	@FXML
 	void verLista1(ActionEvent event) {
-
+		System.out.println(viagemDao.get(3).getDirigindo());
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}
 

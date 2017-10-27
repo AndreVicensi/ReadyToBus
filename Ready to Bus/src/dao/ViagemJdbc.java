@@ -110,6 +110,7 @@ public class ViagemJdbc implements ViagemDao {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from viagem where idViagem = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
 			Viagem viagem = new Viagem();
 			viagem.setIdViagem(rs.getInt("idViagem"));
 			viagem.setData(rs.getDate("data").toLocalDate());
@@ -117,7 +118,6 @@ public class ViagemJdbc implements ViagemDao {
 			viagem.setChegada(rs.getTime("chegada").toLocalTime());
 			viagem.setRota(rotaJdbc.get(rs.getInt("idrota")));
 			viagem.setDirigindo(rs.getBoolean("dirigindo"));
-
 			return viagem;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
