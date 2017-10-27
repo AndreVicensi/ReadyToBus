@@ -12,7 +12,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import metodos.AplicacaoSessao;
+import metodos.MetodosLogin;
 import metodos.MetodosTelas;
+import model.Motorista;
 import model.Passageiro_Viagem;
 import model.Viagem;
 
@@ -52,23 +55,23 @@ public class MotoristaController {
 	// private static MotoristaDao motoristaDao =
 	// DaoFactory.get().motoristaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
-	public Viagem viagem;
-
+	public Viagem viagem = new Viagem();
+	private MetodosLogin login = new MetodosLogin();
 	private Image dirigindo = new Image("/visual/sim.png");
 	private Image chegada = new Image("/visual/nao.png");
-	LocalTime tempo = LocalTime.now();
-	
+	LocalTime tempo;
+	private Motorista motorista = login.getLoginMotorista(AplicacaoSessao.motorista.getLogin());
 	
 
 	public void initialize() {
 		
-
 	}
 
 	@FXML
 	void onChegada(ActionEvent event) {
-		// esses metodos criados no MotoristaFdbc nao tao funcionando
-		// viagemDao.alterarDiringindo(viagem, false);
+		//viagem é null entao nao vai funcionar mesmo!!!!!!!
+		//viagemDao.alterarDiringindo(viagem, false);
+		tempo = LocalTime.now();
 		imgDirigindo.setImage(chegada);
 		viagem.setChegada(tempo);
 		viagemDao.alterarChegada(viagem, tempo);
@@ -76,11 +79,11 @@ public class MotoristaController {
 
 	@FXML
 	void onDirigir(ActionEvent event) {
-		// viagemDao.alterarDiringindo(viagem, true);
+		//viagemDao.alterarDiringindo(viagem, true);
+		tempo = LocalTime.now();
 		imgDirigindo.setImage(dirigindo);
 		viagem.setSaida(tempo);
 		viagemDao.alterarSaida(viagem, tempo);
-
 	}
 
 	@FXML
