@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
-import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
 
@@ -52,6 +51,9 @@ public class ListaViagemController {
 
 	@FXML
 	private Label lChegadaVolta;
+	
+	@FXML
+	private Label lApelidoMotorista;
 
 	private MetodosTelas tela = new MetodosTelas();
 	
@@ -60,7 +62,8 @@ public class ListaViagemController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 	
 	public void initialize() {
-		
+		// esta vindo vazio
+		//lApelidoMotorista.setText(passageiroViagemDao.getMotorista(codviagem).getNome());
 		
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));

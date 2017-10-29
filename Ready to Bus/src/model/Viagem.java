@@ -80,7 +80,7 @@ public class Viagem implements RenderizaCombo {
 
 	@Override
 	public String toString() {
-		return "Viagem " + rota.getNome() + " data=" + data + ", saida=" + saida;
+		return "Destino: " + rota.getNome();
 	}
 
 	@Override

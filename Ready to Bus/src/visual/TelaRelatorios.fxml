@@ -31,6 +31,7 @@
                </font></Button>
             <Button fx:id="btnListaPassgeiros" layoutX="228.0" layoutY="140.0" mnemonicParsing="false" onAction="#onListaPassageiros" text="Lista de passageiros" />
             <Button fx:id="btnListaRotas" layoutX="228.0" layoutY="192.0" mnemonicParsing="false" onAction="#onListaRotas" text="Lista Rotas" />
+            <Button fx:id="btnVoltar" layoutX="943.0" layoutY="668.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
          </children>
       </Pane>
    </children>

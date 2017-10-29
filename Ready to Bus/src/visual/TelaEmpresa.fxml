@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,9 +20,9 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="70.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="202.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="427.0" layoutX="202.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" width="837.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-            <Label fx:id="lRota1" layoutX="321.0" layoutY="253.0" text="Rota" />
+            <Label fx:id="lRota" layoutX="364.0" layoutY="349.0" text="Rota" />
             <Label layoutX="11.0" layoutY="-3.0" text="Controle da empresa">
                <font>
                   <Font size="36.0" />
@@ -36,30 +37,12 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Label fx:id="lApelidoMotorista1" layoutX="293.0" layoutY="304.0" text="Apelido Motorista" />
-            <Label layoutX="246.0" layoutY="392.0" text="Dirigindo" />
-            <Button fx:id="btnVerLista1" layoutX="274.0" layoutY="516.0" mnemonicParsing="false" onAction="#verLista1" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
-            <ImageView fx:id="imgDirigindo1" fitHeight="68.0" fitWidth="68.0" layoutX="355.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="lNomeMotorista" layoutX="364.0" layoutY="400.0" text="Nome Motorista" />
+            <Label layoutX="239.0" layoutY="532.0" text="Dirigindo" />
+            <Button fx:id="btnVerLista" layoutX="892.0" layoutY="583.0" mnemonicParsing="false" onAction="#verLista" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
+            <ImageView fx:id="imgDirigindo" fitHeight="68.0" fitWidth="68.0" layoutX="364.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../arquivos/nao.png" />
-               </image></ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="544.0" layoutY="218.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
-            <Label fx:id="lRota2" layoutX="663.0" layoutY="252.0" text="Rota" />
-            <Label fx:id="lApelidoMotorista2" layoutX="635.0" layoutY="303.0" text="Apelido Motorista" />
-            <Label layoutX="588.0" layoutY="391.0" text="Dirigindo" />
-            <Button fx:id="btnVerLista2" layoutX="616.0" layoutY="516.0" mnemonicParsing="false" onAction="#verLista2" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
-            <ImageView fx:id="imgDirigindo2" fitHeight="68.0" fitWidth="68.0" layoutX="697.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../arquivos/nao.png" />
-               </image></ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="382.0" layoutX="883.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
-            <Label fx:id="lRota3" layoutX="1002.0" layoutY="251.0" text="Rota" />
-            <Label fx:id="lApelidoMotorista3" layoutX="974.0" layoutY="302.0" text="Apelido Motorista" />
-            <Label layoutX="927.0" layoutY="390.0" text="Dirigindo" />
-            <Button fx:id="btnVerLista3" layoutX="955.0" layoutY="516.0" mnemonicParsing="false" onAction="#verLista3" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
-            <ImageView fx:id="imgDirigindo3" fitHeight="68.0" fitWidth="68.0" layoutX="1036.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@nao.png" />
                </image></ImageView>
             <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
                <font>
@@ -76,6 +59,36 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <ComboBox fx:id="cbxViagem" layoutX="322.0" layoutY="254.0" onAction="#onSetarValor" prefHeight="25.0" prefWidth="678.0" />
+            <Label layoutX="242.0" layoutY="252.0" text="Viagem">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="119.0" layoutX="673.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
+            <Label layoutX="809.0" layoutY="304.0" text="IDA">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lSaidaIda" layoutX="739.0" layoutY="357.0" text="saída" />
+            <Label fx:id="lChegadaIda" layoutX="914.0" layoutY="358.0" text="chegada" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="119.0" layoutX="673.0" layoutY="436.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
+            <Label layoutX="791.0" layoutY="447.0" text="VOLTA">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lSaidaVolta" layoutX="739.0" layoutY="504.0" text="saída" />
+            <Label fx:id="lChegadaVolta" layoutX="914.0" layoutY="504.0" text="chegada" />
+            <Label layoutX="242.0" layoutY="349.0" text="Origem/Destino:" />
+            <Label layoutX="242.0" layoutY="400.0" text="Nome do mototirsta:" />
+            <Label layoutX="242.0" layoutY="428.0" text="Apelido:" />
+            <Label fx:id="lApelidoMotorista" layoutX="364.0" layoutY="428.0" text="Apelido Motorista" />
+            <Label layoutX="698.0" layoutY="357.0" text="Saída" />
+            <Label layoutX="854.0" layoutY="357.0" text="Chegada" />
+            <Label layoutX="698.0" layoutY="504.0" text="Saída" />
+            <Label layoutX="854.0" layoutY="504.0" text="Chegada" />
          </children>
       </Pane>
    </children>

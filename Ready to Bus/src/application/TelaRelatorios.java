@@ -28,6 +28,14 @@ public class TelaRelatorios {
     @FXML
     private Button btnListaRotas;
     
+	@FXML
+	private Button btnVoltar;
+	
+	@FXML
+	void onVoltar(ActionEvent event) {
+		tela.carregarTela("/visual/TelaEmpresa.fxml");
+	}
+    
     private MetodosTelas tela = new MetodosTelas();
     private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 

@@ -232,7 +232,53 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		}
 		return passageiros;
 	}
+	
+	@Override
+	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista) {
+		Statement stmt = null;
+		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select passageiro.idPassageiro, passageiro.nome, passageiro.telefone, status, confirmacao "
+					+ "from passageiro join passageiro_viagem"
+					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro join viagem v on passageiro_viagem.idviagem"
+					+ " = v.idviagem join rota r on v.idrota = r.idrota join motorista m on m.idmotorista = r.idmotorista where m.idmotorista = "
+					+ codmotorista;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
+				Passageiro passageiro = new Passageiro();
+				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
+				passageiro.setNome(rs.getString("nome"));
+				passageiro.setTelefone(rs.getString("telefone"));
+				passageiroViagem.setPassageiro(passageiro);
+				passageiroViagem.setStatus(rs.getInt("status"));
+				passageiroViagem.setConfirmacao(rs.getBoolean("confirmacao"));
+				passageiros.add(passageiroViagem);
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return passageiros;
+	}
 
+	@Override
+	public Motorista getMotorista(Integer codviagem) {
+		Statement stmt = null;
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select m.nome from passageiro_viagem pv join passageiro"
+					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "+codviagem;
+			ResultSet rs = stmt.executeQuery(sql);
+			Motorista motorista = new Motorista();
 
+			motorista.setNome(rs.getString("nome"));
+			
+				return motorista;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
 
 }

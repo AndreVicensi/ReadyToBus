@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import model.Motorista;
 import model.Passageiro;
 import model.Passageiro_Viagem;
 import model.Viagem;
@@ -15,6 +16,10 @@ public interface Passageiro_ViagemDao  extends CrudDao<Passageiro_Viagem>{
 	public List<Passageiro_Viagem> Lista(Passageiro_Viagem passageiro_viagem);
 
 	public List<Passageiro_Viagem> ListaViagem(Integer codviagem);
+
+	public Motorista getMotorista(Integer codviagem);
+
+	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista);
 	
 
 	

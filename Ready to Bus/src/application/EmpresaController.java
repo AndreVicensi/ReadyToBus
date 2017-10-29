@@ -2,17 +2,20 @@ package application;
 
 import dao.DaoFactory;
 import dao.ViagemDao;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import metodos.MetodosTelas;
+import model.Viagem;
 
 public class EmpresaController {
 
 	@FXML
-	private Label lRota1;
+	private Label lRota;
 
 	@FXML
 	private Button btnCadsatroMotorista;
@@ -24,37 +27,28 @@ public class EmpresaController {
 	private Button btnCadastroPassageiro;
 
 	@FXML
-	private Label lApelidoMotorista1;
+	private Label lApelidoMotorista;
+	
+	@FXML
+	private Label lNomeMotorista;
 
 	@FXML
-	private Button btnVerLista1;
+	private Button btnVerLista;
 
 	@FXML
-	private ImageView imgDirigindo1;
+	private ImageView imgDirigindo;
+	
+	@FXML
+	private Label lSaidaIda;
 
 	@FXML
-	private Label lRota2;
+	private Label lChegadaIda;
 
 	@FXML
-	private Label lApelidoMotorista2;
+	private Label lSaidaVolta;
 
 	@FXML
-	private Button btnVerLista2;
-
-	@FXML
-	private ImageView imgDirigindo2;
-
-	@FXML
-	private Label lRota3;
-
-	@FXML
-	private Label lApelidoMotorista3;
-
-	@FXML
-	private Button btnVerLista3;
-
-	@FXML
-	private ImageView imgDirigindo3;
+	private Label lChegadaVolta;
 
 	@FXML
 	private Button btnSair;
@@ -64,14 +58,17 @@ public class EmpresaController {
 	
 	@FXML
 	private Button btnRelatorios;
+	
+	@FXML
+	private ComboBox<Viagem> cbxViagem;
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	
 	public void initialize() {
-		tela.carregarImagem(imgDirigindo1, true);
-//		tela.carregarImagem(imgDirigindo2, viagemDao.get(2).getDirigindo());
-//		tela.carregarImagem(imgDirigindo3, viagemDao.get(3).getDirigindo());
+		tela.carregarImagem(imgDirigindo, true);
+		
+		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 	}
 
 	@FXML
@@ -104,23 +101,23 @@ public class EmpresaController {
     }
 
 	@FXML
-	void verLista1(ActionEvent event) {
+	void verLista(ActionEvent event) {
 		// System.out.println(viagemDao.get(3).getDirigindo());
+		ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
-		ListaViagemController.codviagem = 1;
+		
+	}
+	
+	@FXML
+	void onSetarValor(ActionEvent event) {
+	lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
+	lRota.setText(cbxViagem.getValue().getRota().getText());
+	lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
+	lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
+	lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
+	
 	}
 
-	@FXML
-	void verLista2(ActionEvent event) {
-		tela.carregarTela("/visual/TelaListaViagem.fxml");
-		ListaViagemController.codviagem = 2;
-	}
-
-	@FXML
-	void verLista3(ActionEvent event) {
-		tela.carregarTela("/visual/TelaListaViagem.fxml");
-		ListaViagemController.codviagem = 3;
-	}
 
 	@FXML
 	void onSair(ActionEvent event) {
