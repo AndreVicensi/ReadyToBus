@@ -1,8 +1,6 @@
 package application;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import dao.DaoFactory;
 import dao.PassageiroDao;
