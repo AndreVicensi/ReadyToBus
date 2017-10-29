@@ -13,6 +13,8 @@ public interface Passageiro_ViagemDao  extends CrudDao<Passageiro_Viagem>{
 	public void fazerCheck(Passageiro entidade, Boolean confirmacao);
 	
 	public List<Passageiro_Viagem> Lista(Passageiro_Viagem passageiro_viagem);
+
+	public List<Passageiro_Viagem> ListaViagem(Integer codviagem);
 	
 
 	

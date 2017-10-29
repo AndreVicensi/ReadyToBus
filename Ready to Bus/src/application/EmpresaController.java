@@ -105,18 +105,21 @@ public class EmpresaController {
 
 	@FXML
 	void verLista1(ActionEvent event) {
-		System.out.println(viagemDao.get(3).getDirigindo());
+		// System.out.println(viagemDao.get(3).getDirigindo());
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
+		ListaViagemController.codviagem = 1;
 	}
 
 	@FXML
 	void verLista2(ActionEvent event) {
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
+		ListaViagemController.codviagem = 2;
 	}
 
 	@FXML
 	void verLista3(ActionEvent event) {
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
+		ListaViagemController.codviagem = 3;
 	}
 
 	@FXML
