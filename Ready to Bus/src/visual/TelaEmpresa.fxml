@@ -71,6 +71,11 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Button fx:id="btnRelatorios" layoutX="974.0" layoutY="113.0" mnemonicParsing="false" onAction="#onRelatorios" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Relatórios">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

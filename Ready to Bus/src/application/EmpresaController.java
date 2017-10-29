@@ -61,6 +61,9 @@ public class EmpresaController {
 
 	@FXML
 	private Button btnCadastrarViagem;
+	
+	@FXML
+	private Button btnRelatorios;
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
@@ -94,6 +97,11 @@ public class EmpresaController {
 
 		tela.carregarTela("/visual/TelaCadastroViagem.fxml");
 	}
+	
+    @FXML
+    void onRelatorios(ActionEvent event) {
+    	tela.carregarTela("/visual/TelaRelatorios.fxml");
+    }
 
 	@FXML
 	void verLista1(ActionEvent event) {
