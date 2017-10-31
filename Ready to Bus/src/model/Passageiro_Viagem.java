@@ -1,6 +1,9 @@
 package model;
 
+import java.io.InputStream;
+
 import javafx.scene.image.Image;
+import visual.Main;
 
 public class Passageiro_Viagem {
 
@@ -75,10 +78,13 @@ public class Passageiro_Viagem {
 
 	public Image getImagemCheck() {
 		Image img;
+		InputStream input;
 		if (isConfirmacao() == true) {
-			img = new Image("/visual/simpequena.png");
+			input = Main.class.getResourceAsStream("simpequena.png");
+			img = new Image(input);
 		} else {
-			img = new Image("/visual/naopequena.png");
+			input = Main.class.getResourceAsStream("naopequena.png");
+			img = new Image(input);
 		}
 		return img;
 	}
