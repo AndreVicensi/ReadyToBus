@@ -69,7 +69,6 @@ public class ListaPassageiroController {
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
 		tblLista.setItems(
 				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
 		tbcCheck.setCellFactory(
@@ -77,11 +76,11 @@ public class ListaPassageiroController {
 					@Override
 					public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
 						final ImageView imageView = new ImageView();
+						imageView.setFitWidth(20);
+						imageView.setFitHeight(20);
 						TableCell<Passageiro_Viagem, Image> cell = new TableCell<Passageiro_Viagem, Image>() {
 							protected void updateItem(Image item, boolean empty) {
 								if (item != null) {
-									imageView.setFitHeight(20);
-									imageView.setFitWidth(20);
 									imageView.setImage(item);
 								}
 							}
@@ -90,6 +89,7 @@ public class ListaPassageiroController {
 						return cell;
 					}
 				});
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
 	}
 
 	@FXML
@@ -99,6 +99,8 @@ public class ListaPassageiroController {
 
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
+		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, true);
+		tblLista.refresh();
 	}
 
 	@FXML

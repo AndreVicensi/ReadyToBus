@@ -68,19 +68,44 @@ public class Passageiro_Viagem {
 	public void setConfirmacao(boolean confirmacao) {
 		this.confirmacao = confirmacao;
 	}
-	
+
 	public String getTelefoneNumero() {
 		return passageiro.getTelefone();
 	}
-	
+
 	public Image getImagemCheck() {
 		Image img;
-		if(isConfirmacao() == true) {
-			img  = new Image("/visual/simpequeno.png");
+		if (isConfirmacao() == true) {
+			img = new Image("/visual/simpequena.png");
 		} else {
-			img = new Image("/visual/naopequeno.png");
+			img = new Image("/visual/naopequena.png");
 		}
 		return img;
 	}
 
+	public Image getImagemStatus() {
+		Image img;
+		switch (getStatus()) {
+		case 1:
+			img = new Image("");
+			break;
+
+		case 2:
+			img = new Image("");
+			break;
+
+		case 3:
+			img = new Image("");
+			break;
+
+		case 4:
+			img = new Image("");
+			break;
+
+		default:
+			img = new Image("");
+			break;
+		}
+		return img;
+	}
 }
