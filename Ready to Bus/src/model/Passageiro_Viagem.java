@@ -76,9 +76,9 @@ public class Passageiro_Viagem {
 	public Image getImagemCheck() {
 		Image img;
 		if(isConfirmacao() == true) {
-			img  = new Image("/visual/sim.png");
+			img  = new Image("/visual/simpequeno.png");
 		} else {
-			img = new Image("/visual/nao.png");
+			img = new Image("/visual/naopequeno.png");
 		}
 		return img;
 	}
