@@ -69,7 +69,7 @@ public class ListaPassageiroController {
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
 		tblLista.setItems(
 				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
 		tbcCheck.setCellFactory(

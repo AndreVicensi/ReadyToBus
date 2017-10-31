@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.image.Image;
+
 public class Passageiro_Viagem {
 
 	private Passageiro passageiro;
@@ -69,6 +71,16 @@ public class Passageiro_Viagem {
 	
 	public String getTelefoneNumero() {
 		return passageiro.getTelefone();
+	}
+	
+	public Image getImagemCheck() {
+		Image img;
+		if(isConfirmacao() == true) {
+			img  = new Image("/visual/sim.png");
+		} else {
+			img = new Image("/visual/nao.png");
+		}
+		return img;
 	}
 
 }

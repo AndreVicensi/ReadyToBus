@@ -75,7 +75,7 @@ public class MotoristaController {
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
 		
 		codmotorista = AplicacaoSessao.motorista.getIdMotorista();
 		tblLista.setItems(
