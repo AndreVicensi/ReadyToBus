@@ -99,7 +99,7 @@ public class ListaPassageiroController {
 
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
-		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, true);
+		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, !AplicacaoSessao.passageiro_viagem.isConfirmacao());
 		tblLista.refresh();
 	}
 
