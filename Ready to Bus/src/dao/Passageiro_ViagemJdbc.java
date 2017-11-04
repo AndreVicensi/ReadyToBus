@@ -165,7 +165,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	public void fazerCheck(Passageiro entidade, Boolean confirmacao) {
-		String update = "update passageiro_viagem set confimacao = ?  where idPassageiro = "
+		String update = "update passageiro_viagem set confirmacao = ?  where idPassageiro = "
 				+ entidade.getIdPassageiro();
 		PreparedStatement updateStmt;
 		try {

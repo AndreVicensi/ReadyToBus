@@ -1,6 +1,9 @@
 package model;
 
+import java.io.InputStream;
+
 import javafx.scene.image.Image;
+import visual.Main;
 
 public class Passageiro_Viagem {
 
@@ -68,19 +71,47 @@ public class Passageiro_Viagem {
 	public void setConfirmacao(boolean confirmacao) {
 		this.confirmacao = confirmacao;
 	}
-	
+
 	public String getTelefoneNumero() {
 		return passageiro.getTelefone();
 	}
-	
+
 	public Image getImagemCheck() {
 		Image img;
-		if(isConfirmacao() == true) {
-			img  = new Image("/visual/simpequeno.png");
+		InputStream input;
+		if (isConfirmacao() == true) {
+			input = Main.class.getResourceAsStream("simpequena.png");
+			img = new Image(input);
 		} else {
-			img = new Image("/visual/naopequeno.png");
+			input = Main.class.getResourceAsStream("naopequena.png");
+			img = new Image(input);
 		}
 		return img;
 	}
 
+	public Image getImagemStatus() {
+		Image img;
+		switch (getStatus()) {
+		case 1:
+			img = new Image("");
+			break;
+
+		case 2:
+			img = new Image("");
+			break;
+
+		case 3:
+			img = new Image("");
+			break;
+
+		case 4:
+			img = new Image("");
+			break;
+
+		default:
+			img = new Image("");
+			break;
+		}
+		return img;
+	}
 }
