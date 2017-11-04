@@ -7,6 +7,14 @@
 	-fx-pref-width: 150;
 	-fx-pref-height: 70;
 	-fx-background-color: FF7801;
+	
+}
+
+.botaoMenu{
+	-fx-pref-width: 172;
+	-fx-pref-height: 50;
+	-fx-background-color: FF7801;
+	-fx-border-color: black;
 }
 
 .cxtxt{

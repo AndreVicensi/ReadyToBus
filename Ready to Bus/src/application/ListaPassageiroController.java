@@ -61,8 +61,6 @@ public class ListaPassageiroController {
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
 
-		// abaixo consigo pegar o nome da rota, mas se tento pegar o nome do
-		// motorista nao da
 		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getMotorista().getNome());
 		
 		
