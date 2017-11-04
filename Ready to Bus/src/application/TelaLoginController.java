@@ -39,6 +39,8 @@ public class TelaLoginController {
 	private MetodosLogin login = new MetodosLogin();
 	private MetodoConfereSenha confereSenha;
 	private Usuario usuario;
+	
+	
 
 	@FXML
 	void onSobre(ActionEvent event) {

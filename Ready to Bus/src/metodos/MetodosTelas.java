@@ -1,8 +1,6 @@
 package metodos;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Viagem;
 import visual.Main;
 
 public class MetodosTelas {
@@ -63,11 +60,11 @@ public class MetodosTelas {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void carregarImagem(ImageView imagem, Boolean dirigindo) {
 		InputStream input;
 		Image img;
-		if(dirigindo == true) {
+		if (dirigindo == true) {
 			input = getClass().getResourceAsStream("/visual/sim.png");
 			img = new Image(input);
 			imagem.setImage(img);
@@ -77,5 +74,5 @@ public class MetodosTelas {
 			imagem.setImage(img);
 		}
 	}
-	
+
 }
