@@ -1,6 +1,6 @@
 package application;
 
-import java.net.URL;
+import java.io.InputStream;
 
 import dao.DaoFactory;
 import dao.PassageiroDao;
@@ -18,53 +18,51 @@ import net.sf.jasperreports.view.JasperViewer;
 
 public class TelaRelatorios {
 
-	
-    @FXML
-    private Button btnSair;
+	@FXML
+	private Button btnSair;
 
-    @FXML
-    private Button btnListaPassgeiros;
+	@FXML
+	private Button btnListaPassgeiros;
 
-    @FXML
-    private Button btnListaRotas;
-    
+	@FXML
+	private Button btnListaRotas;
+
 	@FXML
 	private Button btnVoltar;
-	
+
 	@FXML
 	void onVoltar(ActionEvent event) {
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
 	}
-    
-    private MetodosTelas tela = new MetodosTelas();
-    private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 
-    @FXML
-    void onListaPassageiros(ActionEvent event) {
-		URL url = getClass().getResource("/RelatorioPassageiros.jasper");
+	private MetodosTelas tela = new MetodosTelas();
+	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
+
+	@FXML
+	void onListaPassageiros(ActionEvent event) {
+		InputStream stream = getClass().getResourceAsStream("/RelatorioPassageiros.jasper");
 
 		try {
-			
+
 			JRDataSource dataSource = new JRBeanCollectionDataSource(passageiroDao.listar());
-			
-			JasperPrint print = JasperFillManager.fillReport(url.getPath(), null, dataSource);
-			
+
+			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
 			JasperViewer.viewReport(print);
 			JasperExportManager.exportReportToPdfFile(print, "relatorioPassageiros.pdf");
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
-    @FXML
-    void onListaRotas(ActionEvent event) {
+	@FXML
+	void onListaRotas(ActionEvent event) {
 
-    }
+	}
 
-    @FXML
-    void onSair(ActionEvent event) {
-    	tela.carregarTela("/visual/TelaLogin.fxml");
-    }
+	@FXML
+	void onSair(ActionEvent event) {
+		tela.carregarTela("/visual/TelaLogin.fxml");
+	}
 
 }

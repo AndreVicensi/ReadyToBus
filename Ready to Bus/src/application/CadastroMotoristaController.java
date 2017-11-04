@@ -69,8 +69,6 @@ public class CadastroMotoristaController {
 		novo();
 	}
 
-	// nao esta conseguindo editar, problema deve estar no: alterar do
-	// MotoristaJdbc
 	@FXML
 	void onEditar(MouseEvent event) {
 		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED))
@@ -89,26 +87,26 @@ public class CadastroMotoristaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		motorista.setNome(tfNomeMotorista.getText());
-		motorista.setApelido(tfApelido.getText());
-		motorista.setLogin(tfLogin.getText());
-		motorista.setSenha(pfSenha.getText());
-		motorista.setEmpresa(AplicacaoSessao.empresa);
+		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+			motorista.setNome(tfNomeMotorista.getText());
+			motorista.setApelido(tfApelido.getText());
+			motorista.setLogin(tfLogin.getText());
+			motorista.setSenha(pfSenha.getText());
+			motorista.setEmpresa(AplicacaoSessao.empresa);
+			if (editando) {
+				motoristaDao.alterar(motorista);
+				tblMotorista.refresh(); // atualiza
 
-		if (editando) {
-			motoristaDao.alterar(motorista);
-			tblMotorista.refresh(); // atualiza
+			} else {
+				motoristaDao.inserir(motorista);
+				tblMotorista.getItems().add(motorista); // adiciona na lista
+			}
 
+			msg.salvo();
+			novo();
 		} else {
-			// motorista = new Motorista(tfNomeMotorista.getText(),
-			// tfApelido.getText(), tfLogin.getText(), pfSenha.getText(),
-			// AplicacaoSessao.empresa);
-			motoristaDao.inserir(motorista);
-			tblMotorista.getItems().add(motorista); // adiciona na lista
+			msg.erroSenha();
 		}
-
-		msg.salvo();
-		novo();
 	}
 
 	@FXML
@@ -138,6 +136,5 @@ public class CadastroMotoristaController {
 		motorista = new Motorista();
 		limparCampos();
 	}
-	
 
 }

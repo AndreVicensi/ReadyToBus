@@ -90,26 +90,27 @@ public class CadastroPassageiroController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		passageiro.setNome(tfNomePassageiro.getText());
-		passageiro.setLogin(tfLogin.getText());
-		passageiro.setSenha(pfSenha.getText());
-		passageiro.setCpf(tfCpfPassageiro.getText());
-		passageiro.setTelefone(tfTelefonePassageiro.getText());
-		// passageiro = new Passageiro(tfNomePassageiro.getText(),
-		// tfLogin.getText(), pfSenha.getText(),
-		// tfCpfPassageiro.getText(), tfTelefonePassageiro.getText());
+		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+			passageiro.setNome(tfNomePassageiro.getText());
+			passageiro.setLogin(tfLogin.getText());
+			passageiro.setSenha(pfSenha.getText());
+			passageiro.setCpf(tfCpfPassageiro.getText());
+			passageiro.setTelefone(tfTelefonePassageiro.getText());
 
-		if (editando) {
-			passageiroDao.alterar(passageiro);
-			tblPassageiro.refresh(); // atualiza
+			if (editando) {
+				passageiroDao.alterar(passageiro);
+				tblPassageiro.refresh(); // atualiza
 
+			} else {
+				passageiroDao.inserir(passageiro);
+				tblPassageiro.getItems().add(passageiro); // adiciona na lista
+			}
+
+			msg.salvo();
+			novo();
 		} else {
-			passageiroDao.inserir(passageiro);
-			tblPassageiro.getItems().add(passageiro); // adiciona na lista
+			msg.erroSenha();
 		}
-
-		msg.salvo();
-		novo();
 	}
 
 	@FXML
