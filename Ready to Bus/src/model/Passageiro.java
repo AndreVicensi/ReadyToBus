@@ -8,6 +8,7 @@ public class Passageiro implements Usuario {
 	private String senha;
 	private String cpf;
 	private String telefone;
+	private Empresa empresa;
 
 
 	public Passageiro() {
@@ -100,6 +101,16 @@ public class Passageiro implements Usuario {
 			return false;
 		return true;
 	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+
 
 	
 }

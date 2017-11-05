@@ -45,6 +45,7 @@ public class CadastroEmpresaController {
 			empresaDao.inserir(empresa);
 			limparCampos();
 			msg.salvo();
+			tela.carregarTela("/visual/TelaLogin.fxml");
 		} else {
 			msg.erroSenha();
 		}
