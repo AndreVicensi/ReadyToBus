@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -27,7 +28,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tblLista" layoutX="110.0" layoutY="200.0" prefHeight="490.0" prefWidth="1076.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
+            <TableView fx:id="tblLista" layoutX="110.0" layoutY="255.0" prefHeight="435.0" prefWidth="1076.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
               <columns>
                 <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" style="fx-background-color: FF7801;" text="Passageiro" />
                 <TableColumn fx:id="tbcTelefone" prefWidth="253.66668701171875" text="Telefone" />
@@ -52,6 +53,12 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
+            <ComboBox fx:id="cbxViagem" layoutX="190.0" layoutY="207.0" onAction="#onSetarValor" prefHeight="25.0" prefWidth="678.0" />
+            <Label layoutX="110.0" layoutY="205.0" text="Viagem">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

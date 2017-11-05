@@ -57,7 +57,19 @@ public class TelaRelatorios {
 
 	@FXML
 	void onListaRotas(ActionEvent event) {
+		InputStream stream = getClass().getResourceAsStream("/RelatorioPassageiros.jasper");
 
+		try {
+
+			JRDataSource dataSource = new JRBeanCollectionDataSource(passageiroDao.listar());
+
+			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
+
+			JasperViewer.viewReport(print);
+			JasperExportManager.exportReportToPdfFile(print, "relatorioPassageiros.pdf");
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML

@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -54,6 +55,9 @@ public class MotoristaController {
 	@FXML
 	private Button btnSair;
 
+	@FXML
+	private ComboBox<Viagem> cbxViagem;
+
 	private MetodosTelas tela = new MetodosTelas();
 	// private static MotoristaDao motoristaDao =
 	// DaoFactory.get().motoristaDao();
@@ -65,21 +69,27 @@ public class MotoristaController {
 	LocalTime tempo;
 
 	public static Integer codmotorista;
+	public static Integer codviagem;
 
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
-	
 
 	public void initialize() {
 
-		//viagem = viagemDao.get();
+		// é pra lista inicializar em branco porem quando selecionar o cbx é pra carregar a lista
+		//da uma olhada nos outros metodos dessa tela tambem
+		cbxViagem.setItems(FXCollections
+				.observableArrayList(viagemDao.listarMotorista(AplicacaoSessao.motorista.getIdMotorista())));
+
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
-		
+
 		codmotorista = AplicacaoSessao.motorista.getIdMotorista();
+
 		tblLista.setItems(
-				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista)));
+				//erro com esse codviagem abaixo
+				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override
@@ -98,30 +108,37 @@ public class MotoristaController {
 						return cell;
 					}
 				});
+
 	}
 
 	@FXML
 	void onChegada(ActionEvent event) {
-		// viagem é null entao nao vai funcionar mesmo!!!!!!!
-		// viagemDao.alterarDiringindo(viagem, false);
+		viagemDao.alterarDiringindo(codviagem, false);
 		tempo = LocalTime.now();
 		imgDirigindo.setImage(chegada);
 		viagem.setChegada(tempo);
-		viagemDao.alterarChegada(viagem, tempo);
+		viagemDao.alterarChegada(codviagem, tempo);
 	}
 
 	@FXML
 	void onDirigir(ActionEvent event) {
-		viagemDao.alterarDiringindo(viagem, true);
+		viagemDao.alterarDiringindo(codviagem, true);
 		tempo = LocalTime.now();
 		imgDirigindo.setImage(dirigindo);
 		viagem.setSaida(tempo);
-		viagemDao.alterarSaida(viagem, tempo);
+		viagemDao.alterarSaida(codviagem, tempo);
 	}
 
 	@FXML
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
+	}
+
+	@FXML
+	void onSetarValor(ActionEvent event) {
+		codviagem = cbxViagem.getValue().getIdViagem();
+		tblLista.refresh();
+
 	}
 
 }

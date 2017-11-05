@@ -76,7 +76,7 @@ public class PassageiroJdbc implements PassageiroDao {
 		List<Passageiro> passageiros = new ArrayList<Passageiro>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from passageiro";
+			String sql = "select * from passageiro order by nome asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro passageiro = new Passageiro();

@@ -71,6 +71,7 @@ public class ListaViagemController {
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
 		tblLista.setItems(
 				FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
+		
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override

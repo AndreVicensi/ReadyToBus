@@ -19,7 +19,8 @@ public interface Passageiro_ViagemDao  extends CrudDao<Passageiro_Viagem>{
 
 	public Motorista getMotorista(Integer codviagem);
 
-	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista);
+	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista, Integer codviagem);
+
 	
 
 	

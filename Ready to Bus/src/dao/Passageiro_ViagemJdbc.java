@@ -234,7 +234,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 	
 	@Override
-	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista) {
+	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista, Integer codviagem) {
 		Statement stmt = null;
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
@@ -242,8 +242,8 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			String sql = "select passageiro.idPassageiro, passageiro.nome, passageiro.telefone, status, confirmacao "
 					+ "from passageiro join passageiro_viagem"
 					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro join viagem v on passageiro_viagem.idviagem"
-					+ " = v.idviagem join rota r on v.idrota = r.idrota join motorista m on m.idmotorista = r.idmotorista where m.idmotorista = "
-					+ codmotorista;
+					+ " = v.idviagem join rota r on v.idrota = r.idrota join motorista m on m.idmotorista = r.idmotorista "
+					+ "where m.idmotorista = "+ codmotorista +"and v.idViagem = "+codviagem;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();

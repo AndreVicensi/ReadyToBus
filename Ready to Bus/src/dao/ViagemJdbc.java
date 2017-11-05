@@ -111,6 +111,41 @@ public class ViagemJdbc implements ViagemDao {
 		}
 		return viagems;
 	}
+	
+	@Override
+	public List<Viagem> listarMotorista(Integer codmotorista) {
+		Statement stmt = null;
+		List<Viagem> viagems = new ArrayList<Viagem>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select v.*, r.nome, m.idmotorista, m.nome, m.apelido from viagem v join rota r on v.idrota = r.idrota "
+					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista="+codmotorista;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Viagem viagem = new Viagem();
+				viagem.setIdViagem(rs.getInt("idViagem"));
+				viagem.setData(rs.getDate("data").toLocalDate());
+				viagem.setSaida(rs.getTime("saida").toLocalTime());
+				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+
+				Rota rota = new Rota();
+				rota.setIdRota(rs.getInt("idrota"));
+				rota.setNome(rs.getString("nome"));
+
+				Motorista motorista = new Motorista();
+				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				motorista.setNome(rs.getString("m.nome"));
+				motorista.setApelido(rs.getString("m.apelido"));
+
+				rota.setMotorista(motorista);
+				viagem.setRota(rota);
+				viagems.add(viagem);
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return viagems;
+	}
 
 	@Override
 	public Viagem get(Integer codigo) {
@@ -135,13 +170,13 @@ public class ViagemJdbc implements ViagemDao {
 	}
 
 	@Override
-	public void alterarDiringindo(Viagem entidade, Boolean dirigindo) {
+	public void alterarDiringindo(Integer codviagem, Boolean dirigindo) {
 		String update = "update viagem set dirigindo = ?  where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setBoolean(1, dirigindo);
-			updateStmt.setInt(2, entidade.getIdViagem());
+			updateStmt.setInt(2, codviagem);
 			updateStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -150,28 +185,28 @@ public class ViagemJdbc implements ViagemDao {
 	}
 
 	@Override
-	public void alterarSaida(Viagem entidade, LocalTime data) {
+	public void alterarSaida(Integer codviagem, LocalTime data) {
 		String update = "update viagem set saida = ? where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
-			updateStmt.setTime(1, Time.valueOf(entidade.getSaida()));
+			updateStmt.setTime(1, Time.valueOf(data));
 			updateStmt.executeUpdate();
-			updateStmt.setInt(2, entidade.getIdViagem());
+			updateStmt.setInt(2, codviagem);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void alterarChegada(Viagem entidade, LocalTime data) {
+	public void alterarChegada(Integer codviagem, LocalTime data) {
 		String update = "update viagem set chegada = ? where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
-			updateStmt.setTime(1, Time.valueOf(entidade.getChegada()));
+			updateStmt.setTime(1, Time.valueOf(data));
 			updateStmt.executeUpdate();
-			updateStmt.setInt(2, entidade.getIdViagem());
+			updateStmt.setInt(2, codviagem);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
