@@ -60,7 +60,7 @@ public class CadastroMotoristaController {
 	@FXML
 	public void initialize() {
 		tbcNomeMotorista.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		tblMotorista.setItems(FXCollections.observableArrayList(motoristaDao.listar()));
+		tblMotorista.setItems(FXCollections.observableArrayList(motoristaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		novo();
 	}
 

@@ -89,7 +89,7 @@ public class MotoristaController {
 
 		tblLista.setItems(
 				//erro com esse codviagem abaixo
-				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
+				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, cbxViagem.getValue().getIdViagem())));
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override

@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Passageiro;
 
@@ -63,7 +64,7 @@ public class CadastroPassageiroController {
 
 		// cbxRota.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 		tbcNomePassageiro.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		tblPassageiro.setItems(FXCollections.observableArrayList(passageiroDao.listar()));
+		tblPassageiro.setItems(FXCollections.observableArrayList(passageiroDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		novo();
 	}
 
@@ -84,6 +85,7 @@ public class CadastroPassageiroController {
 		tfLogin.setText(passageiro.getLogin());
 		pfSenha.setText(passageiro.getSenha());
 		pfConfirmarSenha.setText(passageiro.getSenha());
+		passageiro.setEmpresa(AplicacaoSessao.empresa);
 
 		editando = true;
 	}
@@ -96,6 +98,7 @@ public class CadastroPassageiroController {
 			passageiro.setSenha(pfSenha.getText());
 			passageiro.setCpf(tfCpfPassageiro.getText());
 			passageiro.setTelefone(tfTelefonePassageiro.getText());
+			passageiro.setEmpresa(AplicacaoSessao.empresa);
 
 			if (editando) {
 				passageiroDao.alterar(passageiro);

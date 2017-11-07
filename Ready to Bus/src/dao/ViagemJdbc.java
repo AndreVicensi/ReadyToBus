@@ -27,7 +27,7 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void inserir(Viagem entidade) {
-		String insert = "insert into viagem values (idViagem,?,?,?,?,?)";
+		String insert = "insert into viagem values (idViagem,?,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -36,6 +36,7 @@ public class ViagemJdbc implements ViagemDao {
 			insertStmt.setTime(3, Time.valueOf(entidade.getChegada()));
 			insertStmt.setBoolean(4, entidade.getDirigindo());
 			insertStmt.setInt(5, entidade.getRota().getIdRota());
+			insertStmt.setBoolean(6, entidade.getIda());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -60,7 +61,7 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void alterar(Viagem entidade) {
-		String update = "update viagem set data = ?, saida = ?, chegada = ?, dirigindo = ?, idRota = ?"
+		String update = "update viagem set data = ?, saida = ?, chegada = ?, dirigindo = ?, idRota = ?, ida= ?"
 				+ " where idViagem = ?";
 		PreparedStatement updateStmt;
 		try {
@@ -70,8 +71,9 @@ public class ViagemJdbc implements ViagemDao {
 			updateStmt.setTime(3, Time.valueOf(entidade.getChegada()));
 			updateStmt.setBoolean(4, entidade.getDirigindo());
 			updateStmt.setInt(5, entidade.getRota().getIdRota());
+			updateStmt.setBoolean(6, entidade.getIda());
 			updateStmt.executeUpdate();
-			updateStmt.setInt(6, entidade.getIdViagem());
+			updateStmt.setInt(7, entidade.getIdViagem());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -92,6 +94,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+				
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
@@ -127,6 +130,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+				
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
@@ -162,6 +166,7 @@ public class ViagemJdbc implements ViagemDao {
 			viagem.setChegada(rs.getTime("chegada").toLocalTime());
 			viagem.setRota(rotaJdbc.get(rs.getInt("idrota")));
 			viagem.setDirigindo(rs.getBoolean("dirigindo"));
+			viagem.setIda(rs.getBoolean("ida"));
 			return viagem;
 		} catch (SQLException e1) {
 			e1.printStackTrace();

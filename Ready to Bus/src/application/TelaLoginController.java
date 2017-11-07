@@ -40,7 +40,6 @@ public class TelaLoginController {
 	private MetodoConfereSenha confereSenha;
 	private Usuario usuario;
 	
-	
 
 	@FXML
 	void onSobre(ActionEvent event) {
@@ -59,11 +58,14 @@ public class TelaLoginController {
 
 	@FXML
 	void onLogin(ActionEvent event) {
+		
 		// pega o login do usuario
 		usuario = login.getLoginEmpresa(tfLogin.getText());
+		
 		if (usuario == null) {
 			usuario = login.getLoginMotorista(tfLogin.getText());
 		}
+		
 		if (usuario == null) {
 			usuario = login.getLoginPassageiro(tfLogin.getText());
 		}

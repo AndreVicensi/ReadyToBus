@@ -76,12 +76,12 @@ public class MotoristaJdbc implements MotoristaDao {
 	}
 
 	@Override
-	public List<Motorista> listar() {
+	public List<Motorista> listarDaEmpresa(Integer codempresa) {
 		Statement stmt = null;
 		List<Motorista> motoristas = new ArrayList<Motorista>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from motorista";
+			String sql = "select * from motorista where idempresa= "+codempresa+" order by nome asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Motorista motorista = new Motorista();
@@ -122,6 +122,12 @@ public class MotoristaJdbc implements MotoristaDao {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public List<Motorista> listar() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

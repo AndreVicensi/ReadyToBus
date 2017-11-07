@@ -7,6 +7,7 @@ import dao.PassageiroDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -44,7 +45,7 @@ public class TelaRelatorios {
 
 		try {
 
-			JRDataSource dataSource = new JRBeanCollectionDataSource(passageiroDao.listar());
+			JRDataSource dataSource = new JRBeanCollectionDataSource(passageiroDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa()));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 

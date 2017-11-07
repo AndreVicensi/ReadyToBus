@@ -9,6 +9,7 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
+import model.Empresa;
 import model.Passageiro;
 
 public class PassageiroJdbc implements PassageiroDao {
@@ -18,10 +19,12 @@ public class PassageiroJdbc implements PassageiroDao {
 	public PassageiroJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
+	
+	private EmpresaJdbc empresaJdbc = new EmpresaJdbc(conexao);
 
 	@Override
 	public void inserir(Passageiro entidade) {
-		String insert = "insert into passageiro values (idPassageiro,?,?,?,?,?)";
+		String insert = "insert into passageiro values (idPassageiro,?,?,?,?,?,?)";
 		java.sql.PreparedStatement insertStmt;
 		try {
 			insertStmt = conexao.get().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -30,6 +33,7 @@ public class PassageiroJdbc implements PassageiroDao {
 			insertStmt.setString(3, entidade.getSenha());
 			insertStmt.setString(4, entidade.getCpf());
 			insertStmt.setString(5, entidade.getTelefone());
+			insertStmt.setInt(6, entidade.getEmpresa().getIdEmpresa());
 			insertStmt.executeUpdate();
 			ResultSet resultSet = insertStmt.getGeneratedKeys();
 			resultSet.next();
@@ -54,7 +58,7 @@ public class PassageiroJdbc implements PassageiroDao {
 
 	@Override
 	public void alterar(Passageiro entidade) {
-		String update = "update passageiro set nome = ?, login = ?, senha = ?, cpf = ?,telefone = ?  where idPassageiro = ?";
+		String update = "update passageiro set nome = ?, login = ?, senha = ?, cpf = ?,telefone = ?, idempresa= ?  where idPassageiro = ?";
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -63,7 +67,8 @@ public class PassageiroJdbc implements PassageiroDao {
 			updateStmt.setString(3, entidade.getSenha());
 			updateStmt.setString(4, entidade.getCpf());
 			updateStmt.setString(5, entidade.getTelefone());
-			updateStmt.setInt(6, entidade.getIdPassageiro());
+			updateStmt.setInt(6, entidade.getEmpresa().getIdEmpresa());
+			updateStmt.setInt(7, entidade.getIdPassageiro());
 			updateStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -71,12 +76,12 @@ public class PassageiroJdbc implements PassageiroDao {
 	}
 
 	@Override
-	public List<Passageiro> listar() {
+	public List<Passageiro> listarDaEmpresa(Integer codempresa) {
 		Statement stmt = null;
 		List<Passageiro> passageiros = new ArrayList<Passageiro>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from passageiro order by nome asc";
+			String sql = "select * from passageiro where idempresa="+codempresa+" order by nome asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro passageiro = new Passageiro();
@@ -86,6 +91,10 @@ public class PassageiroJdbc implements PassageiroDao {
 				passageiro.setSenha(rs.getString("senha"));
 				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+				passageiro.setEmpresa(empresa);
+				
 
 				passageiros.add(passageiro);
 
@@ -111,10 +120,17 @@ public class PassageiroJdbc implements PassageiroDao {
 			passageiro.setSenha(rs.getString("senha"));
 			passageiro.setCpf(rs.getString("cpf"));
 			passageiro.setTelefone(rs.getString("telefone"));
+			passageiro.setEmpresa(empresaJdbc.get(rs.getInt("idEmpresa")));
 			return passageiro;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public List<Passageiro> listar() {
+		
 		return null;
 	}
 

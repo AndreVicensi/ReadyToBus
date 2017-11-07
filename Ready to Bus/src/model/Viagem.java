@@ -13,18 +13,20 @@ public class Viagem implements RenderizaCombo {
 	private LocalTime chegada;
 	private Boolean dirigindo;
 	private Rota rota;
+	private Boolean ida;
 
 	public Viagem() {
 		super();
 
 	}
 
-	public Viagem(LocalDate data, LocalTime saida, LocalTime chegada, Boolean dirigindo, Rota rota) {
+	public Viagem(LocalDate data, LocalTime saida, LocalTime chegada, Boolean dirigindo, Boolean ida, Rota rota) {
 		super();
 		this.data = data;
 		this.saida = saida;
 		this.chegada = chegada;
 		this.dirigindo = dirigindo;
+		this.ida = ida;
 		this.rota = rota;
 	}
 
@@ -108,6 +110,14 @@ public class Viagem implements RenderizaCombo {
 	@Override
 	public String getText() {
 		return "Origem/Destino= " + rota.getNome() + ", Hora da saída= " + saida;
+	}
+
+	public Boolean getIda() {
+		return ida;
+	}
+
+	public void setIda(Boolean ida) {
+		this.ida = ida;
 	}
 
 }

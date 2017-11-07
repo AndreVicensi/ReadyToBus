@@ -67,12 +67,13 @@ public class RotaJdbc implements RotaDao {
 	}
 
 	@Override
-	public List<Rota> listar() {
+	public List<Rota> listarDaEmpresa(Integer codempresa) {
 		Statement stmt = null;
 		List<Rota> rotas = new ArrayList<Rota>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from rota";
+			String sql = "select * from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
+					+ " where e.idempresa="+codempresa;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Rota rota = new Rota();
@@ -109,6 +110,12 @@ public class RotaJdbc implements RotaDao {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public List<Rota> listar() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

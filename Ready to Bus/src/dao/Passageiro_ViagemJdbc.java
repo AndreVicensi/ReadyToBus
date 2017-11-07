@@ -239,11 +239,11 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select passageiro.idPassageiro, passageiro.nome, passageiro.telefone, status, confirmacao "
-					+ "from passageiro join passageiro_viagem"
-					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro join viagem v on passageiro_viagem.idviagem"
+			String sql = "select p.idPassageiro, p.nome, p.telefone, status, confirmacao "
+					+ "from passageiro p join passageiro_viagem pv"
+					+ " on p.idPassageiro = pv.idPassageiro join viagem v on pv.idviagem"
 					+ " = v.idviagem join rota r on v.idrota = r.idrota join motorista m on m.idmotorista = r.idmotorista "
-					+ "where m.idmotorista = "+ codmotorista +"and v.idViagem = "+codviagem;
+					+ "where m.idmotorista ="+ codmotorista +"and v.idViagem = "+codviagem;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Rota;
 import model.Viagem;
@@ -39,14 +40,14 @@ public class CadastroViagemController {
 
 	@FXML
 	public void initialize() {
-		cbxRota.setItems(FXCollections.observableArrayList(rotaDao.listar()));
+		cbxRota.setItems(FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 	}
 
 	@FXML
 	void onSalvar(ActionEvent event) {
 
 		LocalTime tempo = LocalTime.now();
-		viagem = new Viagem(dpData.getValue(), tempo, tempo, false, cbxRota.getValue());
+		viagem = new Viagem(dpData.getValue(), tempo, tempo, false, false, cbxRota.getValue());
 		viagemDao.inserir(viagem);
 		msg.salvo();
 		limparCampos();

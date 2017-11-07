@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Motorista;
 import model.Rota;
@@ -52,9 +53,9 @@ public class CadastroRotaController {
 
 	@FXML
 	public void initialize() {
-		cbxMotorista.setItems(FXCollections.observableArrayList(motoristaDao.listar()));
+		cbxMotorista.setItems(FXCollections.observableArrayList(motoristaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		tbcNomeRotas.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		tblRotas.setItems(FXCollections.observableArrayList(rotaDao.listar()));
+		tblRotas.setItems(FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		novo();
 	}
 
