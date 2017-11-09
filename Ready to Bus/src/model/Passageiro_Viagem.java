@@ -93,19 +93,19 @@ public class Passageiro_Viagem {
 		Image img;
 		switch (getStatus()) {
 		case 1:
-			img = new Image("");
+			img = new Image("status1.png");
 			break;
 
 		case 2:
-			img = new Image("");
+			img = new Image("status2.png");
 			break;
 
 		case 3:
-			img = new Image("");
+			img = new Image("status3.png");
 			break;
 
 		case 4:
-			img = new Image("");
+			img = new Image("status4.png");
 			break;
 
 		default:
