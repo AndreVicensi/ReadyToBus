@@ -20,7 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
-import model.Motorista;
 import model.Passageiro_Viagem;
 import model.Viagem;
 
