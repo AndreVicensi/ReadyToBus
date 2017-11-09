@@ -51,27 +51,26 @@ public class ListaViagemController {
 
 	@FXML
 	private Label lChegadaVolta;
-	
+
 	@FXML
 	private Label lApelidoMotorista;
 
 	private MetodosTelas tela = new MetodosTelas();
-	
+
 	public static Integer codviagem;
-	
+
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
-	
+
 	public void initialize() {
 		// esta vindo vazio
-		//lApelidoMotorista.setText(passageiroViagemDao.getMotorista(codviagem).getNome());
-		
+		// lApelidoMotorista.setText(passageiroViagemDao.getMotorista(codviagem).getNome());
+
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>(""));
-		tblLista.setItems(
-				FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
-		
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
+		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
+
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override

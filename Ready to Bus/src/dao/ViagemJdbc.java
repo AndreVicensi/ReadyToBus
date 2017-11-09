@@ -94,6 +94,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+				viagem.setIda(rs.getBoolean("ida"));
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
@@ -129,6 +130,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+				viagem.setIda(rs.getBoolean("ida"));
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));

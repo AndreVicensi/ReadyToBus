@@ -18,7 +18,6 @@ import model.Viagem;
 
 public class CadastroViagemController {
 
-
 	@FXML
 	private Button btnVoltar;
 
@@ -35,21 +34,27 @@ public class CadastroViagemController {
 
 	private static RotaDao rotaDao = DaoFactory.get().rotaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
-	private Viagem viagem;
+	private Viagem viagemida;
+	private Viagem viagemvolta;
 	private Mensagens msg = new Mensagens();
 
 	@FXML
 	public void initialize() {
-		cbxRota.setItems(FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
+		cbxRota.setItems(
+				FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 	}
 
 	@FXML
 	void onSalvar(ActionEvent event) {
+		//criar hora de saída
 
-		LocalTime tempo = LocalTime.now();
-		viagem = new Viagem(dpData.getValue(), tempo, tempo, false, false, cbxRota.getValue());
-		viagemDao.inserir(viagem);
-		viagemDao.inserir(viagem);
+		LocalTime tempozerado = LocalTime.of(00, 00);
+		
+		viagemida = new Viagem(dpData.getValue(), tempozerado, tempozerado, false, false, cbxRota.getValue());
+		viagemDao.inserir(viagemida);
+
+		viagemvolta = new Viagem(dpData.getValue(), tempozerado, tempozerado, false, true, cbxRota.getValue());
+		viagemDao.inserir(viagemvolta);
 		msg.salvo();
 		limparCampos();
 	}

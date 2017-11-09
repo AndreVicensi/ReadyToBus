@@ -82,7 +82,7 @@ public class Viagem implements RenderizaCombo {
 
 	@Override
 	public String toString() {
-		return  rota.getNome() + " - Saída: "+ getSaida();
+		return rota.getNome() + " - Saída: " + getSaida() + " - Ida= " + textoIda();
 	}
 
 	@Override
@@ -109,7 +109,19 @@ public class Viagem implements RenderizaCombo {
 
 	@Override
 	public String getText() {
-		return "Origem/Destino= " + rota.getNome() + ", Hora da saída= " + saida;
+		return "Origem/Destino= " + rota.getNome() + ", Hora da saída= " + saida + ", Ida= " + textoIda();
+
+	}
+
+	// feito por joão, autas lógica
+	public String textoIda() {
+		String texto;
+		if (ida == true) {
+			texto = "Sim";
+		} else {
+			texto = "Não";
+		}
+		return texto;
 	}
 
 	public Boolean getIda() {

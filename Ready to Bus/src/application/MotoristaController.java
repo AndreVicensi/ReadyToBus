@@ -111,11 +111,11 @@ public class MotoristaController {
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
 
 		tblLista.setItems(
 				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
-		
+
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override

@@ -87,7 +87,7 @@ public class ListaPassageiroController {
 						return cell;
 					}
 				});
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
 	}
 
 	@FXML
