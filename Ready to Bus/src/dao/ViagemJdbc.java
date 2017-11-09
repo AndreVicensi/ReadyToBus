@@ -192,13 +192,12 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void alterarSaida(Integer codviagem, LocalTime data) {
-		String update = "update viagem set saida = ? where idViagem = ?";
+		String update = "update viagem set saida = ? where idViagem = " + codviagem;
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setTime(1, Time.valueOf(data));
 			updateStmt.executeUpdate();
-			updateStmt.setInt(2, codviagem);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

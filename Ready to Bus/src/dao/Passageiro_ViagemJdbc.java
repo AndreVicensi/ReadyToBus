@@ -105,7 +105,8 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro_viagem pv join passageiro p on pv.idpassageiro = p.idpassageiro "
 					+ "join viagem v on v.idviagem = pv.idviagem  join rota r on r.idrota = v.idrota "
-					+ "join motorista m on m.idmotorista = r.idmotorista " + "where pv.idpassageiro ="+codigoPassageiro;
+					+ "join motorista m on m.idmotorista = r.idmotorista " + "where pv.idpassageiro ="
+					+ codigoPassageiro;
 			ResultSet rs = stmt.executeQuery(sql);
 			Passageiro_Viagem passageiro_viagem = new Passageiro_Viagem();
 			Passageiro passageiro = new Passageiro();
@@ -204,17 +205,14 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		}
 		return passageiros;
 	}
-	
+
 	@Override
 	public List<Passageiro_Viagem> ListaViagem(Integer codviagem) {
 		Statement stmt = null;
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select passageiro.idPassageiro, passageiro.nome, passageiro.telefone, status, confirmacao "
-					+ "from passageiro join passageiro_viagem"
-					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "
-					+ codviagem;
+			String sql = "select * from view_lista_viagem where idViagem = " + codviagem;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
@@ -232,18 +230,15 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		}
 		return passageiros;
 	}
-	
+
 	@Override
 	public List<Passageiro_Viagem> ListaMotorista(Integer codmotorista, Integer codviagem) {
 		Statement stmt = null;
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select p.idPassageiro, p.nome, p.telefone, status, confirmacao "
-					+ "from passageiro p join passageiro_viagem pv"
-					+ " on p.idPassageiro = pv.idPassageiro join viagem v on pv.idviagem"
-					+ " = v.idviagem join rota r on v.idrota = r.idrota join motorista m on m.idmotorista = r.idmotorista "
-					+ "where r.idmotorista ="+ codmotorista +"and v.idViagem = "+codviagem;
+			String sql = "select * from view_motorista_lista where idViagem = " + codviagem +
+					" and idMotorista = " + codmotorista;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
@@ -268,13 +263,13 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select m.nome from passageiro_viagem pv join passageiro"
-					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "+codviagem;
+					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = " + codviagem;
 			ResultSet rs = stmt.executeQuery(sql);
 			Motorista motorista = new Motorista();
 
 			motorista.setNome(rs.getString("nome"));
-			
-				return motorista;
+
+			return motorista;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
