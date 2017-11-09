@@ -49,6 +49,7 @@ public class CadastroViagemController {
 		LocalTime tempo = LocalTime.now();
 		viagem = new Viagem(dpData.getValue(), tempo, tempo, false, false, cbxRota.getValue());
 		viagemDao.inserir(viagem);
+		viagemDao.inserir(viagem);
 		msg.salvo();
 		limparCampos();
 	}

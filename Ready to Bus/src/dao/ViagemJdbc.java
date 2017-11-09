@@ -94,8 +94,6 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
-				
-				
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
@@ -115,7 +113,7 @@ public class ViagemJdbc implements ViagemDao {
 		}
 		return viagems;
 	}
-	
+
 	@Override
 	public List<Viagem> listarMotorista(Integer codmotorista) {
 		Statement stmt = null;
@@ -123,7 +121,7 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select v.*, r.nome, m.idmotorista, m.nome, m.apelido from viagem v join rota r on v.idrota = r.idrota "
-					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista="+codmotorista;
+					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista=" + codmotorista;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
@@ -131,7 +129,6 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
-				
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));
@@ -177,12 +174,11 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void alterarDiringindo(Integer codviagem, Boolean dirigindo) {
-		String update = "update viagem set dirigindo = ?  where idViagem = ?";
+		String update = "update viagem set dirigindo = ?  where idViagem = " + codviagem;
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setBoolean(1, dirigindo);
-			updateStmt.setInt(2, codviagem);
 			updateStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -205,13 +201,12 @@ public class ViagemJdbc implements ViagemDao {
 
 	@Override
 	public void alterarChegada(Integer codviagem, LocalTime data) {
-		String update = "update viagem set chegada = ? where idViagem = ?";
+		String update = "update viagem set chegada = ? where idViagem = " + codviagem;
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setTime(1, Time.valueOf(data));
 			updateStmt.executeUpdate();
-			updateStmt.setInt(2, codviagem);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
