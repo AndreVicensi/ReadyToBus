@@ -127,8 +127,32 @@ public class MotoristaJdbc implements MotoristaDao {
 
 	@Override
 	public List<Motorista> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		Statement stmt = null;
+		List<Motorista> motoristas = new ArrayList<Motorista>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select * from motorista";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Motorista motorista = new Motorista();
+				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				motorista.setNome(rs.getString("nome"));
+				motorista.setApelido(rs.getString("apelido"));
+				motorista.setLogin(rs.getString("login"));
+				motorista.setSenha(rs.getString("senha"));
+
+				// coloquei essa parte de baixo
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+				motorista.setEmpresa(empresa);
+				motoristas.add(motorista);
+
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return motoristas;
 	}
+	
 
 }

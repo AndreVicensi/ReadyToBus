@@ -95,6 +95,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
 				
+				
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idrota"));

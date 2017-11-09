@@ -130,8 +130,33 @@ public class PassageiroJdbc implements PassageiroDao {
 
 	@Override
 	public List<Passageiro> listar() {
-		
-		return null;
+		Statement stmt = null;
+		List<Passageiro> passageiros = new ArrayList<Passageiro>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select * from passageiro";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Passageiro passageiro = new Passageiro();
+				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
+				passageiro.setNome(rs.getString("nome"));
+				passageiro.setLogin(rs.getString("login"));
+				passageiro.setSenha(rs.getString("senha"));
+				passageiro.setCpf(rs.getString("cpf"));
+				passageiro.setTelefone(rs.getString("telefone"));
+				
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+				passageiro.setEmpresa(empresa);
+				
+
+				passageiros.add(passageiro);
+
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return passageiros;
 	}
 
 }

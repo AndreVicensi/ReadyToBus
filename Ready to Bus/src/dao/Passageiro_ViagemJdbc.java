@@ -243,7 +243,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 					+ "from passageiro p join passageiro_viagem pv"
 					+ " on p.idPassageiro = pv.idPassageiro join viagem v on pv.idviagem"
 					+ " = v.idviagem join rota r on v.idrota = r.idrota join motorista m on m.idmotorista = r.idmotorista "
-					+ "where m.idmotorista ="+ codmotorista +"and v.idViagem = "+codviagem;
+					+ "where r.idmotorista ="+ codmotorista +"and v.idViagem = "+codviagem;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();

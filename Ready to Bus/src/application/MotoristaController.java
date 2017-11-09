@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
+import model.Motorista;
 import model.Passageiro_Viagem;
 import model.Viagem;
 
@@ -75,39 +76,8 @@ public class MotoristaController {
 
 	public void initialize() {
 
-		// é pra lista inicializar em branco porem quando selecionar o cbx é pra carregar a lista
-		//da uma olhada nos outros metodos dessa tela tambem
 		cbxViagem.setItems(FXCollections
 				.observableArrayList(viagemDao.listarMotorista(AplicacaoSessao.motorista.getIdMotorista())));
-
-		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
-		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
-		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
-
-		codmotorista = AplicacaoSessao.motorista.getIdMotorista();
-
-		tblLista.setItems(
-				//erro com esse codviagem abaixo
-				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, cbxViagem.getValue().getIdViagem())));
-		tbcCheck.setCellFactory(
-				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
-					@Override
-					public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
-						final ImageView imageView = new ImageView();
-						TableCell<Passageiro_Viagem, Image> cell = new TableCell<Passageiro_Viagem, Image>() {
-							protected void updateItem(Image item, boolean empty) {
-								if (item != null) {
-									imageView.setFitHeight(20);
-									imageView.setFitWidth(20);
-									imageView.setImage(item);
-								}
-							}
-						};
-						cell.setGraphic(imageView);
-						return cell;
-					}
-				});
 
 	}
 
@@ -137,6 +107,34 @@ public class MotoristaController {
 	@FXML
 	void onSetarValor(ActionEvent event) {
 		codviagem = cbxViagem.getValue().getIdViagem();
+		codmotorista = AplicacaoSessao.motorista.getIdMotorista();
+
+		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
+		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
+		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemClassificao"));
+
+		tblLista.setItems(
+				FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
+		
+		tbcCheck.setCellFactory(
+				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
+					@Override
+					public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
+						final ImageView imageView = new ImageView();
+						TableCell<Passageiro_Viagem, Image> cell = new TableCell<Passageiro_Viagem, Image>() {
+							protected void updateItem(Image item, boolean empty) {
+								if (item != null) {
+									imageView.setFitHeight(20);
+									imageView.setFitWidth(20);
+									imageView.setImage(item);
+								}
+							}
+						};
+						cell.setGraphic(imageView);
+						return cell;
+					}
+				});
 		tblLista.refresh();
 
 	}
