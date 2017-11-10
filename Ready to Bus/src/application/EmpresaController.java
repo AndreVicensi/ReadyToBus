@@ -28,7 +28,7 @@ public class EmpresaController {
 
 	@FXML
 	private Label lApelidoMotorista;
-	
+
 	@FXML
 	private Label lNomeMotorista;
 
@@ -37,7 +37,7 @@ public class EmpresaController {
 
 	@FXML
 	private ImageView imgDirigindo;
-	
+
 	@FXML
 	private Label lSaidaIda;
 
@@ -55,19 +55,18 @@ public class EmpresaController {
 
 	@FXML
 	private Button btnCadastrarViagem;
-	
+
 	@FXML
 	private Button btnRelatorios;
-	
+
 	@FXML
 	private ComboBox<Viagem> cbxViagem;
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
-	
+
 	public void initialize() {
-		tela.carregarImagem(imgDirigindo, true);
-		
+
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 	}
 
@@ -94,30 +93,34 @@ public class EmpresaController {
 
 		tela.carregarTela("/visual/TelaCadastroViagem.fxml");
 	}
-	
-    @FXML
-    void onRelatorios(ActionEvent event) {
-    	tela.carregarTela("/visual/TelaRelatorios.fxml");
-    }
+
+	@FXML
+	void onRelatorios(ActionEvent event) {
+		tela.carregarTela("/visual/TelaRelatorios.fxml");
+	}
 
 	@FXML
 	void verLista(ActionEvent event) {
 		// System.out.println(viagemDao.get(3).getDirigindo());
 		ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
-		
-	}
-	
-	@FXML
-	void onSetarValor(ActionEvent event) {
-	lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
-	lRota.setText(cbxViagem.getValue().getRota().getText());
-	lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
-	lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
-	lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
-	
+
 	}
 
+	@FXML
+	void onSetarValor(ActionEvent event) {
+		lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
+		lRota.setText(cbxViagem.getValue().getRota().getText());
+		lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
+		lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
+		lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
+		if (cbxViagem.getValue().getDirigindo().equals(true)) {
+			tela.carregarImagem(imgDirigindo, true);
+		} else {
+			tela.carregarImagem(imgDirigindo, false);
+		}
+
+	}
 
 	@FXML
 	void onSair(ActionEvent event) {

@@ -29,7 +29,7 @@ public class ListaViagemController {
 	private TableColumn<Passageiro_Viagem, String> tbcTelefone;
 
 	@FXML
-	private TableColumn<Passageiro_Viagem, String> tbcStatus;
+	private TableColumn<Passageiro_Viagem, Image> tbcStatus;
 
 	@FXML
 	private TableColumn<Passageiro_Viagem, Image> tbcCheck;
@@ -67,9 +67,8 @@ public class ListaViagemController {
 
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
-		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("ImagemStatus"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
-		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
 
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
@@ -89,6 +88,27 @@ public class ListaViagemController {
 						return cell;
 					}
 				});
+
+		tbcStatus.setCellFactory(
+				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
+					@Override
+					public TableCell<Passageiro_Viagem, Image> call(TableColumn<Passageiro_Viagem, Image> param) {
+						final ImageView imageView1 = new ImageView();
+						TableCell<Passageiro_Viagem, Image> cell = new TableCell<Passageiro_Viagem, Image>() {
+							protected void updateItem(Image item1, boolean empty) {
+								if (item1 != null) {
+									imageView1.setFitHeight(20);
+									imageView1.setFitWidth(100);
+									imageView1.setImage(item1);
+								}
+							}
+						};
+						cell.setGraphic(imageView1);
+						return cell;
+					}
+				});
+
+		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
 	}
 
 	@FXML

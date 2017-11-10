@@ -91,21 +91,26 @@ public class Passageiro_Viagem {
 
 	public Image getImagemStatus() {
 		Image img;
+		InputStream input;
 		switch (getStatus()) {
 		case 1:
-			img = new Image("status1.png");
+			input = Main.class.getResourceAsStream("status1.png");
+			img = new Image(input);
 			break;
 
 		case 2:
-			img = new Image("status2.png");
+			input = Main.class.getResourceAsStream("status3.png");
+			img = new Image(input);
 			break;
 
 		case 3:
-			img = new Image("status3.png");
+			input = Main.class.getResourceAsStream("status2.png");
+			img = new Image(input);
 			break;
 
 		case 4:
-			img = new Image("status4.png");
+			input = Main.class.getResourceAsStream("status4.png");
+			img = new Image(input);
 			break;
 
 		default:

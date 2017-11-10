@@ -11,7 +11,7 @@ public class Viagem implements RenderizaCombo {
 	private LocalDate data;
 	private LocalTime saida;
 	private LocalTime chegada;
-	private Boolean dirigindo;
+	private Boolean dirigindo = false;
 	private Rota rota;
 	private Boolean ida;
 

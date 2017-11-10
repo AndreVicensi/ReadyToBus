@@ -30,8 +30,8 @@
             <TableView fx:id="tblLista" layoutX="102.0" layoutY="250.0" prefHeight="434.0" prefWidth="1076.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
               <columns>
                 <TableColumn fx:id="tbcPassageiro" prefWidth="574.3333129882812" text="Passageiro" />
-                <TableColumn fx:id="tbcTelefone" prefWidth="253.66668701171875" text="Telefone" />
-                  <TableColumn fx:id="tbcStatus" prefWidth="163.0" text="Status" />
+                <TableColumn fx:id="tbcTelefone" prefWidth="214.0" text="Telefone" />
+                  <TableColumn fx:id="tbcStatus" prefWidth="203.0" text="Status" />
                   <TableColumn fx:id="tbcCheck" prefWidth="81.6666259765625" text="Check-in" />
               </columns>
             </TableView>
