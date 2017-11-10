@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Rota;
@@ -23,6 +24,9 @@ public class CadastroViagemController {
 
 	@FXML
 	private Button btnSalvar;
+	
+	@FXML
+	private TextField tfSaída;
 
 	@FXML
 	private ComboBox<Rota> cbxRota;
