@@ -44,22 +44,20 @@ public class StatusPassageiroController {
 	private Passageiro_Viagem passageiro_viagem;
 
 	public void initialize() {
-	
+
 		if (ListaPassageiroController.temViagem) {
-			//fazer combobox vir preenchido já
-			
+			// fazer combobox vir preenchido já
+
 			cbxViagem.setValue(ListaPassageiroController.getViagem());
-			
+
 		}
-		
+
 		cbxViagem.setCellFactory((comboBox) -> {
 			return new ListCellBean<Viagem>();
 		});
 		cbxViagem.setConverter(new StringConverterBean<>());
 
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
-
-	
 
 	}
 
@@ -98,7 +96,7 @@ public class StatusPassageiroController {
 		passageiroViagemDao.inserir(passageiro_viagem);
 		AplicacaoSessao.viagem = cbxViagem.getValue();
 		AplicacaoSessao.passageiro_viagem = passageiro_viagem;
-		
+
 		ListaPassageiroController.setViagem(cbxViagem.getValue());
 	}
 }

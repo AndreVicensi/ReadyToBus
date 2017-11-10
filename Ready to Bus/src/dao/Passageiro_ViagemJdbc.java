@@ -165,9 +165,9 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		}
 	}
 
-	public void fazerCheck(Passageiro entidade, Boolean confirmacao) {
+	public void fazerCheck(Passageiro entidade, Boolean confirmacao, Viagem viagem) {
 		String update = "update passageiro_viagem set confirmacao = ?  where idPassageiro = "
-				+ entidade.getIdPassageiro();
+				+ entidade.getIdPassageiro() + " and idViagem = " + viagem.getIdViagem();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -237,8 +237,8 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from view_motorista_lista where idViagem = " + codviagem +
-					" and idMotorista = " + codmotorista;
+			String sql = "select * from view_motorista_lista where idViagem = " + codviagem + " and idMotorista = "
+					+ codmotorista;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();

@@ -46,14 +46,14 @@ public class CadastroViagemController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		//criar hora de saída
+		// criar hora de saída
 
 		LocalTime tempozerado = LocalTime.of(00, 00);
-		
-		viagemida = new Viagem(dpData.getValue(), tempozerado, tempozerado, false, false, cbxRota.getValue());
+
+		viagemida = new Viagem(dpData.getValue(), tempozerado, tempozerado, false, true, cbxRota.getValue());
 		viagemDao.inserir(viagemida);
 
-		viagemvolta = new Viagem(dpData.getValue(), tempozerado, tempozerado, false, true, cbxRota.getValue());
+		viagemvolta = new Viagem(dpData.getValue(), tempozerado, tempozerado, false, false, cbxRota.getValue());
 		viagemDao.inserir(viagemvolta);
 		msg.salvo();
 		limparCampos();

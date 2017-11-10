@@ -62,11 +62,12 @@ public class ListaPassageiroController {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
 
 		lApelidoMotorista.setText(AplicacaoSessao.passageiro_viagem.getViagem().getRota().getMotorista().getNome());
-		
-		
+
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
+
 		tblLista.setItems(
 				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
 		tbcCheck.setCellFactory(
@@ -87,7 +88,7 @@ public class ListaPassageiroController {
 						return cell;
 					}
 				});
-		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
+
 	}
 
 	@FXML
@@ -95,9 +96,11 @@ public class ListaPassageiroController {
 		tela.carregarTela("/visual/TelaStatusPassageiro.fxml");
 	}
 
+	// nao esta funcionando
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
-		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, AplicacaoSessao.passageiro_viagem.isConfirmacao());
+		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, AplicacaoSessao.passageiro_viagem.isConfirmacao(),
+				AplicacaoSessao.viagem);
 		tblLista.refresh();
 	}
 
