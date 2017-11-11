@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
 import javafx.collections.FXCollections;
@@ -61,9 +64,9 @@ public class ListaViagemController {
 
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 
+	public static final long TEMPO = (1000 * 10); // atualiza a cada 10 segundos
+
 	public void initialize() {
-		// esta vindo vazio
-		// lApelidoMotorista.setText(passageiroViagemDao.getMotorista(codviagem).getNome());
 
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
@@ -109,6 +112,8 @@ public class ListaViagemController {
 				});
 
 		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
+
+		carregarLista();
 	}
 
 	@FXML
@@ -120,6 +125,26 @@ public class ListaViagemController {
 	void onVoltar(ActionEvent event) {
 
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
+	}
+
+	public void carregarLista() {
+
+		Timer timer = null;
+		if (timer == null) {
+			timer = new Timer();
+			TimerTask tarefa = new TimerTask() {
+				public void run() {
+					try {
+						tblLista.setItems(
+								FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
+						// chamar metodo
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			};
+			timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
+		}
 	}
 
 }

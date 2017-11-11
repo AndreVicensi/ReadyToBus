@@ -1,6 +1,8 @@
 package application;
 
 import java.time.LocalTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
@@ -63,10 +65,14 @@ public class MotoristaController {
 	// DaoFactory.get().motoristaDao();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 	public Viagem viagem = new Viagem();
+	public Viagem viagemData = new Viagem();
 	// private MetodosLogin login = new MetodosLogin();
 	private Image dirigindo = new Image("/visual/sim.png");
 	private Image chegada = new Image("/visual/nao.png");
 	LocalTime tempo;
+	Viagem data;
+
+	public static final long TEMPO = (1000 * 10); // atualiza a cada 10 segundos
 
 	public static Integer codmotorista;
 	public static Integer codviagem;
@@ -78,24 +84,25 @@ public class MotoristaController {
 		cbxViagem.setItems(FXCollections
 				.observableArrayList(viagemDao.listarMotorista(AplicacaoSessao.motorista.getIdMotorista())));
 
+		carregarLista();
 	}
 
 	@FXML
 	void onChegada(ActionEvent event) {
 		viagemDao.alterarDiringindo(codviagem, false);
 		tempo = LocalTime.now();
-		imgDirigindo.setImage(chegada);
 		viagem.setChegada(tempo);
 		viagemDao.alterarChegada(codviagem, tempo);
+		imgDirigindo.setImage(chegada);
 	}
 
 	@FXML
 	void onDirigir(ActionEvent event) {
 		viagemDao.alterarDiringindo(codviagem, true);
 		tempo = LocalTime.now();
-		imgDirigindo.setImage(dirigindo);
 		viagem.setSaida(tempo);
 		viagemDao.alterarSaida(codviagem, tempo);
+		imgDirigindo.setImage(dirigindo);
 	}
 
 	@FXML
@@ -107,6 +114,11 @@ public class MotoristaController {
 	void onSetarValor(ActionEvent event) {
 		codviagem = cbxViagem.getValue().getIdViagem();
 		codmotorista = AplicacaoSessao.motorista.getIdMotorista();
+
+		cbxViagem.setItems(FXCollections
+				.observableArrayList(viagemDao.listarMotorista(AplicacaoSessao.motorista.getIdMotorista())));
+
+		ldataDia.setText(cbxViagem.getValue().getData().toString());
 
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
@@ -134,7 +146,7 @@ public class MotoristaController {
 						return cell;
 					}
 				});
-		
+
 		tbcStatus.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override
@@ -153,8 +165,33 @@ public class MotoristaController {
 						return cell;
 					}
 				});
-		tblLista.refresh();
 
+		if (cbxViagem.getValue().getDirigindo().equals(true)) {
+			tela.carregarImagem(imgDirigindo, true);
+		} else {
+			tela.carregarImagem(imgDirigindo, false);
+		}
+
+	}
+
+	public void carregarLista() {
+
+		Timer timer = null;
+		if (timer == null) {
+			timer = new Timer();
+			TimerTask tarefa = new TimerTask() {
+				public void run() {
+					try {
+						tblLista.setItems(
+								FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
+						// chamar metodo
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			};
+			timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
+		}
 	}
 
 }

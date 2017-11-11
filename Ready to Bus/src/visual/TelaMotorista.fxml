@@ -38,17 +38,14 @@
             </TableView>
             <Button fx:id="btnDirigir" layoutX="86.0" layoutY="111.0" mnemonicParsing="false" onAction="#onDirigir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Dirigir" />
             <Button fx:id="btnChegada" layoutX="277.0" layoutY="111.0" mnemonicParsing="false" onAction="#onChegada" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Chegada" />
-            <Label fx:id="ldataDia" layoutX="913.0" layoutY="120.0" text="data do dia">
+            <Label fx:id="ldataDia" layoutX="913.0" layoutY="120.0">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
             <Label layoutX="484.0" layoutY="135.0" text="Dirigindo" />
-            <ImageView fx:id="imgDirigindo" fitHeight="68.0" fitWidth="68.0" layoutX="593.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../arquivos/nao.png" />
-               </image></ImageView>
-            <Button fx:id="btnSair" layoutX="1191.0" layoutY="1.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
+            <ImageView fx:id="imgDirigindo" fitHeight="68.0" fitWidth="68.0" layoutX="593.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnSair" layoutX="1190.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

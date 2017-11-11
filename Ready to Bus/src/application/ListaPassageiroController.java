@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import dao.DaoFactory;
 import dao.Passageiro_ViagemDao;
 import javafx.collections.FXCollections;
@@ -57,6 +60,9 @@ public class ListaPassageiroController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 
 	private static Viagem viagem;
+	
+	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 10
+	// segundos
 
 	public void initialize() {
 		ldataDia.setText(AplicacaoSessao.viagem.getData().toString());
@@ -107,6 +113,8 @@ public class ListaPassageiroController {
 						return cell;
 					}
 				});
+		
+		carregarLista();
 
 	}
 
@@ -118,15 +126,41 @@ public class ListaPassageiroController {
 	// nao esta funcionando esse metodo
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
+		
 		AplicacaoSessao.passageiro_viagem.setConfirmacao(!AplicacaoSessao.passageiro_viagem.isConfirmacao());
+		
 		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, AplicacaoSessao.passageiro_viagem.isConfirmacao(),
 				AplicacaoSessao.viagem);
-		tblLista.refresh();
+		
+		tblLista.setItems(
+				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
+		
+		
 	}
 
 	@FXML
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
+	}
+	
+	public void carregarLista() {
+
+		Timer timer = null;
+		if (timer == null) {
+			timer = new Timer();
+			TimerTask tarefa = new TimerTask() {
+				public void run() {
+					try {
+						tblLista.setItems(
+								FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
+						// chamar metodo
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			};
+			timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
+		}
 	}
 
 	public static void setViagem(Viagem viagem) {

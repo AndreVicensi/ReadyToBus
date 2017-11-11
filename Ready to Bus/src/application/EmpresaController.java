@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import dao.DaoFactory;
 import dao.ViagemDao;
 import javafx.collections.FXCollections;
@@ -65,9 +68,13 @@ public class EmpresaController {
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
-	public void initialize() {
+	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 1
+													// minuto
 
+	public void initialize() {
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+		carregarLista();
+
 	}
 
 	@FXML
@@ -101,10 +108,29 @@ public class EmpresaController {
 
 	@FXML
 	void verLista(ActionEvent event) {
-		// System.out.println(viagemDao.get(3).getDirigindo());
+
 		ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
 
+	}
+
+	public void carregarLista() {
+
+		Timer timer = null;
+		if (timer == null) {
+			timer = new Timer();
+			TimerTask tarefa = new TimerTask() {
+				public void run() {
+					try {
+						cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+						// chamar metodo
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			};
+			timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
+		}
 	}
 
 	@FXML
@@ -114,6 +140,7 @@ public class EmpresaController {
 		lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
 		lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
 		lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
+
 		if (cbxViagem.getValue().getDirigindo().equals(true)) {
 			tela.carregarImagem(imgDirigindo, true);
 		} else {

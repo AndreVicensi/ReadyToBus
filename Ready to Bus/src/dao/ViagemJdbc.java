@@ -131,6 +131,7 @@ public class ViagemJdbc implements ViagemDao {
 				viagem.setData(rs.getDate("data").toLocalDate());
 				viagem.setSaida(rs.getTime("saida").toLocalTime());
 				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+				viagem.setDirigindo(rs.getBoolean("dirigindo"));
 				viagem.setIda(rs.getBoolean("ida"));
 
 				Rota rota = new Rota();
@@ -174,6 +175,32 @@ public class ViagemJdbc implements ViagemDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public String getData(Integer codigo) {
+		Statement stmt = null;
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select data from viagem where idViagem = " + codigo;
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			Viagem viagem = new Viagem();
+			viagem.setIdViagem(rs.getInt("idViagem"));
+			viagem.setData(rs.getDate("data").toLocalDate());
+			viagem.setSaida(rs.getTime("saida").toLocalTime());
+			viagem.setChegada(rs.getTime("chegada").toLocalTime());
+			viagem.setRota(rotaJdbc.get(rs.getInt("idrota")));
+			viagem.setDirigindo(rs.getBoolean("dirigindo"));
+			viagem.setIda(rs.getBoolean("ida"));
+			return getData(codigo).toString();
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
+	
+
 
 	@Override
 	public void alterarDiringindo(Integer codviagem, Boolean dirigindo) {

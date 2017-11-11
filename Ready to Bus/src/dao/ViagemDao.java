@@ -15,4 +15,6 @@ public interface ViagemDao extends CrudDao<Viagem> {
 	void alterarSaida(Integer codviagem, LocalTime data);
 
 	void alterarDiringindo(Integer codviagem, Boolean dirigindo);
+
+	public String getData(Integer codigo);
 }
