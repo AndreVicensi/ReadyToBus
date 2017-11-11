@@ -34,8 +34,10 @@
             <ComboBox fx:id="cbxRota" layoutX="554.0" layoutY="235.0" prefHeight="25.0" prefWidth="282.0" />
             <Label layoutX="493.0" layoutY="299.0" text="Data" />
             <DatePicker fx:id="dpData" layoutX="553.0" layoutY="295.0" />
-            <Label layoutX="459.0" layoutY="356.0" text="Hora Saída" />
-            <TextField fx:id="tfSaída" layoutX="553.0" layoutY="352.0" prefHeight="25.0" prefWidth="93.0" />
+            <Label layoutX="459.0" layoutY="356.0" text="Hora Saída IDA" />
+            <TextField fx:id="tfSaidaIda" layoutX="555.0" layoutY="352.0" prefHeight="25.0" prefWidth="93.0" />
+            <Label layoutX="444.0" layoutY="392.0" text="Hora Saída VOLTA" />
+            <TextField fx:id="tfSaidaVolta" layoutX="555.0" layoutY="388.0" prefHeight="25.0" prefWidth="93.0" />
          </children>
       </Pane>
    </children>
