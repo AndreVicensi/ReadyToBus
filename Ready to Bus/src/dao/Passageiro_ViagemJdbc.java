@@ -166,8 +166,8 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	public void fazerCheck(Passageiro entidade, Boolean confirmacao, Viagem viagem) {
-		String update = "update passageiro_viagem set confirmacao = ?  where idPassageiro = " + entidade.getIdPassageiro()
-				+ " and idViagem = " + viagem.getIdViagem();
+		String update = "update passageiro_viagem set confirmacao = ?  where idPassageiro = "
+				+ entidade.getIdPassageiro() + " and idViagem = " + viagem.getIdViagem();
 		PreparedStatement updateStmt;
 		try {
 			updateStmt = conexao.get().prepareStatement(update);
@@ -179,7 +179,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 	}
 
 	@Override
-	public List<Passageiro_Viagem> Lista(Passageiro_Viagem passageiro_viagem) {
+	public List<Passageiro_Viagem> ListaPassageiro(Passageiro_Viagem passageiro_viagem) {
 		Statement stmt = null;
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
@@ -187,7 +187,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 			String sql = "select passageiro.idPassageiro, passageiro.nome, passageiro.telefone, status, confirmacao "
 					+ "from passageiro join passageiro_viagem"
 					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro where idViagem = "
-					+ passageiro_viagem.getViagem().getIdViagem();
+					+ passageiro_viagem.getViagem().getIdViagem() + " order by status asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
@@ -212,7 +212,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		List<Passageiro_Viagem> passageiros = new ArrayList<Passageiro_Viagem>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from view_lista_viagem where idViagem = " + codviagem;
+			String sql = "select * from view_lista_viagem where idViagem = " + codviagem + " order by status asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
@@ -238,7 +238,7 @@ public class Passageiro_ViagemJdbc implements Passageiro_ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from view_motorista_lista where idViagem = " + codviagem + " and idMotorista = "
-					+ codmotorista;
+					+ codmotorista + " order by status asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();

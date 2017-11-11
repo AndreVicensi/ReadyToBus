@@ -86,7 +86,7 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select v.*, r.nome, m.idmotorista, m.nome, m.apelido from viagem v join rota r on v.idrota = r.idrota "
-					+ "join motorista m on r.idmotorista = m.idmotorista";
+					+ "join motorista m on r.idmotorista = m.idmotorista order by data asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
@@ -123,7 +123,7 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select v.*, r.nome, m.idmotorista, m.nome, m.apelido from viagem v join rota r on v.idrota = r.idrota "
-					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista=" + codmotorista;
+					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista=" + codmotorista+"order by data asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();

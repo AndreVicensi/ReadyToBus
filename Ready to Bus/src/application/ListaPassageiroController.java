@@ -60,7 +60,7 @@ public class ListaPassageiroController {
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 
 	private static Viagem viagem;
-	
+
 	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 10
 	// segundos
 
@@ -74,8 +74,8 @@ public class ListaPassageiroController {
 		tbcStatus.setCellValueFactory(new PropertyValueFactory<>("ImagemStatus"));
 		tbcCheck.setCellValueFactory(new PropertyValueFactory<>("ImagemCheck"));
 
-		tblLista.setItems(
-				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
+		tblLista.setItems(FXCollections
+				.observableArrayList(passageiroViagemDao.ListaPassageiro(AplicacaoSessao.passageiro_viagem)));
 		tbcCheck.setCellFactory(
 				new Callback<TableColumn<Passageiro_Viagem, Image>, TableCell<Passageiro_Viagem, Image>>() {
 					@Override
@@ -113,7 +113,7 @@ public class ListaPassageiroController {
 						return cell;
 					}
 				});
-		
+
 		carregarLista();
 
 	}
@@ -126,23 +126,22 @@ public class ListaPassageiroController {
 	// nao esta funcionando esse metodo
 	@FXML
 	void onConfirmarEmbarque(ActionEvent event) {
-		
+
 		AplicacaoSessao.passageiro_viagem.setConfirmacao(!AplicacaoSessao.passageiro_viagem.isConfirmacao());
-		
+
 		passageiroViagemDao.fazerCheck(AplicacaoSessao.passageiro, AplicacaoSessao.passageiro_viagem.isConfirmacao(),
 				AplicacaoSessao.viagem);
-		
-		tblLista.setItems(
-				FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
-		
-		
+
+		tblLista.setItems(FXCollections
+				.observableArrayList(passageiroViagemDao.ListaPassageiro(AplicacaoSessao.passageiro_viagem)));
+
 	}
 
 	@FXML
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
 	}
-	
+
 	public void carregarLista() {
 
 		Timer timer = null;
@@ -151,8 +150,8 @@ public class ListaPassageiroController {
 			TimerTask tarefa = new TimerTask() {
 				public void run() {
 					try {
-						tblLista.setItems(
-								FXCollections.observableArrayList(passageiroViagemDao.Lista(AplicacaoSessao.passageiro_viagem)));
+						tblLista.setItems(FXCollections.observableArrayList(
+								passageiroViagemDao.ListaPassageiro(AplicacaoSessao.passageiro_viagem)));
 						// chamar metodo
 					} catch (Exception e) {
 						e.printStackTrace();
