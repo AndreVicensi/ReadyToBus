@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
+import model.Empresa;
 import model.Motorista;
 import model.Rota;
 
@@ -73,7 +74,7 @@ public class RotaJdbc implements RotaDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
-					+ " where e.idempresa="+codempresa;
+					+ " where e.idempresa=" + codempresa;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Rota rota = new Rota();
@@ -82,6 +83,40 @@ public class RotaJdbc implements RotaDao {
 
 				Motorista motorista = new Motorista();
 				motorista.setIdMotorista(rs.getInt("idMotorista"));
+
+				rota.setMotorista(motorista);
+
+				rotas.add(rota);
+
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return rotas;
+	}
+
+	@Override
+	public List<Rota> listarRelatorio(Integer codempresa) {
+		Statement stmt = null;
+		List<Rota> rotas = new ArrayList<Rota>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select r.*, m.nome, e.idempresa from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
+					+ " where e.idempresa=" + codempresa;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Rota rota = new Rota();
+				rota.setIdRota(rs.getInt("idRota"));
+				rota.setNome(rs.getString("nome"));
+
+				Motorista motorista = new Motorista();
+				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				motorista.setNome(rs.getString("m.nome"));
+
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("e.idempresa"));
+
+				motorista.setEmpresa(empresa);
 
 				rota.setMotorista(motorista);
 
@@ -118,7 +153,5 @@ public class RotaJdbc implements RotaDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 
 }

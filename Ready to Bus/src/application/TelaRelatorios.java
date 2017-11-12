@@ -1,9 +1,12 @@
 package application;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import dao.DaoFactory;
 import dao.PassageiroDao;
+import dao.RotaDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,6 +41,7 @@ public class TelaRelatorios {
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
+	private static RotaDao rotaDao = DaoFactory.get().rotaDao();
 
 	@FXML
 	void onListaPassageiros(ActionEvent event) {
@@ -45,7 +49,8 @@ public class TelaRelatorios {
 
 		try {
 
-			JRDataSource dataSource = new JRBeanCollectionDataSource(passageiroDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa()));
+			JRDataSource dataSource = new JRBeanCollectionDataSource(
+					passageiroDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa()));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
@@ -58,16 +63,17 @@ public class TelaRelatorios {
 
 	@FXML
 	void onListaRotas(ActionEvent event) {
-		InputStream stream = getClass().getResourceAsStream("/RelatorioPassageiros.jasper");
+		InputStream stream = getClass().getResourceAsStream("/RelatorioRotas.jasper");
 
 		try {
 
-			JRDataSource dataSource = new JRBeanCollectionDataSource(passageiroDao.listar());
+			JRDataSource dataSource = new JRBeanCollectionDataSource(
+					rotaDao.listarRelatorio(AplicacaoSessao.empresa.getIdEmpresa()));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
 			JasperViewer.viewReport(print);
-			JasperExportManager.exportReportToPdfFile(print, "relatorioPassageiros.pdf");
+			JasperExportManager.exportReportToPdfFile(print, "relatorioRotas.pdf");
 		} catch (JRException e) {
 			e.printStackTrace();
 		}

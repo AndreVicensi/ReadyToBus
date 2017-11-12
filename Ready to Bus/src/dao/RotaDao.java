@@ -8,6 +8,8 @@ public interface RotaDao extends CrudDao<Rota>{
 
 
 	public List<Rota> listarDaEmpresa(Integer codempresa);
+
+	public List<Rota> listarRelatorio(Integer codempresa);
 	
 
 
