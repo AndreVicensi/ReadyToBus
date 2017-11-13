@@ -19,7 +19,7 @@ public class PassageiroJdbc implements PassageiroDao {
 	public PassageiroJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
-	
+
 	private EmpresaJdbc empresaJdbc = new EmpresaJdbc(conexao);
 
 	@Override
@@ -81,7 +81,7 @@ public class PassageiroJdbc implements PassageiroDao {
 		List<Passageiro> passageiros = new ArrayList<Passageiro>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from passageiro where idempresa="+codempresa+" order by nome asc";
+			String sql = "select * from passageiro where idempresa=" + codempresa + " order by nome asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Passageiro passageiro = new Passageiro();
@@ -94,7 +94,6 @@ public class PassageiroJdbc implements PassageiroDao {
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
 				passageiro.setEmpresa(empresa);
-				
 
 				passageiros.add(passageiro);
 
@@ -104,7 +103,6 @@ public class PassageiroJdbc implements PassageiroDao {
 		}
 		return passageiros;
 	}
-	
 
 	@Override
 	public Passageiro get(Integer codigo) {
@@ -113,6 +111,7 @@ public class PassageiroJdbc implements PassageiroDao {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro where idPassageiro = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
 			Passageiro passageiro = new Passageiro();
 			passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
 			passageiro.setNome(rs.getString("nome"));
@@ -144,11 +143,10 @@ public class PassageiroJdbc implements PassageiroDao {
 				passageiro.setSenha(rs.getString("senha"));
 				passageiro.setCpf(rs.getString("cpf"));
 				passageiro.setTelefone(rs.getString("telefone"));
-				
+
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
 				passageiro.setEmpresa(empresa);
-				
 
 				passageiros.add(passageiro);
 
