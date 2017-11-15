@@ -49,6 +49,8 @@ public class CadastroViagemController {
 	public void initialize() {
 		cbxRota.setItems(
 				FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
+
+		// tfSaidaIda.setTextFormatter(value);
 	}
 
 	@FXML
