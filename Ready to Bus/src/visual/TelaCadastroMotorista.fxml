@@ -26,14 +26,14 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="670.0" layoutX="36.0" layoutY="68.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1208.0" />
             <Label layoutX="717.0" layoutY="294.0" text="Login " />
             <Label layoutX="717.0" layoutY="330.0" text="Senha" />
+            <TextField fx:id="tfNomeMotorista" layoutX="772.0" layoutY="186.0" prefHeight="25.0" prefWidth="297.0" />
+            <TextField fx:id="tfApelido" layoutX="772.0" layoutY="226.0" />
             <TextField fx:id="tfLogin" layoutX="772.0" layoutY="290.0" />
-            <Button fx:id="btnVoltar" layoutX="1082.0" layoutY="661.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
-            <Button fx:id="btnSalvar" layoutX="771.0" layoutY="498.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
+            <Button fx:id="btnVoltar" cancelButton="true" focusTraversable="false" layoutX="1082.0" layoutY="661.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
+            <Button fx:id="btnSalvar" defaultButton="true" focusTraversable="false" layoutX="771.0" layoutY="498.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
             <PasswordField fx:id="pfSenha" layoutX="772.0" layoutY="326.0" />
             <Label layoutX="652.0" layoutY="190.0" text="Nome do motorista" />
-            <TextField fx:id="tfNomeMotorista" layoutX="772.0" layoutY="186.0" prefHeight="25.0" prefWidth="297.0" />
             <Label layoutX="722.0" layoutY="230.0" text="Apelido" />
-            <TextField fx:id="tfApelido" layoutX="772.0" layoutY="226.0" />
             <Label layoutX="11.0" layoutY="-3.0" text="Cadastrar novo motorista">
                <font>
                   <Font size="36.0" />
@@ -41,13 +41,13 @@
             </Label>
             <PasswordField fx:id="pfConfirmarSenha" layoutX="772.0" layoutY="381.0" />
             <Label layoutX="662.0" layoutY="385.0" text="Confirmar senha" />
-            <Button fx:id="btnNovo" layoutX="548.0" layoutY="498.0" mnemonicParsing="false" onAction="#onNovo" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Novo" />
-            <TableView fx:id="tblMotorista" layoutX="88.0" layoutY="108.0" onMouseClicked="#onEditar" prefHeight="598.0" prefWidth="418.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
+            <Button fx:id="btnNovo" focusTraversable="false" layoutX="548.0" layoutY="498.0" mnemonicParsing="false" onAction="#onNovo" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Novo" />
+            <TableView fx:id="tblMotorista" focusTraversable="false" layoutX="88.0" layoutY="108.0" onMouseClicked="#onEditar" prefHeight="598.0" prefWidth="418.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
                <columns>
                   <TableColumn fx:id="tbcNomeMotorista" prefWidth="403.0" style="fx-background-color: FF7801;" text="Motoristas" />
                </columns>
             </TableView>
-            <Button fx:id="btnExcluir" layoutX="1007.0" layoutY="498.0" mnemonicParsing="false" onAction="#onExcluir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Excluir" />
+            <Button fx:id="btnExcluir" focusTraversable="false" layoutX="1007.0" layoutY="498.0" mnemonicParsing="false" onAction="#onExcluir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Excluir" />
          </children>
       </Pane>
    </children>

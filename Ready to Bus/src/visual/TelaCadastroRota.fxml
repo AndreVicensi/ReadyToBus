@@ -24,20 +24,20 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="670.0" layoutX="36.0" layoutY="68.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1208.0" />
-            <Button fx:id="btnVoltar" layoutX="1082.0" layoutY="661.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
-            <Button fx:id="btnSalvar" layoutX="771.0" layoutY="498.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
+            <Button fx:id="btnVoltar" cancelButton="true" focusTraversable="false" layoutX="1082.0" layoutY="661.0" mnemonicParsing="false" onAction="#onVoltar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Voltar" />
+            <Button fx:id="btnSalvar" defaultButton="true" focusTraversable="false" layoutX="771.0" layoutY="498.0" mnemonicParsing="false" onAction="#onSalvar" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Salvar" />
             <Label layoutX="11.0" layoutY="-3.0" text="Cadastrar nova rota">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="btnNovo" layoutX="548.0" layoutY="498.0" mnemonicParsing="false" onAction="#onNovo" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Novo" />
-            <TableView fx:id="tblRotas" layoutX="88.0" layoutY="108.0" onMouseClicked="#onEditar" prefHeight="598.0" prefWidth="418.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
+            <Button fx:id="btnNovo" focusTraversable="false" layoutX="548.0" layoutY="498.0" mnemonicParsing="false" onAction="#onNovo" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Novo" />
+            <TableView fx:id="tblRotas" focusTraversable="false" layoutX="88.0" layoutY="108.0" onMouseClicked="#onEditar" prefHeight="598.0" prefWidth="418.0" styleClass="tabela" stylesheets="@TelaCadastroStyle.css">
                <columns>
                   <TableColumn fx:id="tbcNomeRotas" prefWidth="403.0" style="fx-background-color: FF7801;" text="Rotas" />
                </columns>
             </TableView>
-            <Button fx:id="btnExcluir" layoutX="1007.0" layoutY="498.0" mnemonicParsing="false" onAction="#onExcluir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Excluir" />
+            <Button fx:id="btnExcluir" focusTraversable="false" layoutX="1007.0" layoutY="498.0" mnemonicParsing="false" onAction="#onExcluir" styleClass="botao" stylesheets="@TelaCadastroStyle.css" text="Excluir" />
             <Label layoutX="617.0" layoutY="224.0" text="Nome da Rota" />
             <TextField fx:id="tfNomeRota" layoutX="748.0" layoutY="219.0" prefHeight="25.0" prefWidth="297.0" stylesheets="@TelaCadastroStyle.css" />
             <Label layoutX="617.0" layoutY="297.0" text="Motorista" />

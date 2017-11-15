@@ -2,6 +2,7 @@ package application;
 
 import java.time.LocalTime;
 
+import componente.TextFieldFormatter;
 import dao.DaoFactory;
 import dao.RotaDao;
 import dao.ViagemDao;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import model.Rota;
@@ -50,12 +52,12 @@ public class CadastroViagemController {
 		cbxRota.setItems(
 				FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 
-		// tfSaidaIda.setTextFormatter(value);
+		tfSaidaIda.setPromptText("00:00");
+		tfSaidaVolta.setPromptText("00:00");
 	}
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		// criar hora de saída
 
 		LocalTime tempozerado = LocalTime.of(00, 00);
 
@@ -91,4 +93,24 @@ public class CadastroViagemController {
 		tfSaidaIda.setText("");
 		tfSaidaVolta.setText("");
 	}
+
+	@FXML
+	void tfSaidaIdaKeyReleased(KeyEvent event) {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("##:##");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(tfSaidaIda);
+		tff.formatter();
+
+	}
+
+	@FXML
+	void tfSaidaVoltaKeyReleased(KeyEvent event) {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("##:##");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(tfSaidaVolta);
+		tff.formatter();
+	}
+
 }

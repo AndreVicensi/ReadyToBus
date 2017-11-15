@@ -39,6 +39,11 @@ public class CadastroEmpresaController {
 	private Mensagens msg = new Mensagens();
 
 	@FXML
+	public void initialize() {
+
+	}
+	
+	@FXML
 	void onSalvar(ActionEvent event) {
 		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
 			empresa = new Empresa(tfNomeEmpresa.getText(), tfCnpj.getText(), tfLogin.getText(), pfSenha.getText());
