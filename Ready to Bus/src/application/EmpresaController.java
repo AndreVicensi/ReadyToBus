@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import dao.DaoFactory;
 import dao.ViagemDao;
+import dao.Viagem_Ida_VoltaDao;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import metodos.MetodosTelas;
 import model.Viagem;
+import model.Viagem_Ida_Volta;
 
 public class EmpresaController {
 
@@ -67,13 +69,14 @@ public class EmpresaController {
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
+	private static Viagem_Ida_VoltaDao viagemIdaVoltaDao = DaoFactory.get().viagemIdaVoltaDao();
 
 	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 1
 													// minuto
 
 	public void initialize() {
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
-		carregarLista();
+		// carregarLista();
 
 	}
 
@@ -138,6 +141,7 @@ public class EmpresaController {
 		lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
 		lRota.setText(cbxViagem.getValue().getRota().getText());
 		lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
+
 		lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
 		lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
 
@@ -146,6 +150,15 @@ public class EmpresaController {
 		} else {
 			tela.carregarImagem(imgDirigindo, false);
 		}
+
+		Viagem_Ida_Volta viagemVolta = new Viagem_Ida_Volta();
+
+		viagemVolta = viagemIdaVoltaDao.get(cbxViagem.getValue().getIdViagem());
+
+		System.out.println(viagemVolta.getVolta().getSaida().toString());
+
+		lSaidaVolta.setText(viagemVolta.getVolta().getSaida().toString());
+		lChegadaVolta.setText(viagemVolta.getVolta().getChegada().toString());
 
 	}
 

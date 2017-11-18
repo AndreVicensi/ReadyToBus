@@ -40,4 +40,8 @@ public class DaoFactory {
 		return new RotaJdbc(conexao);
 	}
 
+	public Viagem_Ida_VoltaDao viagemIdaVoltaDao() {
+		return new Viagem_Ida_VoltaJdbc(conexao);
+	}
+
 }
