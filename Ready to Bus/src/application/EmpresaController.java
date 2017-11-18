@@ -5,7 +5,6 @@ import java.util.TimerTask;
 
 import dao.DaoFactory;
 import dao.ViagemDao;
-import dao.Viagem_Ida_VoltaDao;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,14 +68,13 @@ public class EmpresaController {
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
-	private static Viagem_Ida_VoltaDao viagemIdaVoltaDao = DaoFactory.get().viagemIdaVoltaDao();
 
-	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 1
-													// minuto
+	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 10
+													// segundos
 
 	public void initialize() {
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
-		// carregarLista();
+		carregarLista();
 
 	}
 
@@ -142,23 +140,33 @@ public class EmpresaController {
 		lRota.setText(cbxViagem.getValue().getRota().getText());
 		lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
 
-		lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
-		lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
-
 		if (cbxViagem.getValue().getDirigindo().equals(true)) {
 			tela.carregarImagem(imgDirigindo, true);
 		} else {
 			tela.carregarImagem(imgDirigindo, false);
 		}
 
-		Viagem_Ida_Volta viagemVolta = new Viagem_Ida_Volta();
+		Viagem_Ida_Volta viagemIdaVolta = new Viagem_Ida_Volta();
 
-		viagemVolta = viagemIdaVoltaDao.get(cbxViagem.getValue().getIdViagem());
+		if (cbxViagem.getValue().getIda().equals(true)) {
 
-		System.out.println(viagemVolta.getVolta().getSaida().toString());
+			lSaidaIda.setText(cbxViagem.getValue().getSaida().toString());
+			lChegadaIda.setText(cbxViagem.getValue().getChegada().toString());
 
-		lSaidaVolta.setText(viagemVolta.getVolta().getSaida().toString());
-		lChegadaVolta.setText(viagemVolta.getVolta().getChegada().toString());
+			viagemIdaVolta.setVolta(viagemDao.getHoras(cbxViagem.getValue().getIdViagem() + 1));
+
+			lSaidaVolta.setText(viagemIdaVolta.getVolta().getSaida().toString());
+			lChegadaVolta.setText(viagemIdaVolta.getVolta().getSaida().toString());
+		} else {
+
+			viagemIdaVolta.setIda(viagemDao.getHoras(cbxViagem.getValue().getIdViagem() - 1));
+
+			lSaidaIda.setText(viagemIdaVolta.getIda().getSaida().toString());
+			lChegadaIda.setText(viagemIdaVolta.getIda().getSaida().toString());
+
+			lSaidaVolta.setText(cbxViagem.getValue().getSaida().toString());
+			lChegadaVolta.setText(cbxViagem.getValue().getChegada().toString());
+		}
 
 	}
 

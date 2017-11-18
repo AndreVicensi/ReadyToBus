@@ -86,7 +86,7 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select v.*, r.nome, m.idmotorista, m.nome, m.apelido from viagem v join rota r on v.idrota = r.idrota "
-					+ "join motorista m on r.idmotorista = m.idmotorista order by data asc";
+					+ "join motorista m on r.idmotorista = m.idmotorista order by data desc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
@@ -123,7 +123,8 @@ public class ViagemJdbc implements ViagemDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select v.*, r.nome, m.idmotorista, m.nome, m.apelido from viagem v join rota r on v.idrota = r.idrota "
-					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista=" + codmotorista+"order by data asc";
+					+ "join motorista m on r.idmotorista = m.idmotorista where m.idmotorista=" + codmotorista
+					+ "order by data asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Viagem viagem = new Viagem();
@@ -177,6 +178,27 @@ public class ViagemJdbc implements ViagemDao {
 	}
 	
 	@Override
+	public Viagem getHoras(Integer codigo) {
+		Statement stmt = null;
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select * from viagem where idViagem = " + codigo;
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			Viagem viagem = new Viagem();
+			viagem.setIdViagem(rs.getInt("idViagem"));
+			viagem.setData(rs.getDate("data").toLocalDate());
+			viagem.setSaida(rs.getTime("saida").toLocalTime());
+			viagem.setChegada(rs.getTime("chegada").toLocalTime());
+			viagem.setIda(rs.getBoolean("ida"));
+			return viagem;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
 	public String getData(Integer codigo) {
 		Statement stmt = null;
 		try {
@@ -193,14 +215,12 @@ public class ViagemJdbc implements ViagemDao {
 			viagem.setDirigindo(rs.getBoolean("dirigindo"));
 			viagem.setIda(rs.getBoolean("ida"));
 			return getData(codigo).toString();
-			
+
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		return null;
 	}
-	
-
 
 	@Override
 	public void alterarDiringindo(Integer codviagem, Boolean dirigindo) {

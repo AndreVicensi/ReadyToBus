@@ -15,7 +15,6 @@ import model.Viagem_Ida_Volta;
 public class Viagem_Ida_VoltaJdbc implements Viagem_Ida_VoltaDao {
 
 	private Conexao conexao;
-	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
 	public Viagem_Ida_VoltaJdbc(Conexao conexao) {
 		this.conexao = conexao;
@@ -94,21 +93,21 @@ public class Viagem_Ida_VoltaJdbc implements Viagem_Ida_VoltaDao {
 		try {
 
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select viv.*, v.* from viagem_ida_volta viv join viagem v on v.idviagem = viv.idida from  where idIda = "
+			String sql = "select viv.*, v.* from viagem_ida_volta viv join viagem v on v.idviagem = viv.idvolta from  where idIda = "
 					+ codigo;
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
-			Viagem_Ida_Volta viagem = new Viagem_Ida_Volta();
+			Viagem_Ida_Volta viagemIdaVolta = new Viagem_Ida_Volta();
 			Viagem ida = new Viagem();
 			Viagem volta = new Viagem();
-			ida = viagemDao.get(codigo);
 			volta.setIdViagem(rs.getInt("idVolta"));
-			volta = viagemDao.get(volta.getIdViagem());
-			viagem.setIdIdaVolta(rs.getInt("idIdaVolta"));
-			viagem.setIda(ida);
-			viagem.setVolta(volta);
-			return viagem;
+			ida.setIdViagem(rs.getInt("idIda"));
+
+			viagemIdaVolta.setIdIdaVolta(rs.getInt("idIdaVolta"));
+			viagemIdaVolta.setIda(ida);
+			viagemIdaVolta.setVolta(volta);
+			return viagemIdaVolta;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
