@@ -10,15 +10,18 @@ import com.mysql.jdbc.Statement;
 
 import conexao.Conexao;
 import model.Empresa;
+import model.Motorista;
+import model.Relatorio;
+import model.Rota;
 
 public class EmpresaJdbc implements EmpresaDao {
 
 	private Conexao conexao;
-	
+
 	public EmpresaJdbc(Conexao conexao) {
 		this.conexao = conexao;
 	}
-	
+
 	// insere uma empresa no banco de dados
 	@Override
 	public void inserir(Empresa entidade) {
@@ -52,14 +55,14 @@ public class EmpresaJdbc implements EmpresaDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// altera os dados da empresa
 	@Override
 	public void alterar(Empresa entidade) {
 		String update = "update empresa set nome = ?, cnpj = ?, login = ?, senha = ? where idEmpresa = ?";
 		PreparedStatement updateStmt;
 		try {
-			updateStmt = conexao.get().prepareStatement(update);	
+			updateStmt = conexao.get().prepareStatement(update);
 			updateStmt.setString(1, entidade.getNome());
 			updateStmt.setString(2, entidade.getCnpj());
 			updateStmt.setString(3, entidade.getLogin());
@@ -81,7 +84,7 @@ public class EmpresaJdbc implements EmpresaDao {
 			String sql = "select * from empresa";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-			     Empresa empresa = new Empresa();
+				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
 				empresa.setNome(rs.getString("nome"));
 				empresa.setCnpj(rs.getString("cnpj"));
@@ -102,21 +105,58 @@ public class EmpresaJdbc implements EmpresaDao {
 		Statement stmt = null;
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select * from empresa where idEmpresa = "+codigo;
+			String sql = "select * from empresa where idEmpresa = " + codigo;
 			ResultSet rs = stmt.executeQuery(sql);
-				Empresa empresa = new Empresa();
-				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
-				empresa.setNome(rs.getString("nome"));
-				empresa.setCnpj(rs.getString("cnpj"));
-				empresa.setLogin(rs.getString("login"));
-				empresa.setSenha(rs.getString("senha"));
-				return empresa;
+			Empresa empresa = new Empresa();
+			empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+			empresa.setNome(rs.getString("nome"));
+			empresa.setCnpj(rs.getString("cnpj"));
+			empresa.setLogin(rs.getString("login"));
+			empresa.setSenha(rs.getString("senha"));
+			return empresa;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		return null;
 	}
 
+	@Override
+	public List<Relatorio> listarRelatorio(Integer codempresa) {
+		Statement stmt = null;
+		List<Relatorio> dados = new ArrayList<Relatorio>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select r.*, m.nome, e.idempresa from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
+					+ " where e.idempresa=" + codempresa;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Relatorio relatorio = new Relatorio();
 
+				Rota rota = new Rota();
+				rota.setIdRota(rs.getInt("idRota"));
+				rota.setNome(rs.getString("nome"));
+
+				Motorista motorista = new Motorista();
+				motorista.setIdMotorista(rs.getInt("idMotorista"));
+				motorista.setNome(rs.getString("m.nome"));
+
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("e.idempresa"));
+
+				motorista.setEmpresa(empresa);
+
+				rota.setMotorista(motorista);
+
+				relatorio.setNomeMotorista(motorista.getNome());
+				relatorio.setNomeRota(rota.getNome());
+
+				dados.add(relatorio);
+
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return dados;
+	}
 
 }

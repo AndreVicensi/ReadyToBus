@@ -16,8 +16,8 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="nome" class="java.lang.String"/>
-	<field name="m.nome" class="java.lang.String"/>
+	<field name="nomeRota" class="java.lang.String"/>
+	<field name="nomeMotorista" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -66,11 +66,11 @@
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
 				<reportElement x="30" y="10" width="100" height="20" uuid="cbfb3980-d061-4473-beab-58fc60ea54af"/>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nomeRota}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="270" y="10" width="100" height="20" uuid="cac33097-fc5a-430b-88e5-395d4cba3d6a"/>
-				<textFieldExpression><![CDATA[$F{m.nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nomeMotorista}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -3,6 +3,7 @@ package application;
 import java.io.InputStream;
 
 import dao.DaoFactory;
+import dao.EmpresaDao;
 import dao.PassageiroDao;
 import dao.RotaDao;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class TelaRelatorios {
 
 	private MetodosTelas tela = new MetodosTelas();
 	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
-	private static RotaDao rotaDao = DaoFactory.get().rotaDao();
+	private static EmpresaDao empresaDao = DaoFactory.get().empresaDao();
 
 	@FXML
 	void onListaPassageiros(ActionEvent event) {
@@ -66,7 +67,7 @@ public class TelaRelatorios {
 		try {
 
 			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					rotaDao.listarRelatorio(AplicacaoSessao.empresa.getIdEmpresa()));
+					empresaDao.listarRelatorio(AplicacaoSessao.empresa.getIdEmpresa()));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
