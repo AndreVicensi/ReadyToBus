@@ -4,8 +4,6 @@ import java.io.InputStream;
 
 import dao.DaoFactory;
 import dao.EmpresaDao;
-import dao.PassageiroDao;
-import dao.RotaDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,7 +37,6 @@ public class TelaRelatorios {
 	}
 
 	private MetodosTelas tela = new MetodosTelas();
-	private static PassageiroDao passageiroDao = DaoFactory.get().passageiroDao();
 	private static EmpresaDao empresaDao = DaoFactory.get().empresaDao();
 
 	@FXML
@@ -49,7 +46,7 @@ public class TelaRelatorios {
 		try {
 
 			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					passageiroDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa()));
+					empresaDao.relatorioPassageiros(AplicacaoSessao.empresa.getIdEmpresa()));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
@@ -67,7 +64,7 @@ public class TelaRelatorios {
 		try {
 
 			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					empresaDao.listarRelatorio(AplicacaoSessao.empresa.getIdEmpresa()));
+					empresaDao.relatorioRotas(AplicacaoSessao.empresa.getIdEmpresa()));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 

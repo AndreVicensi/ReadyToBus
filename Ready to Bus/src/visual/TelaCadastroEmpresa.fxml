@@ -25,7 +25,7 @@
             <Label layoutX="514.0" layoutY="316.0" text="Login " />
             <Label layoutX="514.0" layoutY="352.0" text="Senha" />
             <TextField fx:id="tfNomeEmpresa" layoutX="569.0" layoutY="208.0" prefHeight="25.0" prefWidth="297.0" stylesheets="@TelaCadastroStyle.css" />
-            <TextField fx:id="tfCnpj" layoutX="569.0" layoutY="248.0" />
+            <TextField fx:id="tfCnpj" layoutX="569.0" layoutY="248.0" onKeyReleased="#tfCnpjKeyReleased" />
             <TextField fx:id="tfLogin" layoutX="569.0" layoutY="312.0" />
             <PasswordField fx:id="pfSenha" layoutX="569.0" layoutY="348.0" />
             <PasswordField fx:id="pfConfirmarSenha" layoutX="569.0" layoutY="403.0" />

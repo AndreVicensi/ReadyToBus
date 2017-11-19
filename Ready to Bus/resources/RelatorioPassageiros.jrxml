@@ -16,9 +16,12 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="nome" class="java.lang.String"/>
-	<field name="telefone" class="java.lang.String"/>
-	<field name="cpf" class="java.lang.String"/>
+	<field name="nomePassageiro" class="java.lang.String"/>
+	<field name="telefonePassageiro" class="java.lang.String"/>
+	<field name="cpfPassageiro" class="java.lang.String"/>
+	<field name="dataRelatorio" class="java.lang.String"/>
+	<field name="horaRelatorio" class="java.lang.String"/>
+	<field name="nomeEmpresa" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -30,6 +33,23 @@
 					<font fontName="DFGothic-EB" size="42"/>
 				</textElement>
 				<text><![CDATA[READY TO BUS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="80" width="150" height="30" uuid="e2d6062a-1528-4a9e-8b4d-cc6f342b8406"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeEmpresa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="83" width="90" height="30" forecolor="#0A0909" uuid="6d6666aa-fe17-4278-8ccb-38e102c42bd2"/>
+				<box>
+					<pen lineColor="#050404"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans" size="16"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -70,22 +90,61 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="54" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
-				<reportElement x="30" y="10" width="100" height="30" uuid="cbfb3980-d061-4473-beab-58fc60ea54af"/>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				<reportElement x="30" y="10" width="100" height="20" uuid="cbfb3980-d061-4473-beab-58fc60ea54af"/>
+				<textFieldExpression><![CDATA[$F{nomePassageiro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="440" y="10" width="100" height="30" uuid="a37a9aa5-4bdf-4ab1-9a58-aaf37704811d"/>
-				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+				<reportElement x="440" y="10" width="100" height="20" uuid="a37a9aa5-4bdf-4ab1-9a58-aaf37704811d"/>
+				<textFieldExpression><![CDATA[$F{telefonePassageiro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="270" y="10" width="100" height="30" uuid="cac33097-fc5a-430b-88e5-395d4cba3d6a"/>
-				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+				<reportElement x="270" y="10" width="100" height="20" uuid="cac33097-fc5a-430b-88e5-395d4cba3d6a"/>
+				<textFieldExpression><![CDATA[$F{cpfPassageiro}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="46">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="71491f06-dc9d-4705-b54d-8130ea9735e0"/>
+				<box>
+					<pen lineColor="#050404"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans" size="16"/>
+				</textElement>
+				<text><![CDATA[Impresso em]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="10" width="110" height="30" uuid="8a4fa044-b458-4d7f-8b50-3857b6b5f384"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataRelatorio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="240" y="10" width="40" height="30" forecolor="#0A0909" uuid="d7bc1f8b-dcee-4f09-a9a8-45bd95775013"/>
+				<box>
+					<pen lineColor="#050404"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans" size="16"/>
+				</textElement>
+				<text><![CDATA[ás]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="10" width="150" height="30" uuid="0c9fb638-7327-4447-8d9a-e608e6f55a5d"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horaRelatorio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
 	</summary>

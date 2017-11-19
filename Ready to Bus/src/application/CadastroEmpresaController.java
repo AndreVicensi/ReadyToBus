@@ -1,5 +1,6 @@
 package application;
 
+import componente.TextFieldFormatter;
 import dao.DaoFactory;
 import dao.EmpresaDao;
 import javafx.event.ActionEvent;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import metodos.MetodosTelas;
 import model.Empresa;
 
@@ -67,6 +69,16 @@ public class CadastroEmpresaController {
 		tfLogin.setText("");
 		pfSenha.setText("");
 		pfConfirmarSenha.setText("");
+	}
+	
+	@FXML
+	void tfCnpjKeyReleased(KeyEvent event) {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("##.###.###/####-##");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(tfCnpj);
+		tff.formatter();
+
 	}
 
 }

@@ -3,6 +3,8 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,16 +123,15 @@ public class EmpresaJdbc implements EmpresaDao {
 	}
 
 	@Override
-	public List<Relatorio> listarRelatorio(Integer codempresa) {
+	public List<Relatorio> relatorioRotas(Integer codempresa) {
 		Statement stmt = null;
 		List<Relatorio> dados = new ArrayList<Relatorio>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
-			String sql = "select r.*, m.nome, e.idempresa from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
-					+ " where e.idempresa=" + codempresa;
+			String sql = "select r.*, m.nome, e.idempresa, e.nome from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
+					+ " where e.idempresa=" + codempresa + " order by r.nome asc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				Relatorio relatorio = new Relatorio();
 
 				Rota rota = new Rota();
 				rota.setIdRota(rs.getInt("idRota"));
@@ -142,13 +143,57 @@ public class EmpresaJdbc implements EmpresaDao {
 
 				Empresa empresa = new Empresa();
 				empresa.setIdEmpresa(rs.getInt("e.idempresa"));
+				empresa.setNome(rs.getString("e.nome"));
 
 				motorista.setEmpresa(empresa);
 
 				rota.setMotorista(motorista);
 
+				Relatorio relatorio = new Relatorio();
+				String tempo = LocalTime.now().toString().substring(0, 8);
+				String data = LocalDate.now().toString();
+
+				relatorio.setNomeEmpresa(empresa.getNome());
 				relatorio.setNomeMotorista(motorista.getNome());
 				relatorio.setNomeRota(rota.getNome());
+				relatorio.setDataRelatorio(data);
+				relatorio.setHoraRelatorio(tempo);
+
+				dados.add(relatorio);
+
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return dados;
+	}
+
+	@Override
+	public List<Relatorio> relatorioPassageiros(Integer codempresa) {
+		Statement stmt = null;
+		List<Relatorio> dados = new ArrayList<Relatorio>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select * from passageiro p join empresa e on p.idempresa = e.idempresa where e.idempresa="
+					+ codempresa + " order by p.nome asc";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+				empresa.setNome(rs.getString("e.nome"));
+
+				Relatorio relatorio = new Relatorio();
+				String tempo = LocalTime.now().toString().substring(0, 8);
+				String data = LocalDate.now().toString();
+
+				relatorio.setNomeEmpresa(empresa.getNome());
+				relatorio.setNomePassageiro(rs.getString("p.nome"));
+				relatorio.setCpfPassageiro(rs.getString("p.cpf"));
+				relatorio.setTelefonePassageiro(rs.getString("p.telefone"));
+
+				relatorio.setDataRelatorio(data);
+				relatorio.setHoraRelatorio(tempo);
 
 				dados.add(relatorio);
 

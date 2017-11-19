@@ -1,5 +1,6 @@
 package application;
 
+import componente.TextFieldFormatter;
 import dao.DaoFactory;
 import dao.PassageiroDao;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
@@ -144,6 +146,26 @@ public class CadastroPassageiroController {
 		editando = false;
 		passageiro = new Passageiro();
 		limparCampos();
+	}
+	
+	@FXML
+	void tfCpfKeyReleased(KeyEvent event) {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("###.###.###-##");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(tfCpfPassageiro);
+		tff.formatter();
+
+	}
+	
+	@FXML
+	void tfTelefoneKeyReleased(KeyEvent event) {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("(##)#####-####");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(tfTelefonePassageiro);
+		tff.formatter();
+
 	}
 
 }

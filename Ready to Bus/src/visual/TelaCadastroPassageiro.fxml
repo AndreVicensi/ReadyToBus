@@ -43,8 +43,8 @@
       <Label layoutX="731.0" layoutY="348.0" text="Login " />
       <Label layoutX="731.0" layoutY="384.0" text="Senha" />
       <TextField fx:id="tfNomePassageiro" layoutX="782.0" layoutY="143.0" prefHeight="25.0" prefWidth="297.0" />
-      <TextField fx:id="tfCpfPassageiro" layoutX="784.0" layoutY="204.0" prefHeight="25.0" prefWidth="194.0" />
-      <TextField fx:id="tfTelefonePassageiro" layoutX="786.0" layoutY="265.0" prefHeight="25.0" prefWidth="194.0" />
+      <TextField fx:id="tfCpfPassageiro" layoutX="784.0" layoutY="204.0" onKeyReleased="#tfCpfKeyReleased" prefHeight="25.0" prefWidth="194.0" />
+      <TextField fx:id="tfTelefonePassageiro" layoutX="786.0" layoutY="265.0" onKeyReleased="#tfTelefoneKeyReleased" prefHeight="25.0" prefWidth="194.0" />
       <TextField fx:id="tfLogin" layoutX="786.0" layoutY="344.0" />
       <PasswordField fx:id="pfSenha" layoutX="786.0" layoutY="380.0" />
       <Label layoutX="634.0" layoutY="148.0" text="Nome do passageiro" />
