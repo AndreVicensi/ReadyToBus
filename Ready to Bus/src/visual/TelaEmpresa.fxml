@@ -21,6 +21,7 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="636.0" layoutX="70.0" layoutY="82.0" opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="475.0" layoutX="202.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="837.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="165.0" layoutX="673.0" layoutY="269.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff7801" height="50.0" layoutX="6.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
             <Label fx:id="lRota" layoutX="405.0" layoutY="293.0" prefHeight="17.0" prefWidth="157.0" />
             <Label layoutX="11.0" layoutY="-3.0" text="Controle da empresa">
@@ -42,7 +43,7 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>
-            <Button fx:id="btnVerLista" layoutX="892.0" layoutY="583.0" mnemonicParsing="false" onAction="#verLista" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
+            <Button fx:id="btnVerListaIda" focusTraversable="false" layoutX="766.0" layoutY="366.0" mnemonicParsing="false" onAction="#verListaIda" styleClass="btnlista" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
             <ImageView fx:id="imgDirigindo" fitHeight="71.0" fitWidth="66.0" layoutX="405.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="btnSair" layoutX="1189.0" mnemonicParsing="false" onAction="#onSair" prefHeight="50.0" prefWidth="96.0" styleClass="sair" stylesheets="@TelaCadastroStyle.css" text="SAIR" textAlignment="CENTER">
                <font>
@@ -65,7 +66,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="100.0" layoutX="673.0" layoutY="269.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
             <Label layoutX="809.0" layoutY="284.0" text="IDA">
                <font>
                   <Font name="System Bold" size="24.0" />
@@ -73,14 +73,14 @@
             </Label>
             <Label fx:id="lSaidaIda" layoutX="739.0" layoutY="337.0" />
             <Label fx:id="lChegadaIda" layoutX="914.0" layoutY="337.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="100.0" layoutX="673.0" layoutY="418.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-            <Label layoutX="791.0" layoutY="429.0" text="VOLTA">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="165.0" layoutX="673.0" layoutY="470.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
+            <Label layoutX="788.0" layoutY="484.0" text="VOLTA">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lSaidaVolta" layoutX="739.0" layoutY="486.0" prefHeight="17.0" prefWidth="77.0" />
-            <Label fx:id="lChegadaVolta" layoutX="914.0" layoutY="486.0" prefHeight="17.0" prefWidth="55.0" />
+            <Label fx:id="lSaidaVolta" layoutX="736.0" layoutY="541.0" prefHeight="17.0" prefWidth="77.0" />
+            <Label fx:id="lChegadaVolta" layoutX="911.0" layoutY="541.0" prefHeight="17.0" prefWidth="55.0" />
             <Label layoutX="274.0" layoutY="292.0" text="Origem/Destino:">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -96,8 +96,9 @@
             <Label fx:id="lApelidoMotorista" layoutX="400.0" layoutY="418.0" prefHeight="17.0" prefWidth="124.0" />
             <Label layoutX="698.0" layoutY="337.0" text="Saída" />
             <Label layoutX="854.0" layoutY="337.0" text="Chegada" />
-            <Label layoutX="698.0" layoutY="486.0" text="Saída" />
-            <Label layoutX="854.0" layoutY="486.0" text="Chegada" />
+            <Label layoutX="695.0" layoutY="541.0" text="Saída" />
+            <Label layoutX="851.0" layoutY="541.0" text="Chegada" />
+            <Button fx:id="btnVerListaVolta" focusTraversable="false" layoutX="765.0" layoutY="571.0" mnemonicParsing="false" onAction="#verListaVolta" styleClass="btnlista" stylesheets="@TelaCadastroStyle.css" text="Ver lista" />
          </children>
       </Pane>
    </children>

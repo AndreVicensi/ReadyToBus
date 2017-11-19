@@ -28,6 +28,13 @@
 	-fx-font-weight: bold;
 }
 
+.btnlista{
+	-fx-background-color: #FF7801;
+	-fx-pref-height: 50px;
+	-fx-font-size: 24px;
+	-fx-font-weight: bold;
+}
+
 .tabela{
 	-fx-background-color: FFB70A;
 }

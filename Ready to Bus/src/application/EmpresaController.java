@@ -37,7 +37,10 @@ public class EmpresaController {
 	private Label lNomeMotorista;
 
 	@FXML
-	private Button btnVerLista;
+	private Button btnVerListaIda;
+
+	@FXML
+	private Button btnVerListaVolta;
 
 	@FXML
 	private ImageView imgDirigindo;
@@ -74,7 +77,7 @@ public class EmpresaController {
 
 	public void initialize() {
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
-		carregarLista();
+		// carregarLista();
 
 	}
 
@@ -108,11 +111,23 @@ public class EmpresaController {
 	}
 
 	@FXML
-	void verLista(ActionEvent event) {
-
-		ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
+	void verListaIda(ActionEvent event) {
+		if (cbxViagem.getValue().getIda().equals(true)) {
+			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
+		} else {
+			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem() + 1;
+		}
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
+	}
 
+	@FXML
+	void verListaVolta(ActionEvent event) {
+		if (cbxViagem.getValue().getIda().equals(true)) {
+			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem() - 1;
+		} else {
+			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
+		}
+		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}
 
 	public void carregarLista() {
