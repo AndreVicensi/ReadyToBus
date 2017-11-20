@@ -77,7 +77,7 @@ public class EmpresaController {
 
 	public void initialize() {
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
-		// carregarLista();
+		carregarLista();
 
 	}
 
