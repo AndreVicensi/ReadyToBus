@@ -147,6 +147,7 @@ public class EmpresaController {
 				public void run() {
 					try {
 						cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+
 						// chamar metodo
 
 					} catch (Exception e) {

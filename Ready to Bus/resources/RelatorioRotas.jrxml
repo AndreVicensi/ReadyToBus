@@ -25,11 +25,12 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="118" splitType="Stretch">
+		<band height="113" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
 				<reportElement x="150" y="10" width="255" height="45" uuid="2d9f5933-d480-4ac6-8c22-3378bed727aa"/>
 				<textElement>
-					<font fontName="DFGothic-EB" size="42"/>
+					<font fontName="SansSerif" size="34"/>
 				</textElement>
 				<text><![CDATA[READY TO BUS]]></text>
 			</staticText>
@@ -56,14 +57,14 @@
 		<band height="104" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
-				<reportElement x="160" y="0" width="240" height="45" uuid="3c131d55-e497-4127-90fa-0b663a256997"/>
+				<reportElement x="177" y="20" width="200" height="45" uuid="3c131d55-e497-4127-90fa-0b663a256997"/>
 				<textElement>
-					<font fontName="MV Boli" size="26"/>
+					<font fontName="MV Boli" size="22"/>
 				</textElement>
 				<text><![CDATA[Relatório de rotas]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" mode="Opaque" x="1" y="50" width="553" height="54" forecolor="rgba(232, 34, 30, 0.0)" backcolor="#E33330" uuid="462c7aec-0e41-4faa-8a85-e3f6f64f2123"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" mode="Opaque" x="1" y="50" width="553" height="54" forecolor="rgba(232, 34, 30, 0.0)" backcolor="#FF7801" uuid="462c7aec-0e41-4faa-8a85-e3f6f64f2123"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="30" y="60" width="159" height="30" forecolor="#FFFFFF" uuid="6b2bf131-8289-482a-9cc4-aa526d7a51b0"/>
