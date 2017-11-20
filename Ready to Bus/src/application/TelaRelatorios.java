@@ -51,8 +51,8 @@ public class TelaRelatorios {
 	@FXML
 	private RadioButton rotasDesc;
 
-	public String ordenacaoP;
-	public String ordenacaoR;
+	public String ordenacaoP = "asc";
+	public String ordenacaoR = "asc";
 
 	@FXML
 	void rotasAsc(ActionEvent event) {

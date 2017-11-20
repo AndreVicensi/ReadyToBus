@@ -129,7 +129,7 @@ public class EmpresaJdbc implements EmpresaDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select r.*, m.nome, e.idempresa, e.nome from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
-					+ " where e.idempresa=" + codempresa + " order by r.nome "+order;
+					+ " where e.idempresa=" + codempresa + " order by r.nome " + order;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 
@@ -175,7 +175,7 @@ public class EmpresaJdbc implements EmpresaDao {
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro p join empresa e on p.idempresa = e.idempresa where e.idempresa="
-					+ codempresa + " order by p.nome "+order;
+					+ codempresa + " order by p.nome " + order;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 
