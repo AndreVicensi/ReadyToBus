@@ -123,13 +123,13 @@ public class EmpresaJdbc implements EmpresaDao {
 	}
 
 	@Override
-	public List<Relatorio> relatorioRotas(Integer codempresa) {
+	public List<Relatorio> relatorioRotas(Integer codempresa, String order) {
 		Statement stmt = null;
 		List<Relatorio> dados = new ArrayList<Relatorio>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select r.*, m.nome, e.idempresa, e.nome from rota r join motorista m on m.idmotorista = r.idmotorista join empresa e on e.idempresa = m.idempresa"
-					+ " where e.idempresa=" + codempresa + " order by r.nome asc";
+					+ " where e.idempresa=" + codempresa + " order by r.nome "+order;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 
@@ -169,13 +169,13 @@ public class EmpresaJdbc implements EmpresaDao {
 	}
 
 	@Override
-	public List<Relatorio> relatorioPassageiros(Integer codempresa) {
+	public List<Relatorio> relatorioPassageiros(Integer codempresa, String order) {
 		Statement stmt = null;
 		List<Relatorio> dados = new ArrayList<Relatorio>();
 		try {
 			stmt = (Statement) conexao.get().createStatement();
 			String sql = "select * from passageiro p join empresa e on p.idempresa = e.idempresa where e.idempresa="
-					+ codempresa + " order by p.nome asc";
+					+ codempresa + " order by p.nome "+order;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 

@@ -7,6 +7,8 @@ import dao.EmpresaDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
 import net.sf.jasperreports.engine.JRDataSource;
@@ -32,6 +34,47 @@ public class TelaRelatorios {
 	private Button btnVoltar;
 
 	@FXML
+	private ToggleGroup familia;
+
+	@FXML
+	private ToggleGroup familia1;
+
+	@FXML
+	private RadioButton btnNomePassageiroAsc;
+
+	@FXML
+	private RadioButton btnNomePassageiroDesc;
+
+	@FXML
+	private RadioButton rotasAsc;
+
+	@FXML
+	private RadioButton rotasDesc;
+
+	public String ordenacaoP;
+	public String ordenacaoR;
+
+	@FXML
+	void rotasAsc(ActionEvent event) {
+		ordenacaoR = "asc";
+	}
+
+	@FXML
+	void rotasDesc(ActionEvent event) {
+		ordenacaoR = "desc";
+	}
+
+	@FXML
+	void nomePassageiroAsc(ActionEvent event) {
+		ordenacaoP = "asc";
+	}
+
+	@FXML
+	void nomePassageiroDesc(ActionEvent event) {
+		ordenacaoP = "desc";
+	}
+
+	@FXML
 	void onVoltar(ActionEvent event) {
 		tela.carregarTela("/visual/TelaEmpresa.fxml");
 	}
@@ -46,7 +89,7 @@ public class TelaRelatorios {
 		try {
 
 			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					empresaDao.relatorioPassageiros(AplicacaoSessao.empresa.getIdEmpresa()));
+					empresaDao.relatorioPassageiros(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoP));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
@@ -64,7 +107,7 @@ public class TelaRelatorios {
 		try {
 
 			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					empresaDao.relatorioRotas(AplicacaoSessao.empresa.getIdEmpresa()));
+					empresaDao.relatorioRotas(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoR));
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
