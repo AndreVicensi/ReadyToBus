@@ -77,14 +77,14 @@ public class EmpresaController {
 
 	public void initialize() {
 
+		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+
 		if (ListaViagemController.temViagem) {
 			// fazer combobox vir preenchido já
 
 			cbxViagem.setValue(ListaViagemController.getViagem());
-
 		}
 
-		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 		carregarLista();
 
 	}
@@ -200,6 +200,7 @@ public class EmpresaController {
 	@FXML
 	void onSair(ActionEvent event) {
 		tela.carregarTela("/visual/TelaLogin.fxml");
+
 	}
 
 }
