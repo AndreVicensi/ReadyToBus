@@ -41,23 +41,6 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Label layoutX="170.0" layoutY="119.0" text="SAÍDA" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="119.0" layoutX="103.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-            <Label layoutX="239.0" layoutY="110.0" text="IDA">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="lSaidaIda" layoutX="142.0" layoutY="163.0" text="saída" />
-            <Label fx:id="lChegadaIda" layoutX="322.0" layoutY="163.0" text="chegada" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb70c" height="119.0" layoutX="868.0" layoutY="104.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-            <Label layoutX="1004.0" layoutY="119.0" text="VOLTA">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="lSaidaVolta" layoutX="907.0" layoutY="172.0" text="saída" />
-            <Label fx:id="lChegadaVolta" layoutX="1087.0" layoutY="172.0" text="chegada" />
          </children>
       </Pane>
    </children>

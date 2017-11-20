@@ -72,10 +72,18 @@ public class EmpresaController {
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
-	public static final long TEMPO = (1000 * 10); // atualiza o site a cada 10
+	public static final long TEMPO = (1000 * 1); // atualiza o site a cada 10
 													// segundos
 
 	public void initialize() {
+
+		if (ListaViagemController.temViagem) {
+			// fazer combobox vir preenchido já
+
+			cbxViagem.setValue(ListaViagemController.getViagem());
+
+		}
+
 		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 		carregarLista();
 
@@ -140,6 +148,7 @@ public class EmpresaController {
 					try {
 						cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 						// chamar metodo
+
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -154,6 +163,8 @@ public class EmpresaController {
 		lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
 		lRota.setText(cbxViagem.getValue().getRota().getText());
 		lApelidoMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getApelido());
+
+		ListaViagemController.setViagem(cbxViagem.getValue());
 
 		if (cbxViagem.getValue().getDirigindo().equals(true)) {
 			tela.carregarImagem(imgDirigindo, true);

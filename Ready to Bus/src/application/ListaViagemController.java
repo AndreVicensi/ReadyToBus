@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import metodos.MetodosTelas;
 import model.Passageiro_Viagem;
+import model.Viagem;
 
 public class ListaViagemController {
 
@@ -57,6 +58,9 @@ public class ListaViagemController {
 
 	@FXML
 	private Label lApelidoMotorista;
+
+	public static Boolean temViagem = true;
+	private static Viagem viagem;
 
 	private MetodosTelas tela = new MetodosTelas();
 
@@ -147,4 +151,12 @@ public class ListaViagemController {
 		}
 	}
 
+	public static void setViagem(Viagem viagem) {
+		ListaViagemController.viagem = viagem;
+
+	}
+
+	public static Viagem getViagem() {
+		return viagem;
+	}
 }
