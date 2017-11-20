@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -53,8 +55,12 @@ public class TelaLoginController {
 	}
 
 	@FXML
-	void onSite(ActionEvent event) {
-		tela.abrirSite("C:\\Users\\ander\\Documents\\web\\empresa/empresa.html");
+	void onSite(ActionEvent event) throws IOException {
+		//tela.abrirSite("C:\\Users\\ander\\Documents\\web\\empresa/empresa.html");
+		
+		//assim funciona
+		Runtime.getRuntime().exec("cmd.exe /C start firefox.exe http://google.com");
+		//coloca o caminho do nosso site após o firefox.exe  no lugar do http...
 	}
 
 	@FXML
