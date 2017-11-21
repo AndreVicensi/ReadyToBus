@@ -40,14 +40,16 @@ public class CadastroEmpresaController {
 	private static EmpresaDao empresaDao = DaoFactory.get().empresaDao();
 	private Mensagens msg = new Mensagens();
 
+	String vazio = "";
+
 	@FXML
 	public void initialize() {
 
 	}
-	
+
 	@FXML
 	void onSalvar(ActionEvent event) {
-		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+		if (pfSenha.getText().equals(pfConfirmarSenha.getText()) && tfNomeEmpresa.equals(vazio)) {
 			empresa = new Empresa(tfNomeEmpresa.getText(), tfCnpj.getText(), tfLogin.getText(), pfSenha.getText());
 			empresaDao.inserir(empresa);
 			limparCampos();
@@ -70,7 +72,7 @@ public class CadastroEmpresaController {
 		pfSenha.setText("");
 		pfConfirmarSenha.setText("");
 	}
-	
+
 	@FXML
 	void tfCnpjKeyReleased(KeyEvent event) {
 		TextFieldFormatter tff = new TextFieldFormatter();
