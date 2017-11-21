@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import dao.DaoFactory;
 import dao.ViagemDao;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -87,7 +88,7 @@ public class EmpresaController {
 
 		}
 
-		// carregarLista();
+		carregarLista();
 
 	}
 
@@ -148,7 +149,10 @@ public class EmpresaController {
 			TimerTask tarefa = new TimerTask() {
 				public void run() {
 					try {
-						cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+						// isso permite atualizar cmoponentes em otura thread
+						Platform.runLater(() -> {
+							cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+						});
 
 						// chamar metodo
 

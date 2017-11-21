@@ -16,26 +16,33 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="nomeRota" class="java.lang.String"/>
-	<field name="nomeMotorista" class="java.lang.String"/>
-	<field name="nomeEmpresa" class="java.lang.String"/>
+	<field name="nomePassageiro" class="java.lang.String"/>
+	<field name="telefonePassageiro" class="java.lang.String"/>
+	<field name="cpfPassageiro" class="java.lang.String"/>
 	<field name="dataRelatorio" class="java.lang.String"/>
 	<field name="horaRelatorio" class="java.lang.String"/>
+	<field name="nomeEmpresa" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="113" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
 				<reportElement x="150" y="10" width="255" height="45" uuid="2d9f5933-d480-4ac6-8c22-3378bed727aa"/>
 				<textElement>
-					<font fontName="SansSerif" size="34"/>
+					<font fontName="Arial" size="34"/>
 				</textElement>
 				<text><![CDATA[READY TO BUS]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="90" y="80" width="150" height="30" uuid="e2d6062a-1528-4a9e-8b4d-cc6f342b8406"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeEmpresa}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="83" width="90" height="30" forecolor="#0A0909" uuid="829b0416-79db-4bda-8061-c9d6059655dc"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="83" width="90" height="30" forecolor="#0A0909" uuid="6d6666aa-fe17-4278-8ccb-38e102c42bd2"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -44,24 +51,17 @@
 				</textElement>
 				<text><![CDATA[Empresa:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="90" y="80" width="150" height="30" uuid="1efed6e9-7471-4754-91da-4d51b0b08f39"/>
-				<textElement>
-					<font size="16"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nomeEmpresa}]]></textFieldExpression>
-			</textField>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="104" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
-				<reportElement x="177" y="20" width="200" height="45" uuid="3c131d55-e497-4127-90fa-0b663a256997"/>
+				<reportElement x="151" y="20" width="253" height="45" uuid="3c131d55-e497-4127-90fa-0b663a256997"/>
 				<textElement>
-					<font fontName="MV Boli" size="22"/>
+					<font fontName="Segoe UI" size="22"/>
 				</textElement>
-				<text><![CDATA[Relatório de rotas]]></text>
+				<text><![CDATA[Relatório de passageiros]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" mode="Opaque" x="1" y="50" width="553" height="54" forecolor="rgba(232, 34, 30, 0.0)" backcolor="#FF7801" uuid="462c7aec-0e41-4faa-8a85-e3f6f64f2123"/>
@@ -71,34 +71,46 @@
 				<textElement>
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Rota]]></text>
+				<text><![CDATA[Nome Completo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="270" y="60" width="140" height="30" forecolor="#FFFFFF" uuid="6e537aef-60da-4012-8af0-55a153e1ebfa"/>
+				<reportElement x="270" y="60" width="100" height="30" forecolor="#FFFFFF" uuid="6e537aef-60da-4012-8af0-55a153e1ebfa"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Nome do Motorista]]></text>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="60" width="100" height="30" forecolor="#FFFFFF" uuid="fa51fc49-70b3-4d8b-a1b9-00e25c287277"/>
+				<textElement>
+					<font fontName="SansSerif" size="16"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="36" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
 				<reportElement x="30" y="10" width="100" height="20" uuid="cbfb3980-d061-4473-beab-58fc60ea54af"/>
-				<textFieldExpression><![CDATA[$F{nomeRota}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nomePassageiro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="10" width="114" height="20" uuid="a37a9aa5-4bdf-4ab1-9a58-aaf37704811d"/>
+				<textFieldExpression><![CDATA[$F{telefonePassageiro}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="270" y="10" width="100" height="20" uuid="cac33097-fc5a-430b-88e5-395d4cba3d6a"/>
-				<textFieldExpression><![CDATA[$F{nomeMotorista}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cpfPassageiro}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
 		<band height="46">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="477e30bc-c46e-4bb3-a7b6-8491176dd19f"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="71491f06-dc9d-4705-b54d-8130ea9735e0"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -107,8 +119,15 @@
 				</textElement>
 				<text><![CDATA[Impresso em]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="130" y="10" width="110" height="30" uuid="8a4fa044-b458-4d7f-8b50-3857b6b5f384"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataRelatorio}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="240" y="10" width="40" height="30" forecolor="#0A0909" uuid="c28ba641-ab09-4a62-8d2d-5abd355a160a"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="240" y="10" width="40" height="30" forecolor="#0A0909" uuid="d7bc1f8b-dcee-4f09-a9a8-45bd95775013"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -118,14 +137,7 @@
 				<text><![CDATA[ás]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="10" width="110" height="30" uuid="8929cdb1-6564-4d30-abe7-5454d327f48c"/>
-				<textElement>
-					<font size="16"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{dataRelatorio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="280" y="10" width="150" height="30" uuid="09fb9d30-a64d-47da-9b63-7daf68303cc3"/>
+				<reportElement x="280" y="10" width="150" height="30" uuid="0c9fb638-7327-4447-8d9a-e608e6f55a5d"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>

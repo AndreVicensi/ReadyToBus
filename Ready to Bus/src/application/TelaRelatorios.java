@@ -84,16 +84,16 @@ public class TelaRelatorios {
 
 	@FXML
 	void onListaPassageiros(ActionEvent event) {
-		InputStream stream = getClass().getResourceAsStream("/RelatorioPassageiros.jasper");
+		InputStream url = getClass().getResourceAsStream("/resources/RelatorioPassageiros.jasper");
 
 		try {
 
 			JRDataSource dataSource = new JRBeanCollectionDataSource(
 					empresaDao.relatorioPassageiros(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoP));
 
-			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
+			JasperPrint print = JasperFillManager.fillReport(url, null, dataSource);
 
-			JasperViewer.viewReport(print);
+			JasperViewer.viewReport(print, false);
 			JasperExportManager.exportReportToPdfFile(print, "relatorioPassageiros.pdf");
 		} catch (JRException e) {
 			e.printStackTrace();
@@ -102,7 +102,7 @@ public class TelaRelatorios {
 
 	@FXML
 	void onListaRotas(ActionEvent event) {
-		InputStream stream = getClass().getResourceAsStream("/RelatorioRotas.jasper");
+		InputStream stream = getClass().getResourceAsStream("/resources/RelatorioRotas.jasper");
 
 		try {
 
@@ -111,7 +111,7 @@ public class TelaRelatorios {
 
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
 
-			JasperViewer.viewReport(print);
+			JasperViewer.viewReport(print, false);
 			JasperExportManager.exportReportToPdfFile(print, "relatorioRotas.pdf");
 		} catch (JRException e) {
 			e.printStackTrace();

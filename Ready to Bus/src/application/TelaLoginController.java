@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -41,8 +42,6 @@ public class TelaLoginController {
 	private MetodosLogin login = new MetodosLogin();
 	private MetodoConfereSenha confereSenha;
 	private Usuario usuario;
-	
-	
 
 	@FXML
 	void onSobre(ActionEvent event) {
@@ -56,12 +55,12 @@ public class TelaLoginController {
 
 	@FXML
 	void onSite(ActionEvent event) throws IOException {
-		//tela.abrirSite("C:\\Users\\ander\\Documents\\web\\empresa/empresa.html");
-		
-		//assim funciona
-		Runtime.getRuntime()
-				.exec("cmd.exe /C start chrome.exe file://C:\\Users\\ander\\Documents\\web\\ReadytoBus/index.html");
-		//coloca o caminho do nosso site após o firefox.exe  no lugar do http...
+		// tela.abrirSite("C:\\Users\\ander\\Documents\\web\\empresa/empresa.html");
+
+		String url = new File("site/index.html").getAbsolutePath();
+		// assim funciona
+		Runtime.getRuntime().exec("cmd.exe /C start chrome.exe file://" + url.replaceAll(" ", "%20"));
+		// coloca o caminho do nosso site após o firefox.exe no lugar do http...
 	}
 
 	@FXML
