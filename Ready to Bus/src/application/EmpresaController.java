@@ -83,9 +83,11 @@ public class EmpresaController {
 			// fazer combobox vir preenchido já
 
 			cbxViagem.setValue(ListaViagemController.getViagem());
+			// lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
+
 		}
 
-		carregarLista();
+		// carregarLista();
 
 	}
 
