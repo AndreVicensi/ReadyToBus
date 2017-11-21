@@ -59,7 +59,8 @@ public class TelaLoginController {
 		//tela.abrirSite("C:\\Users\\ander\\Documents\\web\\empresa/empresa.html");
 		
 		//assim funciona
-		Runtime.getRuntime().exec("cmd.exe /C start chrome.exe file://C:\\Users\\ander\\Documents\\web\\ReadytoBus/index.html");
+		Runtime.getRuntime()
+				.exec("cmd.exe /C start chrome.exe file://C:\\Users\\ander\\Documents\\web\\ReadytoBus/index.html");
 		//coloca o caminho do nosso site após o firefox.exe  no lugar do http...
 	}
 
