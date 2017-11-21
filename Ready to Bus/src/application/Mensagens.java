@@ -23,6 +23,14 @@ public class Mensagens {
 		alert.showAndWait();
 	}
 	
+	public void cadastroPassageiro() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Erro");
+		alert.setHeaderText("Ação inválida");
+		alert.setContentText("Preencha os campos Nome e Login");
+		alert.showAndWait();
+	}
+	
 	public void erroPrenchimentoLogin() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Erro");

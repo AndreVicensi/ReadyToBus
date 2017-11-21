@@ -51,11 +51,15 @@ public class CadastroRotaController {
 	private Mensagens msg = new Mensagens();
 	private boolean editando;
 
+	String vazio = "";
+
 	@FXML
 	public void initialize() {
-		cbxMotorista.setItems(FXCollections.observableArrayList(motoristaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
+		cbxMotorista.setItems(FXCollections
+				.observableArrayList(motoristaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		tbcNomeRotas.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		tblRotas.setItems(FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
+		tblRotas.setItems(
+				FXCollections.observableArrayList(rotaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		novo();
 	}
 
@@ -66,7 +70,8 @@ public class CadastroRotaController {
 
 	@FXML
 	void onEditar(MouseEvent event) {
-		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED));
+		if (event.getEventType().equals(MouseEvent.MOUSE_CLICKED))
+			;
 		rota = tblRotas.getSelectionModel().getSelectedItem();
 
 		tfNomeRota.setText(rota.getNome());
@@ -77,21 +82,25 @@ public class CadastroRotaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		rota.setNome(tfNomeRota.getText());
-		rota.setMotorista(cbxMotorista.getValue());
+		if (tfNomeRota.equals(vazio) || cbxMotorista.equals(null)) {
+			rota.setNome(tfNomeRota.getText());
+			rota.setMotorista(cbxMotorista.getValue());
 
-		if (editando) {
-			rotaDao.alterar(rota);
-			tblRotas.refresh(); // atualiza
+			if (editando) {
+				rotaDao.alterar(rota);
+				tblRotas.refresh(); // atualiza
+
+			} else {
+				rotaDao.inserir(rota);
+				tblRotas.getItems().add(rota); // adiciona na lista
+			}
+
+			msg.salvo();
+			novo();
 
 		} else {
-			rotaDao.inserir(rota);
-			tblRotas.getItems().add(rota); // adiciona na lista
+			msg.erroPrenchimento();
 		}
-
-		msg.salvo();
-		novo();
-
 	}
 
 	@FXML

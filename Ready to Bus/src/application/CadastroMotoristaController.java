@@ -57,10 +57,13 @@ public class CadastroMotoristaController {
 	private Mensagens msg = new Mensagens();
 	private static MotoristaDao motoristaDao = DaoFactory.get().motoristaDao();
 
+	String vazio = "";
+
 	@FXML
 	public void initialize() {
 		tbcNomeMotorista.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		tblMotorista.setItems(FXCollections.observableArrayList(motoristaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
+		tblMotorista.setItems(FXCollections
+				.observableArrayList(motoristaDao.listarDaEmpresa(AplicacaoSessao.empresa.getIdEmpresa())));
 		novo();
 	}
 
@@ -87,25 +90,29 @@ public class CadastroMotoristaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
-			motorista.setNome(tfNomeMotorista.getText());
-			motorista.setApelido(tfApelido.getText());
-			motorista.setLogin(tfLogin.getText());
-			motorista.setSenha(pfSenha.getText());
-			motorista.setEmpresa(AplicacaoSessao.empresa);
-			if (editando) {
-				motoristaDao.alterar(motorista);
-				tblMotorista.refresh(); // atualiza
+		if (tfNomeMotorista.equals(vazio) || tfApelido.equals(vazio) || tfLogin.equals(vazio)) {
+			if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+				motorista.setNome(tfNomeMotorista.getText());
+				motorista.setApelido(tfApelido.getText());
+				motorista.setLogin(tfLogin.getText());
+				motorista.setSenha(pfSenha.getText());
+				motorista.setEmpresa(AplicacaoSessao.empresa);
+				if (editando) {
+					motoristaDao.alterar(motorista);
+					tblMotorista.refresh(); // atualiza
 
+				} else {
+					motoristaDao.inserir(motorista);
+					tblMotorista.getItems().add(motorista); // adiciona na lista
+				}
+
+				msg.salvo();
+				novo();
 			} else {
-				motoristaDao.inserir(motorista);
-				tblMotorista.getItems().add(motorista); // adiciona na lista
+				msg.erroSenha();
 			}
-
-			msg.salvo();
-			novo();
 		} else {
-			msg.erroSenha();
+			msg.erroPrenchimento();
 		}
 	}
 

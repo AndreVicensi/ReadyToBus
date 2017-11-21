@@ -47,6 +47,8 @@ public class CadastroViagemController {
 	private Viagem viagemvolta;
 	private Mensagens msg = new Mensagens();
 
+	String vazio = "";
+
 	@FXML
 	public void initialize() {
 		cbxRota.setItems(
@@ -59,27 +61,31 @@ public class CadastroViagemController {
 	@FXML
 	void onSalvar(ActionEvent event) {
 
-		LocalTime tempozerado = LocalTime.of(00, 00);
+		if (tfSaidaIda.equals(vazio) || dpData.equals(null) || cbxRota.equals(vazio)) {
+			LocalTime tempozerado = LocalTime.of(00, 00);
 
-		String tempo1 = tfSaidaIda.getText().substring(0, 2);
-		String tempo2 = tfSaidaIda.getText().substring(3, 5);
-		int hora = Integer.parseInt(tempo1);
-		int minuto = Integer.parseInt(tempo2);
-		LocalTime temposaidaida = LocalTime.of(hora, minuto);
+			String tempo1 = tfSaidaIda.getText().substring(0, 2);
+			String tempo2 = tfSaidaIda.getText().substring(3, 5);
+			int hora = Integer.parseInt(tempo1);
+			int minuto = Integer.parseInt(tempo2);
+			LocalTime temposaidaida = LocalTime.of(hora, minuto);
 
-		String tempo3 = tfSaidaVolta.getText().substring(0, 2);
-		String tempo4 = tfSaidaVolta.getText().substring(3, 5);
-		int hora1 = Integer.parseInt(tempo3);
-		int minuto1 = Integer.parseInt(tempo4);
-		LocalTime temposaidavolta = LocalTime.of(hora1, minuto1);
+			String tempo3 = tfSaidaVolta.getText().substring(0, 2);
+			String tempo4 = tfSaidaVolta.getText().substring(3, 5);
+			int hora1 = Integer.parseInt(tempo3);
+			int minuto1 = Integer.parseInt(tempo4);
+			LocalTime temposaidavolta = LocalTime.of(hora1, minuto1);
 
-		viagemida = new Viagem(dpData.getValue(), temposaidaida, tempozerado, false, true, cbxRota.getValue());
-		viagemDao.inserir(viagemida);
+			viagemida = new Viagem(dpData.getValue(), temposaidaida, tempozerado, false, true, cbxRota.getValue());
+			viagemDao.inserir(viagemida);
 
-		viagemvolta = new Viagem(dpData.getValue(), temposaidavolta, tempozerado, false, false, cbxRota.getValue());
-		viagemDao.inserir(viagemvolta);
-		msg.salvo();
-		limparCampos();
+			viagemvolta = new Viagem(dpData.getValue(), temposaidavolta, tempozerado, false, false, cbxRota.getValue());
+			viagemDao.inserir(viagemvolta);
+			msg.salvo();
+			limparCampos();
+		} else {
+			msg.erroPrenchimento();
+		}
 	}
 
 	@FXML
