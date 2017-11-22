@@ -73,6 +73,8 @@ public class EmpresaController {
 	private MetodosTelas tela = new MetodosTelas();
 	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
 
+	public Viagem viagem;
+
 	public static final long TEMPO = (1000 * 1); // atualiza o site a cada 10
 													// segundos
 
@@ -85,6 +87,7 @@ public class EmpresaController {
 
 			cbxViagem.setValue(ListaViagemController.getViagem());
 			// lNomeMotorista.setText(cbxViagem.getValue().getRota().getMotorista().getNome());
+			ListaViagemController.setViagem(cbxViagem.getValue());
 
 		}
 
@@ -123,20 +126,26 @@ public class EmpresaController {
 
 	@FXML
 	void verListaIda(ActionEvent event) {
+
 		if (cbxViagem.getValue().getIda().equals(true)) {
-			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
+			ListaViagemController.codviagemIda = cbxViagem.getValue().getIdViagem();
+			ListaViagemController.ida = true;
 		} else {
-			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem() + 1;
+			ListaViagemController.codviagemVolta = cbxViagem.getValue().getIdViagem() + 1;
+			ListaViagemController.ida = false;
 		}
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}
 
 	@FXML
 	void verListaVolta(ActionEvent event) {
+
 		if (cbxViagem.getValue().getIda().equals(true)) {
-			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem() - 1;
+			ListaViagemController.codviagemIda = cbxViagem.getValue().getIdViagem() - 1;
+			ListaViagemController.ida = true;
 		} else {
-			ListaViagemController.codviagem = cbxViagem.getValue().getIdViagem();
+			ListaViagemController.codviagemVolta = cbxViagem.getValue().getIdViagem();
+			ListaViagemController.ida = false;
 		}
 		tela.carregarTela("/visual/TelaListaViagem.fxml");
 	}

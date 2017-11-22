@@ -64,13 +64,22 @@ public class ListaViagemController {
 
 	private MetodosTelas tela = new MetodosTelas();
 
-	public static Integer codviagem;
+	public static Integer codviagemIda;
+	public static Integer codviagemVolta;
+	public static Integer codViagem;
+	public static boolean ida;
 
 	private static Passageiro_ViagemDao passageiroViagemDao = DaoFactory.get().passageiro_ViagemDao();
 
 	public static final long TEMPO = (1000 * 10); // atualiza a cada 10 segundos
 
 	public void initialize() {
+
+		if (ida) {
+			codViagem = codviagemIda;
+		} else {
+			codViagem = codviagemVolta;
+		}
 
 		tbcPassageiro.setCellValueFactory(new PropertyValueFactory<>("passageiro"));
 		tbcTelefone.setCellValueFactory(new PropertyValueFactory<>("TelefoneNumero"));
@@ -115,7 +124,7 @@ public class ListaViagemController {
 					}
 				});
 
-		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
+		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codViagem)));
 
 		carregarLista();
 	}
@@ -140,7 +149,7 @@ public class ListaViagemController {
 				public void run() {
 					try {
 						tblLista.setItems(
-								FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codviagem)));
+								FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codViagem)));
 						// chamar metodo
 					} catch (Exception e) {
 						e.printStackTrace();
