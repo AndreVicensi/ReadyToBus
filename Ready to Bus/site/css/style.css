@@ -1,55 +1,55 @@
 body{
-	margin: 0 auto;
+	margin: 0.0 auto;
 }
 
 header{
 	background-color: #35373C;
-	height: 230px;
+	height: 230.0px;
 }
 
 .logo{
 	background-color: #FFCE0D;
 	float: left;
-	width: 250px;
-	height: 200px;
-	margin-top: 25px;
-	margin-left: 20px;
+	width: 250.0px;
+	height: 200.0px;
+	margin-top: 25.0px;
+	margin-left: 20.0px;
 }
 
 .menu{
-	width: 80%;
-	height: 80px;
+	width: 80.0%;
+	height: 80.0px;
 	float: left; 
-	margin-left: 30px;
+	margin-left: 30.0px;
 }
 
 nav{
-	height: 50px;
-	margin-left: 30px;
+	height: 50.0px;
+	margin-left: 30.0px;
 }
 
 nav ul{
-	padding: 0;
-	margin: 0;
+	padding: 0.0;
+	margin: 0.0;
 }
 nav ul li{
-	margin-top: 45px;
+	margin-top: 45.0px;
 	float: left;
 	list-style-type: none;
 	text-align: center;
-	margin-left: 10px;
-	font-size: 18px;
+	margin-left: 10.0px;
+	font-size: 18.0px;
 
 }
 
 nav a{
 	text-decoration: none;
-	width: 198px;
-	height: 20px;
+	width: 198.0px;
+	height: 20.0px;
 	display: block;
-	padding: 15px 0;
+	padding: 15.0px 0.0;
 	background-color: #ffb70c;
-	margin: 0 1px;
+	margin: 0.0 1.0px;
 	color: #585c65;
 
 }
@@ -61,16 +61,16 @@ color: #fff;
 
 .frase{
 	background-color: #ff7801;
-	margin-top: 40px;
-	width: 60%;
-	height: 100px;
-	margin-left: 85px;
+	margin-top: 40.0px;
+	width: 60.0%;
+	height: 100.0px;
+	margin-left: 85.0px;
 	float: left;
 	text-align: center;
 }
 
 .frase h1{
-	font-size: 45px;
+	font-size: 45.0px;
 }
 
 .frase h1 span{
@@ -78,55 +78,57 @@ color: #fff;
 }
 
 #textao{
-	z-index: 1;
+	z-index: 1.0;
 	color: #fff;
-	margin-top: -300px;
+	margin-top: -300.0px;
 	text-align: center;
-	font-size: 60px;
+	font-size: 60.0px;
 }
 
 #banner{
-	height: 500px;
-	width: 500px;
+	height: 500.0px;
+	width: 500.0px;
 	background-color: #fff;
 }
 
 #home{
-	height: 520px;
+	height: 520.0px;
 }
 
 #home img{
-	height: 520px;
-	width: 100%;
+	height: 520.0px;
+	width: 100.0%;
 }
 
 #foto{
-	margin-left: 115px;
+	margin-left: 12%;
+}
+
+#explicacao{
+	padding-left: 30px;
 }
 
 #quem{
-	height: 1330px;
+	height: 1330.0px;
 	background-color: #2D2F33;
 }
 
 .quem1, .quem2 , .joao, .andre{
 	display: inline-block;
-	width: 657px;
-	height: 300px;
-	padding-left: 90px;
-	padding-right: 10px;
+	width: 657.0px;
+	height: 300.0px;
+	padding-left: 90.0px;
+	padding-right: 10.0px;
 	color: #FFCE0D;
 }
 
 .joao, .andre{
-	width: 46%;
-	height: 250px;
-	padding-left: 2%;
-	padding-right: 2%;
+	width: 46.0%;
+	height: 250.0px;
+	padding-left: 2.0%;
+	padding-right: 2.0%;
 	float: left;
 }
-
-
 
 
 
@@ -136,10 +138,10 @@ color: #fff;
 
 .joao img, .andre img{
 	float: left;
-	margin-right: 20px;
+	margin-right: 20.0px;
      background-color: #ffb70c;
-     width: 150px;
-     height: 150px;
+     width: 150.0px;
+     height: 150.0px;
      border: none;
 }
 
@@ -148,13 +150,13 @@ color: #fff;
 }
 
 h2 span strong{
-	font-size: 2em;
+	font-size: 2.0em;
 	color: #ff7801;
 }
 
 .imagem{
 	display: block;
-	margin: 0 auto;
+	margin: 0.0 auto;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -164,68 +166,68 @@ h2 span strong{
 }
 
 #sistema{
-	height: 800px;
+	height: 800.0px;
 	color:  #FFCE0D;
 }
 
 #explicacao h2{
-	padding: 10px;
-	margin: 0;
+	padding: 10.0px;
+	margin: 0.0;
 }
 	
 #contato{
-	height: 900px;
+	height: 900.0px;
 }
 
 #endereco{
-	width: 100%;
-	height: 450px;
+	width: 100.0%;
+	height: 450.0px;
 }
 
 #mapa{
-	width: 58%;
+	width: 58.0%;
 	float: left;
-	padding: 1%;
+	padding: 1.0%;
 }
 
 #rua{
-	width: 38%;
+	width: 38.0%;
 	float: left;
-	padding: 1%;
+	padding: 1.0%;
 	color: #ffb70c;
 }
 
 #mensagem{
-	margin: 0 auto;
-	padding: 1%;
-	height: 400px;
+	margin: 0.0 auto;
+	padding: 1.0%;
+	height: 400.0px;
 	color: #ffb70c;
-	margin-top: -45px;
+	margin-top: -45.0px;
 }
 
 #mensagem button{
 	background-color: #ff7801;
 	color: #FFCE0D;
 	border: none;
-	height: 60px;
-	width: 180px;
+	height: 60.0px;
+	width: 180.0px;
 }
 
 input{
-	height: 30px;
-	width: 300px;
+	height: 30.0px;
+	width: 300.0px;
 }
 
 .input{
-	padding: 20px;
-	padding-top: 0px;
-	height: 50px;
-	width: 300px;
+	padding: 20.0px;
+	padding-top: 0.0px;
+	height: 50.0px;
+	width: 300.0px;
 	float: left;
 }
 
 #manual{
-	height: 3800px;
+	height: 3800.0px;
 	background-color: #DBC700;
 	color: #2D2F33;
 }
@@ -234,37 +236,37 @@ input{
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	padding: 10px;
+	padding: 10.0px;
 }
 
 #manual h2{
-	margin: 0;
-	font-size: 6em;
+	margin: 0.0;
+	font-size: 6.0em;
 	text-align: center;
 }
 
 #manual p{
 	text-align: center;
-	font-size: 24px;
-	padding: 10px;
+	font-size: 24.0px;
+	padding: 10.0px;
 }
 
 hr{
 	background-color: #000;
 	color: #000;
-	height: 3px;
+	height: 3.0px;
 	border: none;
 }
 
 .mensagem{
-	padding: 20px;
+	padding: 20.0px;
 	display: block;
 	clear: both;
 }
 
 
 footer{
-	height: 30px;
+	height: 30.0px;
 	background-color: #ff7801;
 	color: #35373C;
 }
