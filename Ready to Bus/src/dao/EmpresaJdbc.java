@@ -13,8 +13,11 @@ import com.mysql.jdbc.Statement;
 import conexao.Conexao;
 import model.Empresa;
 import model.Motorista;
+import model.Passageiro;
+import model.Passageiro_Viagem;
 import model.Relatorio;
 import model.Rota;
+import model.Viagem;
 
 public class EmpresaJdbc implements EmpresaDao {
 
@@ -204,4 +207,80 @@ public class EmpresaJdbc implements EmpresaDao {
 		return dados;
 	}
 
+	@Override
+	public List<Relatorio> relatorioViagems(Integer codviagem) {
+		Statement stmt = null;
+		List<Relatorio> dados = new ArrayList<Relatorio>();
+		try {
+			stmt = (Statement) conexao.get().createStatement();
+			String sql = "select passageiro.idPassageiro, passageiro.idempresa, e.nome, passageiro.nome, passageiro.telefone, status, confirmacao, v.*, r.* "
+					+ "from passageiro join empresa e on passageiro.idempresa = e.idempresa join passageiro_viagem"
+					+ " on passageiro.idPassageiro = passageiro_viagem.idPassageiro join viagem v on passageiro_viagem.idviagem = v.idviagem join rota r on v.idrota = r.idrota "
+					+ "where v.idViagem = " + codviagem + " order by status asc";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Passageiro_Viagem passageiroViagem = new Passageiro_Viagem();
+				Passageiro passageiro = new Passageiro();
+				passageiro.setIdPassageiro(rs.getInt("idPassageiro"));
+				passageiro.setNome(rs.getString("nome"));
+				passageiro.setTelefone(rs.getString("telefone"));
+				passageiroViagem.setPassageiro(passageiro);
+				passageiroViagem.setStatus(rs.getInt("status"));
+				passageiroViagem.setConfirmacao(rs.getBoolean("confirmacao"));
+
+				Viagem viagem = new Viagem();
+				viagem.setIdViagem(rs.getInt("idViagem"));
+				viagem.setData(rs.getDate("data").toLocalDate());
+				viagem.setIda(rs.getBoolean("ida"));
+				viagem.setSaida(rs.getTime("saida").toLocalTime());
+				viagem.setChegada(rs.getTime("chegada").toLocalTime());
+
+				Rota rota = new Rota();
+				rota.setIdRota(rs.getInt("r.idrota"));
+				rota.setNome(rs.getString("r.nome"));
+
+				Empresa empresa = new Empresa();
+				empresa.setIdEmpresa(rs.getInt("idEmpresa"));
+				empresa.setNome(rs.getString("e.nome"));
+
+				Relatorio relatorio = new Relatorio();
+				String tempo = LocalTime.now().toString().substring(0, 8);
+				String data = LocalDate.now().toString();
+
+				relatorio.setNomeEmpresa(empresa.getNome());
+				relatorio.setNomePassageiro(rs.getString("passageiro.nome"));
+
+				if (passageiroViagem.getStatus() == 1) {
+					relatorio.setStatus("VAI/VOLTA");
+				} else if (passageiroViagem.getStatus() == 2) {
+					relatorio.setStatus("SÓ VAI");
+				} else if (passageiroViagem.getStatus() == 3) {
+					relatorio.setStatus("NÃO VAI");
+				} else if (passageiroViagem.getStatus() == 4) {
+					relatorio.setStatus("SÓ VOLTA");
+				}
+
+				if (passageiroViagem.isConfirmacao() == true || viagem.getIda().equals(true)) {
+					relatorio.setConfirmacao("Embarcou");
+					relatorio.setIda("IDA");
+				} else {
+					relatorio.setStatus("Não embarcou");
+					relatorio.setIda("VOLTA");
+				}
+
+				relatorio.setDataRelatorio(data);
+				relatorio.setHoraRelatorio(tempo);
+				relatorio.setDataViagem(viagem.getData().toString());
+				relatorio.setNomeRota(rota.getNome());
+				relatorio.setHoraSaida(viagem.getSaida().toString().substring(0, 8));
+				relatorio.setHoraChegada(viagem.getChegada().toString().substring(0, 8));
+
+				dados.add(relatorio);
+
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return dados;
+	}
 }

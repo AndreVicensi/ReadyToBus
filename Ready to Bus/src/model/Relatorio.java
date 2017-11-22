@@ -10,6 +10,12 @@ public class Relatorio {
 	private String nomePassageiro;
 	private String cpfPassageiro;
 	private String telefonePassageiro;
+	private String status = "----";
+	private String confirmacao = "----";
+	private String dataViagem;
+	private String ida;
+	private String horaSaida;
+	private String horaChegada = "----";
 
 	public String getNomeRota() {
 		return nomeRota;
@@ -74,5 +80,55 @@ public class Relatorio {
 	public void setTelefonePassageiro(String telefonePassageiro) {
 		this.telefonePassageiro = telefonePassageiro;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getConfirmacao() {
+		return confirmacao;
+	}
+
+	public void setConfirmacao(String confirmacao) {
+		this.confirmacao = confirmacao;
+	}
+
+	public String getDataViagem() {
+		return dataViagem;
+	}
+
+	public void setDataViagem(String dataViagem) {
+		this.dataViagem = dataViagem;
+	}
+
+	public String getIda() {
+		return ida;
+	}
+
+	public void setIda(String ida) {
+		this.ida = ida;
+	}
+
+	public String getHoraSaida() {
+		return horaSaida;
+	}
+
+	public void setHoraSaida(String horaSaida) {
+		this.horaSaida = horaSaida;
+	}
+
+	public String getHoraChegada() {
+		return horaChegada;
+	}
+
+	public void setHoraChegada(String horaChegada) {
+		this.horaChegada = horaChegada;
+	}
+	
+	
 
 }

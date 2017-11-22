@@ -11,4 +11,6 @@ public interface EmpresaDao extends CrudDao<Empresa> {
 
 	public List<Relatorio> relatorioRotas(Integer codempresa, String order);
 
+	public List<Relatorio> relatorioViagems(Integer codviagem);
+
 }

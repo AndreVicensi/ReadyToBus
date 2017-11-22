@@ -28,14 +28,23 @@
 		<band height="113" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
-				<reportElement x="150" y="10" width="255" height="45" uuid="2d9f5933-d480-4ac6-8c22-3378bed727aa"/>
+				<reportElement x="127" y="10" width="300" height="50" uuid="f903aa03-55db-415f-bc17-c06501226298"/>
 				<textElement>
-					<font fontName="Arial" size="34"/>
+					<font fontName="Arial" size="40"/>
 				</textElement>
 				<text><![CDATA[READY TO BUS]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="90" y="73" width="463" height="27" uuid="685410fc-9950-484a-9461-994fa3477354">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeEmpresa}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="83" width="90" height="30" forecolor="#0A0909" uuid="829b0416-79db-4bda-8061-c9d6059655dc"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="73" width="90" height="27" forecolor="#0A0909" uuid="96f121fc-9a35-44e8-a79b-747303380caa"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -44,13 +53,6 @@
 				</textElement>
 				<text><![CDATA[Empresa:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="90" y="80" width="150" height="30" uuid="1efed6e9-7471-4754-91da-4d51b0b08f39"/>
-				<textElement>
-					<font size="16"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nomeEmpresa}]]></textFieldExpression>
-			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -97,18 +99,15 @@
 	</detail>
 	<pageFooter>
 		<band height="46">
-			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="477e30bc-c46e-4bb3-a7b6-8491176dd19f"/>
-				<box>
-					<pen lineColor="#050404"/>
-				</box>
+			<textField>
+				<reportElement x="255" y="10" width="150" height="30" uuid="72ebfd0f-b414-43d2-8d7f-627737fa6e23"/>
 				<textElement>
-					<font fontName="DejaVu Sans" size="16"/>
+					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Impresso em]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{horaRelatorio}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="240" y="10" width="40" height="30" forecolor="#0A0909" uuid="c28ba641-ab09-4a62-8d2d-5abd355a160a"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="229" y="10" width="40" height="30" forecolor="#0A0909" uuid="f92c5d80-6098-48a8-a651-ca3b6f1c3d07"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -118,19 +117,22 @@
 				<text><![CDATA[ás]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="10" width="110" height="30" uuid="8929cdb1-6564-4d30-abe7-5454d327f48c"/>
+				<reportElement x="120" y="10" width="110" height="30" uuid="fa866971-8991-48b3-af68-179830d0baf8"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dataRelatorio}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="280" y="10" width="150" height="30" uuid="09fb9d30-a64d-47da-9b63-7daf68303cc3"/>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="8c159383-d192-4780-ab05-76680a4ec951"/>
+				<box>
+					<pen lineColor="#050404"/>
+				</box>
 				<textElement>
-					<font size="16"/>
+					<font fontName="DejaVu Sans" size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{horaRelatorio}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Impresso em]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

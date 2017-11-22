@@ -28,21 +28,23 @@
 	<title>
 		<band height="113" splitType="Stretch">
 			<staticText>
-				<reportElement x="150" y="10" width="255" height="45" uuid="2d9f5933-d480-4ac6-8c22-3378bed727aa"/>
+				<reportElement x="127" y="10" width="300" height="50" uuid="c97b69bb-39ca-4612-8bf5-394076a3fd65"/>
 				<textElement>
-					<font fontName="Arial" size="34"/>
+					<font fontName="Arial" size="40"/>
 				</textElement>
 				<text><![CDATA[READY TO BUS]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="90" y="80" width="150" height="30" uuid="e2d6062a-1528-4a9e-8b4d-cc6f342b8406"/>
+				<reportElement x="90" y="73" width="463" height="27" uuid="f8a8c4d2-842e-4fb9-8c7f-1a1eb39577a1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
 				<textElement>
 					<font size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nomeEmpresa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="83" width="90" height="30" forecolor="#0A0909" uuid="6d6666aa-fe17-4278-8ccb-38e102c42bd2"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="73" width="90" height="27" forecolor="#0A0909" uuid="278f0e85-1712-4b2d-866d-3b268e7c773f"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -109,25 +111,15 @@
 	<pageFooter>
 		<band height="46">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="71491f06-dc9d-4705-b54d-8130ea9735e0"/>
-				<box>
-					<pen lineColor="#050404"/>
-				</box>
-				<textElement>
-					<font fontName="DejaVu Sans" size="16"/>
-				</textElement>
-				<text><![CDATA[Impresso em]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="130" y="10" width="110" height="30" uuid="8a4fa044-b458-4d7f-8b50-3857b6b5f384"/>
+				<reportElement x="255" y="10" width="150" height="30" uuid="a54942bc-33e4-401b-8bb5-890355a0fb64"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{dataRelatorio}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{horaRelatorio}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="240" y="10" width="40" height="30" forecolor="#0A0909" uuid="d7bc1f8b-dcee-4f09-a9a8-45bd95775013"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="229" y="10" width="40" height="30" forecolor="#0A0909" uuid="d0b09b8f-15b1-427d-a4be-5b37d6e204ba"/>
 				<box>
 					<pen lineColor="#050404"/>
 				</box>
@@ -137,12 +129,22 @@
 				<text><![CDATA[ás]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="280" y="10" width="150" height="30" uuid="0c9fb638-7327-4447-8d9a-e608e6f55a5d"/>
+				<reportElement x="120" y="10" width="110" height="30" uuid="84e4bf00-9700-431d-97aa-767ce0b72228"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{horaRelatorio}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dataRelatorio}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="10" y="10" width="120" height="30" forecolor="#0A0909" uuid="e89054d5-0ca8-467f-b066-386252f53b09"/>
+				<box>
+					<pen lineColor="#050404"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans" size="16"/>
+				</textElement>
+				<text><![CDATA[Impresso em]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

@@ -4,13 +4,17 @@ import java.io.InputStream;
 
 import dao.DaoFactory;
 import dao.EmpresaDao;
+import dao.ViagemDao;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import metodos.AplicacaoSessao;
 import metodos.MetodosTelas;
+import model.Viagem;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -29,6 +33,9 @@ public class TelaRelatorios {
 
 	@FXML
 	private Button btnListaRotas;
+
+	@FXML
+	private Button btnListaViagems;
 
 	@FXML
 	private Button btnVoltar;
@@ -51,8 +58,18 @@ public class TelaRelatorios {
 	@FXML
 	private RadioButton rotasDesc;
 
+	@FXML
+	private ComboBox<Viagem> cbxViagem;
+
 	public String ordenacaoP = "asc";
 	public String ordenacaoR = "asc";
+	private static ViagemDao viagemDao = DaoFactory.get().viagemDao();
+
+	public void initialize() {
+
+		cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
+
+	}
 
 	@FXML
 	void rotasAsc(ActionEvent event) {
@@ -113,6 +130,24 @@ public class TelaRelatorios {
 
 			JasperViewer.viewReport(print, false);
 			JasperExportManager.exportReportToPdfFile(print, "relatorioRotas.pdf");
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void onListaViagems(ActionEvent event) {
+		InputStream stream = getClass().getResourceAsStream("/resources/RelatorioViagems.jasper");
+
+		try {
+
+			JRDataSource dataSource = new JRBeanCollectionDataSource(
+					empresaDao.relatorioViagems(cbxViagem.getValue().getIdViagem()));
+
+			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
+
+			JasperViewer.viewReport(print, false);
+			JasperExportManager.exportReportToPdfFile(print, "relatorioViagems.pdf");
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
