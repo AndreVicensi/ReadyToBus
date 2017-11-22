@@ -96,33 +96,31 @@ public class CadastroPassageiroController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		if (tfNomePassageiro.equals(vazio) || tfLogin.equals(vazio)) {
-			if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
-				passageiro.setNome(tfNomePassageiro.getText());
-				passageiro.setLogin(tfLogin.getText());
-				passageiro.setSenha(pfSenha.getText());
-				passageiro.setCpf(tfCpfPassageiro.getText());
-				passageiro.setTelefone(tfTelefonePassageiro.getText());
-				passageiro.setEmpresa(AplicacaoSessao.empresa);
 
-				if (editando) {
-					passageiroDao.alterar(passageiro);
-					tblPassageiro.refresh(); // atualiza
+		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+			passageiro.setNome(tfNomePassageiro.getText());
+			passageiro.setLogin(tfLogin.getText());
+			passageiro.setSenha(pfSenha.getText());
+			passageiro.setCpf(tfCpfPassageiro.getText());
+			passageiro.setTelefone(tfTelefonePassageiro.getText());
+			passageiro.setEmpresa(AplicacaoSessao.empresa);
 
-				} else {
-					passageiroDao.inserir(passageiro);
-					tblPassageiro.getItems().add(passageiro); // adiciona na
-																// lista
-				}
+			if (editando) {
+				passageiroDao.alterar(passageiro);
+				tblPassageiro.refresh(); // atualiza
 
-				msg.salvo();
-				novo();
 			} else {
-				msg.erroSenha();
+				passageiroDao.inserir(passageiro);
+				tblPassageiro.getItems().add(passageiro); // adiciona na
+															// lista
 			}
+
+			msg.salvo();
+			novo();
 		} else {
-			msg.cadastroPassageiro();
+			msg.erroSenha();
 		}
+
 	}
 
 	@FXML

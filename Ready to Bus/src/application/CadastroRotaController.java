@@ -82,25 +82,22 @@ public class CadastroRotaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		if (tfNomeRota.equals(vazio) || cbxMotorista.equals(null)) {
-			rota.setNome(tfNomeRota.getText());
-			rota.setMotorista(cbxMotorista.getValue());
 
-			if (editando) {
-				rotaDao.alterar(rota);
-				tblRotas.refresh(); // atualiza
+		rota.setNome(tfNomeRota.getText());
+		rota.setMotorista(cbxMotorista.getValue());
 
-			} else {
-				rotaDao.inserir(rota);
-				tblRotas.getItems().add(rota); // adiciona na lista
-			}
-
-			msg.salvo();
-			novo();
+		if (editando) {
+			rotaDao.alterar(rota);
+			tblRotas.refresh(); // atualiza
 
 		} else {
-			msg.erroPrenchimento();
+			rotaDao.inserir(rota);
+			tblRotas.getItems().add(rota); // adiciona na lista
 		}
+
+		msg.salvo();
+		novo();
+
 	}
 
 	@FXML

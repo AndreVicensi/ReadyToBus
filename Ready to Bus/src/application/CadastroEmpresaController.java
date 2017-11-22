@@ -49,19 +49,17 @@ public class CadastroEmpresaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		if (tfNomeEmpresa.equals(vazio) || tfCnpj.equals(vazio) || tfLogin.equals(vazio)) {
-			if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
-				empresa = new Empresa(tfNomeEmpresa.getText(), tfCnpj.getText(), tfLogin.getText(), pfSenha.getText());
-				empresaDao.inserir(empresa);
-				limparCampos();
-				msg.salvo();
-				tela.carregarTela("/visual/TelaLogin.fxml");
-			} else {
-				msg.erroSenha();
-			}
+
+		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+			empresa = new Empresa(tfNomeEmpresa.getText(), tfCnpj.getText(), tfLogin.getText(), pfSenha.getText());
+			empresaDao.inserir(empresa);
+			limparCampos();
+			msg.salvo();
+			tela.carregarTela("/visual/TelaLogin.fxml");
 		} else {
-			msg.erroPrenchimento();
+			msg.erroSenha();
 		}
+
 	}
 
 	@FXML

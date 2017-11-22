@@ -90,30 +90,28 @@ public class CadastroMotoristaController {
 
 	@FXML
 	void onSalvar(ActionEvent event) {
-		if (tfNomeMotorista.equals(vazio) || tfApelido.equals(vazio) || tfLogin.equals(vazio)) {
-			if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
-				motorista.setNome(tfNomeMotorista.getText());
-				motorista.setApelido(tfApelido.getText());
-				motorista.setLogin(tfLogin.getText());
-				motorista.setSenha(pfSenha.getText());
-				motorista.setEmpresa(AplicacaoSessao.empresa);
-				if (editando) {
-					motoristaDao.alterar(motorista);
-					tblMotorista.refresh(); // atualiza
 
-				} else {
-					motoristaDao.inserir(motorista);
-					tblMotorista.getItems().add(motorista); // adiciona na lista
-				}
+		if (pfSenha.getText().equals(pfConfirmarSenha.getText())) {
+			motorista.setNome(tfNomeMotorista.getText());
+			motorista.setApelido(tfApelido.getText());
+			motorista.setLogin(tfLogin.getText());
+			motorista.setSenha(pfSenha.getText());
+			motorista.setEmpresa(AplicacaoSessao.empresa);
+			if (editando) {
+				motoristaDao.alterar(motorista);
+				tblMotorista.refresh(); // atualiza
 
-				msg.salvo();
-				novo();
 			} else {
-				msg.erroSenha();
+				motoristaDao.inserir(motorista);
+				tblMotorista.getItems().add(motorista); // adiciona na lista
 			}
+
+			msg.salvo();
+			novo();
 		} else {
-			msg.erroPrenchimento();
+			msg.erroSenha();
 		}
+
 	}
 
 	@FXML
