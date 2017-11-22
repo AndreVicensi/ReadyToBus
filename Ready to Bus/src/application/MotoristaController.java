@@ -182,8 +182,8 @@ public class MotoristaController {
 			TimerTask tarefa = new TimerTask() {
 				public void run() {
 					try {
-						tblLista.setItems(
-								FXCollections.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
+						tblLista.setItems(FXCollections
+								.observableArrayList(passageiroViagemDao.ListaMotorista(codmotorista, codviagem)));
 						// chamar metodo
 					} catch (Exception e) {
 						e.printStackTrace();
