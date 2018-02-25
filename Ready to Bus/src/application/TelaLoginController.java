@@ -65,31 +65,38 @@ public class TelaLoginController {
 
 	@FXML
 	void onLogin(ActionEvent event) {
-		// pega o login do usuario
-		usuario = login.getLoginEmpresa(tfLogin.getText());
-		if (usuario == null) {
-			usuario = login.getLoginMotorista(tfLogin.getText());
-		}
-		if (usuario == null) {
-			usuario = login.getLoginPassageiro(tfLogin.getText());
-		}
-		// coloca valores no confere senha
-		confereSenha = new MetodoConfereSenha(usuario.getSenha(), pfSenha.getText());
-		// confere a senha
-		if (!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario != null) {
-			if (usuario instanceof Empresa) {
-				AplicacaoSessao.empresa = (Empresa) usuario;
-				tela.carregarTela("/visual/TelaEmpresa.fxml");
-			} else if (usuario instanceof Motorista) {
-				AplicacaoSessao.motorista = (Motorista) usuario;
-				tela.carregarTela("/visual/TelaMotorista.fxml");
-			} else if (usuario instanceof Passageiro) {
-				AplicacaoSessao.passageiro = (Passageiro) usuario;
-				tela.carregarTela("/visual/TelaStatusPassageiro.fxml");
-			}
-		} else {
-			mensagens.erroSenha();
-		}
 
+		if (tfLogin.getText().isEmpty() || pfSenha.getText().isEmpty()) {
+			mensagens.erroPrenchimento();
+		} else {
+
+			// pega o login do usuario
+			usuario = login.getLoginEmpresa(tfLogin.getText());
+			if (usuario == null) {
+				usuario = login.getLoginMotorista(tfLogin.getText());
+			}
+			if (usuario == null) {
+				usuario = login.getLoginPassageiro(tfLogin.getText());
+			}
+
+			// coloca valores no confere senha
+			confereSenha = new MetodoConfereSenha(usuario.getSenha(), pfSenha.getText());
+
+			// confere a senha
+			if (!confereSenha.isSenhaVazia() && confereSenha.isSenhaIgual() && usuario != null) {
+				if (usuario instanceof Empresa) {
+					AplicacaoSessao.empresa = (Empresa) usuario;
+					tela.carregarTela("/visual/TelaEmpresa.fxml");
+				} else if (usuario instanceof Motorista) {
+					AplicacaoSessao.motorista = (Motorista) usuario;
+					tela.carregarTela("/visual/TelaMotorista.fxml");
+				} else if (usuario instanceof Passageiro) {
+					AplicacaoSessao.passageiro = (Passageiro) usuario;
+					tela.carregarTela("/visual/TelaStatusPassageiro.fxml");
+				}
+			} else {
+				mensagens.erroSenha();
+			}
+		}
 	}
 }

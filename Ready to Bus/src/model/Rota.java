@@ -30,8 +30,6 @@ public class Rota implements RenderizaCombo {
 		return motorista;
 	}
 
-
-
 	public void setMotorista(Motorista motorista) {
 		this.motorista = motorista;
 	}
@@ -74,9 +72,5 @@ public class Rota implements RenderizaCombo {
 	public String getText() {
 		return nome;
 	}
-
-
-	
-	
 
 }

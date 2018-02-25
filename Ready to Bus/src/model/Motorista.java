@@ -1,12 +1,10 @@
 package model;
 
-public class Motorista implements Usuario {
+public class Motorista extends Usuario {
 
 	private int idMotorista;
 	private String nome;
 	private String apelido;
-	private String login;
-	private String senha;
 	private Empresa empresa;
 
 	public Motorista() {
@@ -17,8 +15,8 @@ public class Motorista implements Usuario {
 		super();
 		this.nome = nome;
 		this.apelido = apelido;
-		this.login = login;
-		this.senha = senha;
+		super.login = login;
+		super.senha = senha;
 		this.empresa = empresa;
 	}
 
@@ -36,22 +34,6 @@ public class Motorista implements Usuario {
 
 	public void setApelido(String apelido) {
 		this.apelido = apelido;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 	public Empresa getEmpresa() {

@@ -91,66 +91,47 @@ public class TelaRelatorios {
 		ordenacaoP = "desc";
 	}
 
-	@FXML
-	void onVoltar(ActionEvent event) {
-		tela.carregarTela("/visual/TelaEmpresa.fxml");
-	}
-
 	private MetodosTelas tela = new MetodosTelas();
 	private static EmpresaDao empresaDao = DaoFactory.get().empresaDao();
 
 	@FXML
 	void onListaPassageiros(ActionEvent event) {
-		InputStream url = getClass().getResourceAsStream("/resources/RelatorioPassageiros.jasper");
+		gerarRelatorio("/resources/RelatorioPassageiros.jasper", "relatorioPassageiros.pdf",
+				new JRBeanCollectionDataSource(
+						empresaDao.relatorioPassageiros(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoP)));
 
-		try {
-
-			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					empresaDao.relatorioPassageiros(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoP));
-
-			JasperPrint print = JasperFillManager.fillReport(url, null, dataSource);
-
-			JasperViewer.viewReport(print, false);
-			JasperExportManager.exportReportToPdfFile(print, "relatorioPassageiros.pdf");
-		} catch (JRException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@FXML
 	void onListaRotas(ActionEvent event) {
-		InputStream stream = getClass().getResourceAsStream("/resources/RelatorioRotas.jasper");
+		gerarRelatorio("/resources/RelatorioRotas.jasper", "relatorioRotas.pdf", new JRBeanCollectionDataSource(
+				empresaDao.relatorioRotas(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoR)));
 
-		try {
-
-			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					empresaDao.relatorioRotas(AplicacaoSessao.empresa.getIdEmpresa(), ordenacaoR));
-
-			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
-
-			JasperViewer.viewReport(print, false);
-			JasperExportManager.exportReportToPdfFile(print, "relatorioRotas.pdf");
-		} catch (JRException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@FXML
 	void onListaViagems(ActionEvent event) {
-		InputStream stream = getClass().getResourceAsStream("/resources/RelatorioViagems.jasper");
+		gerarRelatorio("/resources/RelatorioViagems.jasper", "relatorioViagems.pdf",
+				new JRBeanCollectionDataSource(empresaDao.relatorioViagems(cbxViagem.getValue().getIdViagem())));
 
+	}
+
+	void gerarRelatorio(String caminho, String nomeDoRelatorio, JRBeanCollectionDataSource codigo) {
+		InputStream stream = getClass().getResourceAsStream(caminho);
 		try {
-
-			JRDataSource dataSource = new JRBeanCollectionDataSource(
-					empresaDao.relatorioViagems(cbxViagem.getValue().getIdViagem()));
-
+			JRDataSource dataSource = codigo;
 			JasperPrint print = JasperFillManager.fillReport(stream, null, dataSource);
-
 			JasperViewer.viewReport(print, false);
-			JasperExportManager.exportReportToPdfFile(print, "relatorioViagems.pdf");
+			JasperExportManager.exportReportToPdfFile(print, nomeDoRelatorio);
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	@FXML
+	void onVoltar(ActionEvent event) {
+		tela.carregarTela("/visual/TelaEmpresa.fxml");
 	}
 
 	@FXML

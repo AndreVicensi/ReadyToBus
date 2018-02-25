@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import visual.Main;
 
 public class MetodosTelas {
+
 	public void carregarTela(String nome) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(nome));

@@ -75,7 +75,7 @@ public class EmpresaController {
 
 	public Viagem viagem;
 
-	public static final long TEMPO = (1000 * 1); // atualiza o site a cada 10
+	public static final long TEMPO = (1000 * 5); // atualiza o site a cada 10
 													// segundos
 
 	public void initialize() {
@@ -157,21 +157,22 @@ public class EmpresaController {
 			timer = new Timer();
 			TimerTask tarefa = new TimerTask() {
 				public void run() {
+
 					try {
 						// isso permite atualizar cmoponentes em otura thread
 						Platform.runLater(() -> {
 							cbxViagem.setItems(FXCollections.observableArrayList(viagemDao.listar()));
 						});
 
-						// chamar metodo
-
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+
 				}
 			};
 			timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
 		}
+
 	}
 
 	@FXML

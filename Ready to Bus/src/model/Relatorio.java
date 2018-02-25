@@ -128,7 +128,5 @@ public class Relatorio {
 	public void setHoraChegada(String horaChegada) {
 		this.horaChegada = horaChegada;
 	}
-	
-	
 
 }

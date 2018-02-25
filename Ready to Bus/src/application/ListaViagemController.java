@@ -127,6 +127,7 @@ public class ListaViagemController {
 		tblLista.setItems(FXCollections.observableArrayList(passageiroViagemDao.ListaViagem(codViagem)));
 
 		carregarLista();
+
 	}
 
 	@FXML
